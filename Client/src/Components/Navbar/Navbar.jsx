@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -10,19 +11,21 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
+
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
-    { name: "Sermons", href: "#sermons" },
-    { name: "Songs", href: "#songs" },
-    { name: "Events", href: "#events" },
-    { name: "Vision", href: "#articles" },
-    { name: "Books", href: "#books" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Sermons", path: "/sermons" },
+    { name: "Songs", path: "/songs" },
+    { name: "Events", path: "/events" },
+    { name: "Vision", path: "/vision" },
+    { name: "Books", path: "/books" },
+    { name: "Contact", path: "/contact" },
   ];
 
   return (
@@ -34,23 +37,25 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="text-2xl font-cinzel font-bold text-[#c9a84c]">
+        {/* Logo */}
+        <Link to="/" className="text-2xl font-cinzel font-bold text-[#c9a84c]">
           <span className="mr-2">&#10013;</span>
           PBM Church
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-8">
           <ul className="flex space-x-6">
             {navLinks.map((link) => (
               <li key={link.name}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.path}
                   className="text-white hover:text-[#c9a84c] text-sm uppercase tracking-wider transition-colors relative group"
                 >
                   {link.name}
+
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#c9a84c] transition-all duration-300 group-hover:w-full"></span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -77,13 +82,13 @@ export default function Navbar() {
             <ul className="flex flex-col items-center py-6 space-y-4">
               {navLinks.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.path}
                     onClick={() => setIsOpen(false)}
                     className="text-white hover:text-[#c9a84c] text-lg uppercase tracking-widest"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
