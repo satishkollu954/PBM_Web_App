@@ -49,37 +49,60 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Address branches */}
           <div>
             <h4 className="text-white font-cinzel font-bold mb-6 text-lg">
-              Quick Links
+              Nagulanka Branch
             </h4>
-            <ul className="space-y-3">
-              {[
-                "Home",
-                "About Us",
-                "Sermons",
-                "Events",
-                "Articles",
-                "Contact",
-              ].map((link) => (
-                <li key={link}>
-                  <a
-                    href={`#${link.toLowerCase().replace(" ", "")}`}
-                    className="text-gray-400 hover:text-[#c9a84c] text-sm transition-colors"
-                  >
-                    {link}
-                  </a>
-                </li>
-              ))}
+
+            <ul className="space-y-4">
+              <li className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">
+                  📍
+                </div>
+
+                <div>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    123 Sacred Light Ave,
+                    <br />
+                    Graceville, GL 45678
+                  </p>
+                </div>
+              </li>
+
+              <li className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">
+                  ☎
+                </div>
+
+                <p className="text-gray-300 text-sm">(555) 123-4567</p>
+              </li>
+
+              <li className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">
+                  ✉
+                </div>
+
+                <p className="text-gray-300 text-sm">hello@gracechurch.com</p>
+              </li>
+
+              <li className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">
+                  🕒
+                </div>
+
+                <p className="text-gray-300 text-sm">
+                  Sunday Services:
+                  <br />
+                  9:00 AM & 11:30 AM
+                </p>
+              </li>
             </ul>
           </div>
 
-          {/* Ministries */}
-          {/* Contact Us */}
           <div>
             <h4 className="text-white font-cinzel font-bold mb-6 text-lg">
-              Contact Us
+              Marteru Branch
             </h4>
 
             <ul className="space-y-4">

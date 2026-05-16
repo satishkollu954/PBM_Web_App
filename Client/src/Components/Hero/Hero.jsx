@@ -56,7 +56,7 @@ export default function Hero() {
         transition={{ delay: 1.5, duration: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
       >
-        <motion.a
+        {/* <motion.a
           href="#about"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
@@ -64,7 +64,7 @@ export default function Hero() {
         >
           <span className="uppercase tracking-widest text-xs mb-2">Scroll</span>
           <ChevronDown size={24} />
-        </motion.a>
+        </motion.a> */}
       </motion.div>
     </section>
   );
