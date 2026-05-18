@@ -1,11 +1,11 @@
-import About from "../About/About";
+import Whatwebelive from "../Whatwebelive/whatwebelive";
 import Hero from "../Hero/Hero";
 
 export function Home() {
   return (
     <div>
       <Hero />
-      <About />
+      <Whatwebelive />
     </div>
   );
 }

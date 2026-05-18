@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Heart, Sun, Anchor } from "lucide-react";
 
-export default function About() {
+export default function Whatwebelive() {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -16,7 +16,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-24 bg-[#0d1b2a] relative">
+    <section id="whaatwebelive" className="py-24 bg-[#0d1b2a] relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial="hidden"
@@ -27,17 +27,17 @@ export default function About() {
         >
           {/* Header */}
           <div className="text-center mb-16">
-            <span className="text-[#c9a84c] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
-              Who We Are
-            </span>
-            <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-white mb-6">
-              Our Story & Purpose
+            <h2 className="text-[#c9a84c] font-cinzel  tracking-[0.2em] text-4xl md:text-5xl font-bold block mb-6">
+             What We Belive
             </h2>
+            {/* <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-white mb-6">
+              Our Story & Purpose
+            </h2> */}
             <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
-              PBM Church is more than just a place to attend on Sundays. We are
-              a family of believers dedicated to living out the Gospel in our
-              daily lives. Our doors are open to everyone, regardless of where
-              they are on their spiritual journey.
+               "God created the creation necessary for all mankind, and then He made man in His own image and after His likeness.
+                God created human beings for His glory, but man showed disobedience to God and learned to rely on his own will rather than God's will.
+                Even so, God did not leave us to our own desires. Knowing that every human being is wallowing in sin, He sacrificed His beloved Son for our sake.
+                Just as God loved His children and granted His Son, His Son loved His brothers and sisters so much that He gave His very life for them."
             </p>
           </div>
 
@@ -51,12 +51,12 @@ export default function About() {
                 <Anchor className="text-[#c9a84c]" size={28} />
               </div>
               <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
-                Faith
+                Forgiveness
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                Rooted in the timeless truths of Scripture, our faith anchors us
-                in every season of life. We believe in the transformative power
-                of God's Word.
+                The journey of a new believer is a beautiful path of grace, 
+                where forgiveness is received through 
+                faith and every step is guided by love, prayer, and divine promises.
               </p>
             </motion.div>
 
@@ -68,11 +68,12 @@ export default function About() {
                 <Sun className="text-[#c9a84c]" size={28} />
               </div>
               <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
-                Hope
+                Repentence
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                We carry a message of hope to a broken world, trusting in the
-                promise of renewal and eternal life through Jesus Christ.
+                Repentance is a sincere change of heart and mind, 
+                where we turn away from wrong choices and embrace 
+                a new life of forgiveness and grace.
               </p>
             </motion.div>
 
@@ -84,11 +85,11 @@ export default function About() {
                 <Heart className="text-[#c9a84c]" size={28} />
               </div>
               <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
-                Love
+                Salvation
               </h3>
               <p className="text-gray-400 leading-relaxed">
-                Compelled by His love, we serve our community unconditionally.
-                Love is the defining mark of our fellowship and outreach.
+                Salvation is God's gift of deliverance from sin, 
+                bringing a transformed life today and the promise of eternal life through faith.
               </p>
             </motion.div>
           </div>
@@ -100,19 +101,19 @@ export default function About() {
           >
             <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#c9a84c]/10 rounded-full blur-[60px] pointer-events-none"></div>
 
-            {/* <div className="w-32 h-32 md:w-48 md:h-48 shrink-0 rounded-full overflow-hidden border-2 border-[#c9a84c] p-1">
+            <div className="w-32 h-32 md:w-48 md:h-48 shrink-0 rounded-full overflow-hidden border-2 border-[#c9a84c] p-1">
               <div className="w-full h-full bg-[#1a2333] rounded-full flex items-center justify-center text-[#c9a84c] font-cinzel text-xl">
                 Photo
               </div>
-            </div> */}
+            </div>
 
             <div className="flex-1 text-center md:text-left z-10">
-              {/* <h3 className="text-2xl font-cinzel font-bold text-white mb-2">
+              <h3 className="text-2xl font-cinzel font-bold text-white mb-2">
                 A Message from Our Pastor
-              </h3> */}
-              {/* <h4 className="text-[#c9a84c] mb-6">Pastor David Emmanuel</h4> */}
+              </h3>
+              <h4 className="text-[#c9a84c] mb-6">Pastor David Emmanuel</h4>
               <p className="text-gray-300 italic mb-6 text-lg leading-relaxed relative">
-                {/* <span className="text-4xl text-[#c9a84c]/30 absolute -top-4 -left-6 font-serif">
+                <span className="text-4xl text-[#c9a84c]/30 absolute -top-4 -left-6 font-serif">
                   "
                 </span>
                 We are thrilled that you found us. Whether you are seeking
@@ -121,8 +122,7 @@ export default function About() {
                 and undeniable presence of God here.
                 <span className="text-4xl text-[#c9a84c]/30 absolute -bottom-6 -right-2 font-serif">
                   "
-                </span> */}
-                Photo from marteru and nagullanka
+                </span>
               </p>
             </div>
           </motion.div>
