@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, Sun, Anchor } from "lucide-react";
+import { Eye, Target, Star } from "lucide-react";
 
 export default function About() {
   const containerVariants = {
@@ -41,55 +41,63 @@ export default function About() {
             </p>
           </div>
 
-          {/* Beliefs Grid */}
+          {/* Vision, Mission & Values Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
             <motion.div
               variants={itemVariants}
-              className="bg-[#0a0f1e] border border-[#c9a84c]/20 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group"
+              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/30 to-transparent hover:from-[#c9a84c]/50 transition-all duration-300"
             >
-              <div className="w-14 h-14 bg-[#c9a84c]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/20 transition-colors">
-                <Anchor className="text-[#c9a84c]" size={28} />
+              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/10">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/20 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Eye className="text-[#c9a84c]" size={32} />
+                </div>
+                <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
+                  Our Vision
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  To see our city transformed by the power of the Gospel,
+                  creating a community where every individual experiences the
+                  profound grace and light of Jesus Christ.
+                </p>
               </div>
-              <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
-                Faith
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                Rooted in the timeless truths of Scripture, our faith anchors us
-                in every season of life. We believe in the transformative power
-                of God's Word.
-              </p>
             </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="bg-[#0a0f1e] border border-[#c9a84c]/20 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group"
+              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/30 to-transparent hover:from-[#c9a84c]/50 transition-all duration-300"
             >
-              <div className="w-14 h-14 bg-[#c9a84c]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/20 transition-colors">
-                <Sun className="text-[#c9a84c]" size={28} />
+              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/10">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/20 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Target className="text-[#c9a84c]" size={32} />
+                </div>
+                <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
+                  Our Mission
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  To lead people into a growing relationship with Jesus Christ
+                  through passionate worship, deep biblical teaching, and
+                  intentional community service.
+                </p>
               </div>
-              <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
-                Hope
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                We carry a message of hope to a broken world, trusting in the
-                promise of renewal and eternal life through Jesus Christ.
-              </p>
             </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="bg-[#0a0f1e] border border-[#c9a84c]/20 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group"
+              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/30 to-transparent hover:from-[#c9a84c]/50 transition-all duration-300"
             >
-              <div className="w-14 h-14 bg-[#c9a84c]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/20 transition-colors">
-                <Heart className="text-[#c9a84c]" size={28} />
+              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/10">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/20 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Star className="text-[#c9a84c]" size={32} />
+                </div>
+                <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
+                  Core Values
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  Biblical Truth, Authentic Community, Relentless Grace,
+                  Sacrificial Love, and Spirit-led Living are the pillars that
+                  guide our every action.
+                </p>
               </div>
-              <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
-                Love
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                Compelled by His love, we serve our community unconditionally.
-                Love is the defining mark of our fellowship and outreach.
-              </p>
             </motion.div>
           </div>
 

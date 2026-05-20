@@ -23,7 +23,6 @@ export default function Navbar() {
     { name: "Sermons", path: "/sermons" },
     { name: "Songs", path: "/songs" },
     { name: "Events", path: "/events" },
-    { name: "Vision", path: "/vision" },
     { name: "Books", path: "/books" },
     { name: "Contact", path: "/contact" },
   ];
