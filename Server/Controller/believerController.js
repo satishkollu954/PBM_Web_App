@@ -120,14 +120,46 @@ exports.getBelieverById = async (req, res) => {
 // Update Believer
 exports.updateBeliever = async (req, res) => {
   try {
+    let photoUrl = "";
+
+    // Upload New Image to Cloudinary
+    if (req.file) {
+      const streamUpload = (req) => {
+        return new Promise((resolve, reject) => {
+          const stream = cloudinary.uploader.upload_stream(
+            {
+              folder: "PBM_Church_Believers",
+            },
+
+            (error, result) => {
+              if (result) {
+                resolve(result);
+              } else {
+                reject(error);
+              }
+            },
+          );
+
+          streamifier.createReadStream(req.file.buffer).pipe(stream);
+        });
+      };
+
+      const result = await streamUpload(req);
+
+      photoUrl = result.secure_url;
+    }
+
+    // Prepare Updated Data
     const updatedData = {
       ...req.body,
     };
 
-    if (req.file) {
-      updatedData.photo = req.file.path;
+    // If New Photo Uploaded
+    if (photoUrl) {
+      updatedData.photo = photoUrl;
     }
 
+    // Update Believer
     const believer = await Believer.findByIdAndUpdate(
       req.params.id,
       updatedData,
@@ -137,6 +169,7 @@ exports.updateBeliever = async (req, res) => {
       },
     );
 
+    // Check Believer Exists
     if (!believer) {
       return res.status(404).json({
         success: false,
@@ -150,6 +183,8 @@ exports.updateBeliever = async (req, res) => {
       data: believer,
     });
   } catch (error) {
+    console.log(error);
+
     res.status(500).json({
       success: false,
       message: error.message,
