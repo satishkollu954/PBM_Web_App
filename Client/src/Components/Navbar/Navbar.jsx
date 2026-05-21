@@ -1,12 +1,26 @@
 import { useState, useEffect } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
+
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
+
+import { useCookies } from "react-cookie";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const [cookies, , removeCookie] = useCookies(["isAdminLoggedIn"]);
+
   const [scrolled, setScrolled] = useState(false);
+
   const [isOpen, setIsOpen] = useState(false);
 
+  // Check Login Status
+  const isLoggedIn = cookies.isAdminLoggedIn;
+
+  // Scroll Effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -17,14 +31,60 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Logout
+  const handleLogout = () => {
+    removeCookie("isAdminLoggedIn", {
+      path: "/",
+    });
+
+    navigate("/");
+  };
+
+  // Navbar Links
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Sermons", path: "/sermons" },
-    { name: "Songs", path: "/songs" },
-    { name: "Events", path: "/events" },
-    { name: "Books", path: "/books" },
-    { name: "Contact", path: "/contact" },
+    {
+      name: "Home",
+      path: "/",
+    },
+
+    {
+      name: "About",
+      path: "/about",
+    },
+
+    {
+      name: "Sermons",
+      path: "/sermons",
+    },
+
+    {
+      name: "Songs",
+      path: "/songs",
+    },
+
+    {
+      name: "Events",
+      path: "/events",
+    },
+
+    {
+      name: "Books",
+      path: "/books",
+    },
+
+    {
+      name: "Contact",
+      path: "/contact",
+    },
+
+    ...(isLoggedIn
+      ? [
+          {
+            name: "Dashboard",
+            path: "/dashboard",
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -42,7 +102,7 @@ export default function Navbar() {
           PBM Church
         </Link>
 
-        {/* Desktop Nav */}
+        {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           <ul className="flex space-x-6">
             {navLinks.map((link) => (
@@ -58,6 +118,16 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
+          {/* Logout Button */}
+          {isLoggedIn && (
+            <button
+              onClick={handleLogout}
+              className="bg-[#c9a84c] hover:bg-[#d8b45a] text-[#0d1b2a] px-4 py-2 rounded-lg text-sm font-semibold transition-all"
+            >
+              Logout
+            </button>
+          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -69,13 +139,22 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{
+              opacity: 0,
+              y: -20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            exit={{
+              opacity: 0,
+              y: -20,
+            }}
             className="absolute top-full left-0 w-full bg-[#0a0f1e] border-b border-[#c9a84c]/20 shadow-lg md:hidden"
           >
             <ul className="flex flex-col items-center py-6 space-y-4">
@@ -90,6 +169,20 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
+
+              {/* Mobile Logout */}
+              {isLoggedIn && (
+                <button
+                  onClick={() => {
+                    handleLogout();
+
+                    setIsOpen(false);
+                  }}
+                  className="bg-[#c9a84c] hover:bg-[#d8b45a] text-[#0d1b2a] px-6 py-2 rounded-lg font-semibold"
+                >
+                  Logout
+                </button>
+              )}
             </ul>
           </motion.div>
         )}
