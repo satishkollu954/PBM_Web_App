@@ -111,7 +111,7 @@ export default function Whatwebelive() {
               <h3 className="text-2xl font-cinzel font-bold text-white mb-2">
                 A Message from Our Pastor
               </h3>
-              <h4 className="text-[#c9a84c] mb-6">Pastor David Emmanuel</h4>
+              <h4 className="text-[#c9a84c] mb-6">Bro. Pratap Kumar</h4>
               <p className="text-gray-300 italic mb-6 text-lg leading-relaxed relative">
                 <span className="text-4xl text-[#c9a84c]/30 absolute -top-4 -left-6 font-serif">
                   "

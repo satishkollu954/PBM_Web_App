@@ -1,6 +1,54 @@
 import { Facebook, Instagram, Youtube, Twitter } from "lucide-react";
-
+import { useEffect, useState } from "react";
 export default function Footer() {
+   const [dailyVerse, setDailyVerse] = useState({
+    text: "Loading verse...",
+    reference: "",
+  });
+
+  useEffect(() => {
+    const verses = [
+      "John 3:16",
+      "Psalm 23:1",
+      "Philippians 4:13",
+      "Jeremiah 29:11",
+      "Proverbs 3:5",
+      "Joshua 1:9",
+      "Romans 8:28",
+      "Isaiah 41:10",
+      "Psalm 119:105",
+      "1 Peter 5:7",
+      "Matthew 11:28",
+      "Psalm 46:1",
+      "Hebrews 11:1",
+      "Colossians 3:23",
+      "2 Timothy 1:7",
+    ];
+
+    const dayNumber = Math.floor(
+      Date.now() / (1000 * 60 * 60 * 24)
+    );
+
+    const reference = verses[dayNumber % verses.length];
+
+    fetch(`https://bible-api.com/${encodeURIComponent(reference)}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setDailyVerse({
+          text: data.text?.trim() || "Verse unavailable",
+          reference: data.reference || "",
+        });
+      })
+      .catch((error) => {
+        console.error("Bible API Error:", error);
+
+        setDailyVerse({
+          text: "The Lord is my shepherd; I shall not want.",
+          reference: "Psalm 23:1",
+        });
+      });
+  }, []);
+
   return (
     <footer className="bg-[#050811] pt-8 pb-4 border-t-2 border-[#c9a84c]/50 relative overflow-hidden">
       {/* Decorative */}
@@ -75,7 +123,7 @@ export default function Footer() {
                   ☎
                 </div>
 
-                <p className="text-gray-300 text-sm">(555) 123-4567</p>
+                <p className="text-gray-300 text-sm">+91 9948478889</p>
               </li>
 
               <li className="flex items-center gap-4">
@@ -83,18 +131,30 @@ export default function Footer() {
                   ✉
                 </div>
 
-                <p className="text-gray-300 text-sm">hello@gracechurch.com</p>
+                <p className="text-gray-300 text-sm">pbmchurch@gmail.com</p>
               </li>
 
+             <li className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">
+                  🕒
+                </div>
+                  
+                <p className="text-gray-300 text-sm">
+                  Friday Services:
+                  <br />
+                  10:00 AM & 1:30 PM
+                </p>
+              </li>
+             
               <li className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">
                   🕒
                 </div>
-
+                  
                 <p className="text-gray-300 text-sm">
                   Sunday Services:
                   <br />
-                  9:00 AM & 11:30 AM
+                  11:00 AM & 1:30 PM
                 </p>
               </li>
             </ul>
@@ -125,7 +185,7 @@ export default function Footer() {
                   ☎
                 </div>
 
-                <p className="text-gray-300 text-sm">(555) 123-4567</p>
+                <p className="text-gray-300 text-sm">+91 9948478889</p>
               </li>
 
               <li className="flex items-center gap-4">
@@ -133,24 +193,34 @@ export default function Footer() {
                   ✉
                 </div>
 
-                <p className="text-gray-300 text-sm">hello@gracechurch.com</p>
+                <p className="text-gray-300 text-sm">pbmchurch@gmail.com</p>
               </li>
-
               <li className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">
                   🕒
                 </div>
-
+                <p className="text-gray-300 text-sm">
+                    Saturday Services:
+                    <br />
+                    10:00 AM & 1:00 PM
+                  </p>
+              </li>
+  
+              <li className="flex items-center gap-4">
+                <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">
+                  🕒
+                </div>
+              
                 <p className="text-gray-300 text-sm">
                   Sunday Services:
                   <br />
-                  9:00 AM & 11:30 AM
+                  7:30 AM & 10:00 AM
                 </p>
               </li>
             </ul>
           </div>
 
-          {/* Daily Verse Card */}
+          {/* Daily Verse */}
           <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6 flex flex-col items-center justify-center text-center shadow-xl hover:border-[#c9a84c]/40 transition-all duration-300">
             <div className="w-12 h-12 rounded-full bg-[#c9a84c]/10 flex items-center justify-center text-[#c9a84c] text-xl mb-6">
               ♡
@@ -161,11 +231,11 @@ export default function Footer() {
             </h3>
 
             <p className="text-gray-300 italic leading-7 text-sm max-w-sm">
-              "Your word is a lamp to my feet and a light to my path."
+              "{dailyVerse.text}"
             </p>
 
             <p className="mt-6 text-[#c9a84c] font-bold tracking-widest uppercase">
-              Psalm 119:105
+              {dailyVerse.reference}
             </p>
           </div>
         </div>
