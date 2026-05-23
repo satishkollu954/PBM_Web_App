@@ -11,6 +11,8 @@ import Sermons from "./Components/Sermons/Sermons";
 import Songs from "./Components/Songs/Songs";
 import Events from "./Components/Events/Events";
 import Login from "./Components/Login/Login";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import AdminDashboard from "./Components/Dashboard/Dashboard";
 
@@ -23,11 +25,14 @@ import { AddEvent } from "./Components/AddEvent/AddEvent";
 import { ViewEvents } from "./Components/ViewEvents/ViewEvents";
 
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import { AddSermons } from "./Components/AddSermons/AddSermons";
+import NotFound from "./Components/NotFound/NotFound";
 
 function App() {
   return (
     <>
       <ScrollToTop />
+      <ToastContainer position="top-right" autoClose={2000} />
 
       <Navbar />
 
@@ -55,6 +60,14 @@ function App() {
           element={
             <ProtectedRoute>
               <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/addsermons"
+          element={
+            <ProtectedRoute>
+              <AddSermons />
             </ProtectedRoute>
           }
         />
@@ -94,6 +107,8 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />

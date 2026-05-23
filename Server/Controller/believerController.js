@@ -45,6 +45,21 @@ exports.createBeliever = async (req, res) => {
       familyMemberName,
     } = req.body;
 
+    // Check Duplicate Believer
+    const existingBeliever = await Believer.findOne({
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      phoneNumber: phoneNumber.trim(),
+    });
+
+    if (existingBeliever) {
+      return res.status(400).json({
+        success: false,
+        message: "Believer already exists",
+      });
+    }
+
+    // Create Believer
     const believer = await Believer.create({
       firstName,
       lastName,

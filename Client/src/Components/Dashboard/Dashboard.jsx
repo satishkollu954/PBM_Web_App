@@ -1,19 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import axios from "axios";
+import { toast } from "react-toastify";
 
 import {
   LayoutDashboard,
   Users,
+  UserPlus,
   BookOpen,
   Calendar,
   Music,
   LogOut,
   Menu,
   X,
+  Youtube,
 } from "lucide-react";
 
 import { useCookies } from "react-cookie";
 
 import { useNavigate } from "react-router-dom";
+
+// Components
+import { AddBeliever } from "../AddBelievers/addBelivers";
+
+import { ViewBeliever } from "../ViewBeliever/ViewBeliever";
+
+import { AddSermons } from "../AddSermons/AddSermons";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -23,6 +35,147 @@ export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [activeMenu, setActiveMenu] = useState("Dashboard");
+
+  // Dynamic Counts
+  const [dashboardData, setDashboardData] = useState({
+    totalBelievers: 0,
+
+    nagullankaCount: 0,
+
+    marteruCount: 0,
+
+    nagFridayCount: 0,
+
+    nagSundayCount: 0,
+
+    marSaturdayCount: 0,
+
+    marSundayCount: 0,
+
+    booksCount: 0,
+
+    eventsCount: 0,
+
+    songsCount: 0,
+
+    sermonsCount: 0,
+  });
+
+  // Fetch Dashboard Counts
+
+  // Fetch Dashboard Counts
+  const fetchDashboardCounts = async () => {
+    try {
+      // Believers
+      const believersResponse = await axios.get(
+        "http://localhost:3005/api/believers/all",
+      );
+
+      const believers = believersResponse.data.data || [];
+
+      // Books
+      let books = [];
+
+      try {
+        const booksResponse = await axios.get(
+          "http://localhost:3005/api/books/all",
+        );
+
+        books = booksResponse.data.data || [];
+      } catch {
+        console.log("Books API not available");
+      }
+
+      // Events
+      let events = [];
+
+      try {
+        const eventsResponse = await axios.get(
+          "http://localhost:3005/api/events/all",
+        );
+
+        events = eventsResponse.data.data || [];
+      } catch {
+        console.log("Events API not available");
+      }
+
+      // Songs
+      let songs = [];
+
+      try {
+        const songsResponse = await axios.get(
+          "http://localhost:3005/api/songs/all",
+        );
+
+        songs = songsResponse.data.data || [];
+      } catch {
+        console.log("Songs API not available");
+      }
+
+      // Sermons
+      let sermons = [];
+
+      try {
+        const sermonsResponse = await axios.get(
+          "http://localhost:3005/api/sermons/all",
+        );
+
+        sermons = sermonsResponse.data.data || [];
+      } catch {
+        console.log("Sermons API not available");
+      }
+
+      // Set Counts
+      setDashboardData({
+        totalBelievers: believers.length,
+
+        nagullankaCount: believers.filter(
+          (b) => b.churchBelongsTo === "Nagullanka",
+        ).length,
+
+        marteruCount: believers.filter((b) => b.churchBelongsTo === "Marteru")
+          .length,
+
+        nagFridayCount: believers.filter(
+          (b) =>
+            b.churchBelongsTo === "Nagullanka" && b.daysCategory === "Friday",
+        ).length,
+
+        nagSundayCount: believers.filter(
+          (b) =>
+            b.churchBelongsTo === "Nagullanka" && b.daysCategory === "Sunday",
+        ).length,
+
+        marSaturdayCount: believers.filter(
+          (b) =>
+            b.churchBelongsTo === "Marteru" && b.daysCategory === "Saturday",
+        ).length,
+
+        marSundayCount: believers.filter(
+          (b) => b.churchBelongsTo === "Marteru" && b.daysCategory === "Sunday",
+        ).length,
+
+        booksCount: books.length,
+
+        eventsCount: events.length,
+
+        songsCount: songs.length,
+
+        sermonsCount: sermons.length,
+      });
+    } catch (error) {
+      console.log(error);
+
+      toast.error(
+        error.response?.data?.message || "Failed to load dashboard data",
+      );
+    }
+  };
+
+  // useEffect
+  useEffect(() => {
+    fetchDashboardCounts();
+  }, []);
 
   // Logout
   const handleLogout = () => {
@@ -41,7 +194,12 @@ export default function Dashboard() {
     },
 
     {
-      name: "Believers",
+      name: "Add Believer",
+      icon: UserPlus,
+    },
+
+    {
+      name: "View Believers",
       icon: Users,
     },
 
@@ -59,7 +217,140 @@ export default function Dashboard() {
       name: "Songs",
       icon: Music,
     },
+    {
+      name: "Sermons",
+      icon: Youtube,
+    },
   ];
+
+  // Render Components
+  const renderContent = () => {
+    switch (activeMenu) {
+      case "Add Believer":
+        return <AddBeliever />;
+
+      case "View Believers":
+        return <ViewBeliever />;
+
+      case "Sermons":
+        return <AddSermons />;
+
+      default:
+        return (
+          <>
+            {/* Dashboard Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+              {/* Total Believers */}
+              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6 hover:border-[#c9a84c]/50 transition-all">
+                <h3 className="text-gray-400 text-sm mb-3">Total Believers</h3>
+
+                <p className="text-5xl font-bold text-[#c9a84c]">
+                  {dashboardData.totalBelievers}
+                </p>
+              </div>
+
+              {/* Nagullanka */}
+              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
+                <h3 className="text-gray-400 text-sm mb-3">
+                  Nagullanka Believers
+                </h3>
+
+                <p className="text-5xl font-bold text-[#c9a84c]">
+                  {dashboardData.nagullankaCount}
+                </p>
+
+                <div className="mt-5 space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-400">Friday</span>
+
+                    <span className="text-white font-bold">
+                      {dashboardData.nagFridayCount}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-400">Sunday</span>
+
+                    <span className="text-white font-bold">
+                      {dashboardData.nagSundayCount}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Marteru */}
+              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
+                <h3 className="text-gray-400 text-sm mb-3">
+                  Marteru Believers
+                </h3>
+
+                <p className="text-5xl font-bold text-[#c9a84c]">
+                  {dashboardData.marteruCount}
+                </p>
+
+                <div className="mt-5 space-y-2">
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-400">Saturday</span>
+
+                    <span className="text-white font-bold">
+                      {dashboardData.marSaturdayCount}
+                    </span>
+                  </div>
+
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-400">Sunday</span>
+
+                    <span className="text-white font-bold">
+                      {dashboardData.marSundayCount}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Books */}
+              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
+                <h3 className="text-gray-400 text-sm mb-3">Books</h3>
+
+                <p className="text-5xl font-bold text-[#c9a84c]">
+                  {dashboardData.booksCount}
+                </p>
+              </div>
+
+              {/* Events */}
+              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
+                <h3 className="text-gray-400 text-sm mb-3">Events</h3>
+
+                <p className="text-5xl font-bold text-[#c9a84c]">
+                  {dashboardData.eventsCount}
+                </p>
+              </div>
+
+              {/* Songs */}
+              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
+                <h3 className="text-gray-400 text-sm mb-3">Worship Songs</h3>
+
+                <p className="text-5xl font-bold text-[#c9a84c]">
+                  {dashboardData.songsCount}
+                </p>
+              </div>
+
+              {/* Sermons */}
+              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-gray-400 text-sm">Youtube Sermons</h3>
+
+                  <Youtube className="text-red-500" size={22} />
+                </div>
+
+                <p className="text-5xl font-bold text-[#c9a84c]">
+                  {dashboardData.sermonsCount}
+                </p>
+              </div>
+            </div>
+          </>
+        );
+    }
+  };
 
   return (
     <div className="flex min-h-[calc(100vh-96px)] bg-[#081120] pt-24">
@@ -69,11 +360,9 @@ export default function Dashboard() {
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0`}
       >
-        {/* Logo */}
+        {/* Header */}
         <div className="flex items-center justify-between p-5 border-b border-[#c9a84c]/20">
           <div>
-            <h1 className="text-2xl font-bold text-[#c9a84c]">PBM Church</h1>
-
             <p className="text-xs text-gray-400 uppercase tracking-widest">
               Admin Panel
             </p>
@@ -95,7 +384,11 @@ export default function Dashboard() {
             return (
               <button
                 key={item.name}
-                onClick={() => setActiveMenu(item.name)}
+                onClick={() => {
+                  setActiveMenu(item.name);
+
+                  setSidebarOpen(false);
+                }}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                   activeMenu === item.name
                     ? "bg-[#c9a84c]/15 text-[#c9a84c]"
@@ -131,45 +424,22 @@ export default function Dashboard() {
             <Menu size={24} />
           </button>
 
-          <h1 className="text-lg font-semibold text-[#c9a84c]">Dashboard</h1>
+          <h1 className="text-lg font-semibold text-[#c9a84c]">{activeMenu}</h1>
         </header>
 
         {/* Content */}
-        <main className="flex-1 p-8">
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold text-white mb-2">{activeMenu}</h2>
+        <main className="flex-1 p-6 md:p-8 overflow-y-auto">
+          {activeMenu === "Dashboard" && (
+            <div className="mb-8">
+              <h2 className="text-3xl font-bold text-white mb-2">Dashboard</h2>
 
-            <p className="text-gray-400">
-              Welcome to PBM Church Admin Dashboard
-            </p>
-          </div>
-
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-2xl p-6">
-              <h3 className="text-gray-400 text-sm mb-2">Total Believers</h3>
-
-              <p className="text-4xl font-bold text-[#c9a84c]">120</p>
+              <p className="text-gray-400">
+                Welcome to PBM Church Admin Dashboard
+              </p>
             </div>
+          )}
 
-            <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-2xl p-6">
-              <h3 className="text-gray-400 text-sm mb-2">Total Books</h3>
-
-              <p className="text-4xl font-bold text-[#c9a84c]">45</p>
-            </div>
-
-            <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-2xl p-6">
-              <h3 className="text-gray-400 text-sm mb-2">Upcoming Events</h3>
-
-              <p className="text-4xl font-bold text-[#c9a84c]">8</p>
-            </div>
-
-            <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-2xl p-6">
-              <h3 className="text-gray-400 text-sm mb-2">Worship Songs</h3>
-
-              <p className="text-4xl font-bold text-[#c9a84c]">65</p>
-            </div>
-          </div>
+          {renderContent()}
         </main>
       </div>
     </div>
