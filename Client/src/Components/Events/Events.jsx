@@ -24,6 +24,30 @@ const featuredEvents = [
     image: "https://images.unsplash.com/photo-1510590337019-5ef8d3d32116?w=1200&h=500&fit=crop",
     link: "#",
   },
+  {
+    id: 4,
+    title: "Friday Gathering — Nagullanka",
+    image: "https://images.unsplash.com/photo-1504777315-0b0c6d1b3f1e?w=1200&h=500&fit=crop",
+    link: "#",
+  },
+  {
+    id: 5,
+    title: "Saturday Gathering — Marteru",
+    image: "https://images.unsplash.com/photo-1509223197845-458d87318791?w=1200&h=500&fit=crop",
+    link: "#",
+  },
+  {
+    id: 6,
+    title: "Sunday Service — Nagullanka (11:00 AM)",
+    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1200&h=500&fit=crop",
+    link: "#",
+  },
+  {
+    id: 7,
+    title: "Early Sunday Worship — Marteru (8:00 AM)",
+    image: "https://images.unsplash.com/photo-1504349729854-5a3f1a2cc2b7?w=1200&h=500&fit=crop",
+    link: "#",
+  },
 ];
 
 const upcomingEvents = [
@@ -53,6 +77,35 @@ const upcomingEvents = [
     title: "Community Outreach Program",
     date: "June 14, 2026 – 9:00 AM",
     description: "Serving our neighborhood with food distribution and prayer support.",
+    link: "#",
+  },
+  // Recurring local gatherings
+  {
+    id: 5,
+    title: "Friday Gathering — Nagullanka",
+    date: "Every Friday, 10:00 AM – 1:00 PM — Nagullanka",
+    description: "Weekly fellowship and teaching at Nagullanka.",
+    link: "#",
+  },
+  {
+    id: 6,
+    title: "Saturday Gathering — Marteru",
+    date: "Every Saturday, 10:00 AM – 1:00 PM — Marteru",
+    description: "Weekly worship and community meeting at Marteru.",
+    link: "#",
+  },
+  {
+    id: 7,
+    title: "Sunday Morning — Nagullanka",
+    date: "Every Sunday, 11:00 AM – 1:30 PM — Nagullanka",
+    description: "Sunday worship service at Nagullanka.",
+    link: "#",
+  },
+  {
+    id: 8,
+    title: "Sunday Early Worship — Marteru",
+    date: "Every Sunday, 8:00 AM – 10:00 AM — Marteru",
+    description: "Early morning service at Marteru.",
     link: "#",
   },
 ];

@@ -1,7 +1,10 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Play, Youtube, Headphones } from "lucide-react";
+import { Youtube, Headphones } from "lucide-react";
 
 export default function Sermons() {
+  const [selectedMedia, setSelectedMedia] = useState("audio");
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -88,6 +91,10 @@ export default function Sermons() {
     },
   ];
 
+  const filteredSermons = sermons.filter((sermon) =>
+    selectedMedia === "audio" ? sermon.audioUrl : sermon.youtubeLink
+  );
+
   return (
     <section id="sermons" className="py-24 bg-[#0d1b2a] relative">
       <div className="container mx-auto px-6">
@@ -99,7 +106,7 @@ export default function Sermons() {
           className="max-w-6xl mx-auto"
         >
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-10">
             <motion.span
               initial="hidden"
               whileInView="visible"
@@ -130,9 +137,34 @@ export default function Sermons() {
             </motion.p>
           </div>
 
+          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-12">
+            <button
+              type="button"
+              onClick={() => setSelectedMedia("audio")}
+              className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 ${
+                selectedMedia === "audio"
+                  ? "bg-[#c9a84c] text-[#0d1b2a]"
+                  : "bg-white/10 text-white hover:bg-white/20"
+              }`}
+            >
+              Audio
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedMedia("youtube")}
+              className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 ${
+                selectedMedia === "youtube"
+                  ? "bg-red-600 text-white"
+                  : "bg-white/10 text-white hover:bg-white/20"
+              }`}
+            >
+              YouTube
+            </button>
+          </div>
+
           {/* Sermons Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {sermons.map((sermon) => (
+            {filteredSermons.map((sermon) => (
               <motion.div
                 key={sermon.id}
                 initial="hidden"
@@ -202,19 +234,6 @@ export default function Sermons() {
                     >
                       <Youtube size={20} />
                       <span>Watch on YouTube</span>
-                    </a>
-                  )}
-
-                  {/* Gold Button - Only for both types */}
-                  {sermon.type === "both" && (
-                    <a
-                      href={sermon.youtubeLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-[#c9a84c] to-[#d4b85d] hover:from-[#d4b85d] hover:to-[#c9a84c] text-[#0d1b2a] font-cinzel font-bold py-2 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 text-sm"
-                    >
-                      <Youtube size={16} />
-                      <span>Also Available on YouTube</span>
                     </a>
                   )}
                 </div>
