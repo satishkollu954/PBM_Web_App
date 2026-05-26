@@ -14,6 +14,7 @@ import {
   Menu,
   X,
   Youtube,
+  MessageSquare,
 } from "lucide-react";
 
 import { useCookies } from "react-cookie";
@@ -26,6 +27,7 @@ import { AddBeliever } from "../AddBelievers/addBelivers";
 import { ViewBeliever } from "../ViewBeliever/ViewBeliever";
 
 import { AddSermons } from "../AddSermons/AddSermons";
+import { ViewContact } from "../ViewContact/ViewContact";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -221,6 +223,10 @@ export default function Dashboard() {
       name: "Sermons",
       icon: Youtube,
     },
+    {
+      name: "Contacts",
+      icon: MessageSquare,
+    },
   ];
 
   // Render Components
@@ -234,6 +240,9 @@ export default function Dashboard() {
 
       case "Sermons":
         return <AddSermons />;
+
+      case "Contacts":
+        return <ViewContact />;
 
       default:
         return (

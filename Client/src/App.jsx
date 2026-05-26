@@ -24,6 +24,8 @@ import { AddEvent } from "./Components/AddEvent/AddEvent";
 
 import { ViewEvents } from "./Components/ViewEvents/ViewEvents";
 
+import { ViewContact } from "./Components/ViewContact/ViewContact";
+
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import { AddSermons } from "./Components/AddSermons/AddSermons";
 import NotFound from "./Components/NotFound/NotFound";
@@ -104,6 +106,14 @@ function App() {
           element={
             <ProtectedRoute>
               <ViewEvents />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/viewcontacts"
+          element={
+            <ProtectedRoute>
+              <ViewContact />
             </ProtectedRoute>
           }
         />
