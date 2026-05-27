@@ -25,6 +25,10 @@ export default function Books() {
 
   const [searchQuery, setSearchQuery] = useState("");
 
+  const [selectedTopic, setSelectedTopic] = useState(null);
+  const [selectedAuthor, setSelectedAuthor] = useState(null);
+  const [selectedYear, setSelectedYear] = useState(null);
+
   // Fetch Books
   useEffect(() => {
     fetchBooks();
@@ -71,6 +75,15 @@ export default function Books() {
       );
     }
 
+    // Sub-filter by selected topic/author/year
+    if (activeTab === "Topics" && selectedTopic) {
+      filtered = filtered.filter((b) => b.topic === selectedTopic);
+    } else if (activeTab === "Authors" && selectedAuthor) {
+      filtered = filtered.filter((b) => b.author === selectedAuthor);
+    } else if (activeTab === "Dates" && selectedYear) {
+      filtered = filtered.filter((b) => String(b.year) === String(selectedYear));
+    }
+
     // Sort
     switch (sortBy) {
       case "Alphabetical":
@@ -93,7 +106,7 @@ export default function Books() {
     }
 
     return filtered;
-  }, [booksData, searchQuery, sortBy]);
+  }, [booksData, searchQuery, sortBy, activeTab, selectedTopic, selectedAuthor, selectedYear]);
 
   // Animations
   const containerVariants = {
@@ -169,7 +182,12 @@ export default function Books() {
               {tabs.map((tab) => (
                 <button
                   key={tab}
-                  onClick={() => setActiveTab(tab)}
+                  onClick={() => {
+                    setActiveTab(tab);
+                    setSelectedTopic(null);
+                    setSelectedAuthor(null);
+                    setSelectedYear(null);
+                  }}
                   className={`text-sm uppercase tracking-wider font-medium pb-2 border-b-2 transition-colors ${
                     activeTab === tab
                       ? "text-[#c9a84c] border-[#c9a84c]"
@@ -275,13 +293,201 @@ export default function Books() {
             )}
           </AnimatePresence>
 
-          {/* Empty */}
+          {/* Empty state for All Books */}
           {activeTab === "All Books" && filteredAndSortedBooks.length === 0 && (
             <div className="text-center py-16">
               <BookOpen className="mx-auto text-gray-600 mb-4" size={48} />
-
               <p className="text-gray-400 text-lg">No books found</p>
             </div>
+          )}
+
+          {/* ── Topics Tab ── */}
+          {activeTab === "Topics" && !selectedTopic && (
+            <motion.div
+              key="topics-list"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+            >
+              {topics.map((topic) => {
+                const count = booksData.filter((b) => b.topic === topic).length;
+                return (
+                  <button
+                    key={topic}
+                    onClick={() => setSelectedTopic(topic)}
+                    className="bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl p-5 text-left hover:border-[#c9a84c]/60 transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
+                  >
+                    <p className="text-white font-cinzel font-semibold group-hover:text-[#c9a84c] transition-colors">
+                      {topic}
+                    </p>
+                    <p className="text-gray-500 text-xs mt-1">
+                      {count} book{count !== 1 ? "s" : ""}
+                    </p>
+                  </button>
+                );
+              })}
+            </motion.div>
+          )}
+          {activeTab === "Topics" && selectedTopic && (
+            <motion.div
+              key="topics-books"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <button
+                onClick={() => setSelectedTopic(null)}
+                className="text-[#c9a84c] text-sm mb-6 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] rounded"
+              >
+                ← All Topics
+              </button>
+              <h3 className="text-white font-cinzel text-xl mb-6">{selectedTopic}</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                {filteredAndSortedBooks.map((book) => (
+                  <article key={book._id} className="group cursor-pointer">
+                    <div className="relative aspect-[3/4] rounded-lg overflow-hidden mb-4 shadow-lg shadow-black/30">
+                      <img
+                        src={book.cover}
+                        alt={book.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="text-white font-cinzel font-semibold text-sm leading-tight mb-1 group-hover:text-[#c9a84c] transition-colors">
+                      {book.title}
+                    </h3>
+                    <p className="text-gray-400 text-xs leading-snug">{book.subtitle}</p>
+                  </article>
+                ))}
+              </div>
+              {filteredAndSortedBooks.length === 0 && (
+                <p className="text-gray-400 text-center py-12">No books found in this topic.</p>
+              )}
+            </motion.div>
+          )}
+
+          {/* ── Authors Tab ── */}
+          {activeTab === "Authors" && !selectedAuthor && (
+            <motion.div
+              key="authors-list"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+            >
+              {authors.map((author) => {
+                const count = booksData.filter((b) => b.author === author).length;
+                return (
+                  <button
+                    key={author}
+                    onClick={() => setSelectedAuthor(author)}
+                    className="bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl p-5 text-left hover:border-[#c9a84c]/60 transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
+                  >
+                    <p className="text-white font-cinzel font-semibold group-hover:text-[#c9a84c] transition-colors">
+                      {author}
+                    </p>
+                    <p className="text-gray-500 text-xs mt-1">
+                      {count} book{count !== 1 ? "s" : ""}
+                    </p>
+                  </button>
+                );
+              })}
+            </motion.div>
+          )}
+          {activeTab === "Authors" && selectedAuthor && (
+            <motion.div
+              key="authors-books"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <button
+                onClick={() => setSelectedAuthor(null)}
+                className="text-[#c9a84c] text-sm mb-6 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] rounded"
+              >
+                ← All Authors
+              </button>
+              <h3 className="text-white font-cinzel text-xl mb-6">{selectedAuthor}</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                {filteredAndSortedBooks.map((book) => (
+                  <article key={book._id} className="group cursor-pointer">
+                    <div className="relative aspect-[3/4] rounded-lg overflow-hidden mb-4 shadow-lg shadow-black/30">
+                      <img
+                        src={book.cover}
+                        alt={book.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="text-white font-cinzel font-semibold text-sm leading-tight mb-1 group-hover:text-[#c9a84c] transition-colors">
+                      {book.title}
+                    </h3>
+                    <p className="text-gray-400 text-xs leading-snug">{book.subtitle}</p>
+                  </article>
+                ))}
+              </div>
+              {filteredAndSortedBooks.length === 0 && (
+                <p className="text-gray-400 text-center py-12">No books found for this author.</p>
+              )}
+            </motion.div>
+          )}
+
+          {/* ── Dates Tab ── */}
+          {activeTab === "Dates" && !selectedYear && (
+            <motion.div
+              key="dates-list"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"
+            >
+              {years.map((year) => {
+                const count = booksData.filter((b) => b.year === year).length;
+                return (
+                  <button
+                    key={year}
+                    onClick={() => setSelectedYear(year)}
+                    className="bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl p-5 text-left hover:border-[#c9a84c]/60 transition-all group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
+                  >
+                    <p className="text-white font-cinzel font-semibold text-lg group-hover:text-[#c9a84c] transition-colors">
+                      {year}
+                    </p>
+                    <p className="text-gray-500 text-xs mt-1">
+                      {count} book{count !== 1 ? "s" : ""}
+                    </p>
+                  </button>
+                );
+              })}
+            </motion.div>
+          )}
+          {activeTab === "Dates" && selectedYear && (
+            <motion.div
+              key="dates-books"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <button
+                onClick={() => setSelectedYear(null)}
+                className="text-[#c9a84c] text-sm mb-6 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] rounded"
+              >
+                ← All Years
+              </button>
+              <h3 className="text-white font-cinzel text-xl mb-6">{selectedYear}</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                {filteredAndSortedBooks.map((book) => (
+                  <article key={book._id} className="group cursor-pointer">
+                    <div className="relative aspect-[3/4] rounded-lg overflow-hidden mb-4 shadow-lg shadow-black/30">
+                      <img
+                        src={book.cover}
+                        alt={book.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <h3 className="text-white font-cinzel font-semibold text-sm leading-tight mb-1 group-hover:text-[#c9a84c] transition-colors">
+                      {book.title}
+                    </h3>
+                    <p className="text-gray-400 text-xs leading-snug">{book.subtitle}</p>
+                  </article>
+                ))}
+              </div>
+              {filteredAndSortedBooks.length === 0 && (
+                <p className="text-gray-400 text-center py-12">No books found for this year.</p>
+              )}
+            </motion.div>
           )}
         </div>
       </div>

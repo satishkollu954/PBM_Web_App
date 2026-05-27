@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { motion, AnimatePresence } from "framer-motion";
 
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -16,6 +16,12 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
+
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
+
+  const resourcesRef = useRef(null);
 
   // Check Login Status
   const isLoggedIn = cookies.isAdminLoggedIn;
@@ -31,6 +37,19 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close desktop dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (resourcesRef.current && !resourcesRef.current.contains(e.target)) {
+        setResourcesOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   // Logout
   const handleLogout = () => {
     removeCookie("isAdminLoggedIn", {
@@ -40,7 +59,13 @@ export default function Navbar() {
     navigate("/");
   };
 
-  // Navbar Links
+  // Resources dropdown items
+  const resourcesLinks = [
+    { name: "Books", path: "/books" },
+    { name: "Articles", path: "/articles" },
+  ];
+
+  // Navbar Links (Books removed — now under Resources dropdown)
   const navLinks = [
     {
       name: "Home",
@@ -65,11 +90,6 @@ export default function Navbar() {
     {
       name: "Events",
       path: "/events",
-    },
-
-    {
-      name: "Books",
-      path: "/books",
     },
 
     {
@@ -104,7 +124,7 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
-          <ul className="flex space-x-6">
+          <ul className="flex space-x-6 items-center">
             {navLinks.map((link) => (
               <li key={link.name}>
                 <Link
@@ -117,6 +137,49 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+
+            {/* Resources Dropdown */}
+            <li ref={resourcesRef} className="relative">
+              <button
+                onClick={() => setResourcesOpen((prev) => !prev)}
+                className="flex items-center gap-1 text-white hover:text-[#c9a84c] text-sm uppercase tracking-wider transition-colors relative group focus:outline-none"
+                aria-haspopup="true"
+                aria-expanded={resourcesOpen}
+              >
+                Resources
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform duration-200 ${resourcesOpen ? "rotate-180" : ""}`}
+                />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#c9a84c] transition-all duration-300 group-hover:w-full"></span>
+              </button>
+
+              <AnimatePresence>
+                {resourcesOpen && (
+                  <motion.ul
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute top-full left-0 mt-3 w-40 bg-[#0a0f1e] border border-[#c9a84c]/30 rounded-lg shadow-xl overflow-hidden z-50"
+                    role="menu"
+                  >
+                    {resourcesLinks.map((item) => (
+                      <li key={item.name} role="none">
+                        <Link
+                          to={item.path}
+                          onClick={() => setResourcesOpen(false)}
+                          role="menuitem"
+                          className="block px-4 py-3 text-sm text-white uppercase tracking-wider hover:bg-[#c9a84c]/10 hover:text-[#c9a84c] transition-colors"
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </motion.ul>
+                )}
+              </AnimatePresence>
+            </li>
           </ul>
 
           {/* Logout Button */}
@@ -169,6 +232,49 @@ export default function Navbar() {
                   </Link>
                 </li>
               ))}
+
+              {/* Mobile Resources Dropdown */}
+              <li className="flex flex-col items-center">
+                <button
+                  onClick={() => setMobileResourcesOpen((prev) => !prev)}
+                  className="flex items-center gap-2 text-white hover:text-[#c9a84c] text-lg uppercase tracking-widest focus:outline-none"
+                  aria-haspopup="true"
+                  aria-expanded={mobileResourcesOpen}
+                >
+                  Resources
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-200 ${mobileResourcesOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {mobileResourcesOpen && (
+                    <motion.ul
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="mt-2 flex flex-col items-center space-y-2 overflow-hidden"
+                    >
+                      {resourcesLinks.map((item) => (
+                        <li key={item.name}>
+                          <Link
+                            to={item.path}
+                            onClick={() => {
+                              setIsOpen(false);
+                              setMobileResourcesOpen(false);
+                            }}
+                            className="text-[#c9a84c]/80 hover:text-[#c9a84c] text-base uppercase tracking-widest transition-colors"
+                          >
+                            {item.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </motion.ul>
+                  )}
+                </AnimatePresence>
+              </li>
 
               {/* Mobile Logout */}
               {isLoggedIn && (

@@ -15,6 +15,7 @@ import {
   X,
   Youtube,
   MessageSquare,
+  FileText,
 } from "lucide-react";
 
 import { useCookies } from "react-cookie";
@@ -28,7 +29,8 @@ import { ViewBeliever } from "../ViewBeliever/ViewBeliever";
 
 import { AddSermons } from "../AddSermons/AddSermons";
 import { ViewContact } from "../ViewContact/ViewContact";
-import { AddBook } from "../AddBook/AddBook";
+import ManageBooks from "./ManageBooks";
+import ManageArticles from "./ManageArticles";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -207,7 +209,7 @@ export default function Dashboard() {
     },
 
     {
-      name: "Add Book",
+      name: "Books",
       icon: BookOpen,
     },
 
@@ -228,6 +230,10 @@ export default function Dashboard() {
       name: "Contacts",
       icon: MessageSquare,
     },
+    {
+      name: "Articles",
+      icon: FileText,
+    },
   ];
 
   // Render Components
@@ -239,14 +245,17 @@ export default function Dashboard() {
       case "View Believers":
         return <ViewBeliever />;
 
+      case "Books":
+        return <ManageBooks />;
+
+      case "Articles":
+        return <ManageArticles />;
+
       case "Sermons":
         return <AddSermons />;
 
       case "Contacts":
         return <ViewContact />;
-
-      case "Add Book":
-        return <AddBook />;
 
       default:
         return (

@@ -26,7 +26,7 @@ exports.createBook = async (req, res) => {
         return new Promise((resolve, reject) => {
           const stream = cloudinary.uploader.upload_stream(
             {
-              folder: `PBM_Church_Books/${newBook._id}`,
+              folder: "PBM_Church_Books",
             },
 
             (error, result) => {
@@ -124,7 +124,7 @@ exports.updateBook = async (req, res) => {
         return new Promise((resolve, reject) => {
           const stream = cloudinary.uploader.upload_stream(
             {
-              folder: `PBM_Church_Books/${req.params.id}`,
+              folder: "PBM_Church_Books",
             },
 
             (error, result) => {

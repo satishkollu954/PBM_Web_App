@@ -7,6 +7,7 @@ import About from "./Components/About/About";
 import ScrollToTop from "./Components/ScrollToTop/ScrollToTop";
 import { Home } from "./Components/Home/Home";
 import Books from "./Components/Books/Books";
+import Articles from "./Components/Articles/Articles";
 import Sermons from "./Components/Sermons/Sermons";
 import Songs from "./Components/Songs/Songs";
 import Events from "./Components/Events/Events";
@@ -47,6 +48,8 @@ function App() {
         <Route path="/about" element={<About />} />
 
         <Route path="/books" element={<Books />} />
+
+        <Route path="/articles" element={<Articles />} />
 
         <Route path="/sermons" element={<Sermons />} />
 
