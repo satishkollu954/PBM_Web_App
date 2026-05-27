@@ -421,59 +421,73 @@ export function ViewBeliever() {
 
       {/* Popup */}
       {selectedBeliever && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex justify-center items-center p-4 overflow-y-auto">
-          <div className="bg-[#111827] border border-[#c9a84c]/20 rounded-3xl w-full max-w-5xl relative">
-            {/* Close */}
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
+          <div className="bg-[#111827] border border-[#c9a84c]/20 rounded-2xl w-full max-w-6xl max-h-[95vh] overflow-y-auto relative">
+            {/* Close Button */}
             <button
               onClick={() => {
                 setSelectedBeliever(null);
 
                 setEditMode(false);
+
+                setImagePreview("");
+
+                setEditData({});
               }}
-              className="absolute top-5 right-5 text-white z-50"
+              className="absolute top-4 right-4 z-50 bg-black/50 hover:bg-black text-white p-2 rounded-full"
             >
-              <X size={28} />
+              <X size={22} />
             </button>
 
-            <div className="grid md:grid-cols-2 gap-8 p-8">
-              {/* Image */}
-              <div>
-                <div className="h-[500px] bg-[#0a0f1e] rounded-2xl flex items-center justify-center overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 sm:p-6 lg:p-8">
+              {/* LEFT IMAGE */}
+              <div className="w-full">
+                <div className="w-full bg-[#0a0f1e] rounded-2xl overflow-hidden border border-[#c9a84c]/10">
                   <img
                     src={imagePreview || selectedBeliever.photo}
                     alt=""
-                    className="w-full h-full object-contain bg-[#0a0f1e]"
+                    className="w-full h-auto max-h-[70vh] object-contain"
                   />
                 </div>
 
                 {editMode && (
-                  <input
-                    type="file"
-                    onChange={handleImageChange}
-                    className="mt-4 w-full text-sm"
-                  />
+                  <div className="mt-4">
+                    <input
+                      type="file"
+                      onChange={handleImageChange}
+                      className="w-full text-sm text-gray-300"
+                    />
+                  </div>
                 )}
               </div>
 
-              {/* Details */}
-              <div>
+              {/* RIGHT CONTENT */}
+              <div className="w-full">
                 {!editMode ? (
                   <>
-                    <h2 className="text-4xl font-bold text-[#c9a84c] mb-6">
+                    {/* VIEW MODE */}
+                    <h2 className="text-2xl sm:text-4xl font-bold text-[#c9a84c] mb-6 break-words">
                       {selectedBeliever.firstName} {selectedBeliever.lastName}
                     </h2>
 
                     <div className="space-y-4 text-gray-300">
-                      <p>
+                      <p className="break-words">
                         <span className="text-white font-semibold">Phone:</span>{" "}
                         {selectedBeliever.phoneNumber}
                       </p>
 
-                      <p>
+                      <p className="break-words">
                         <span className="text-white font-semibold">
                           Address:
                         </span>{" "}
                         {selectedBeliever.address}
+                      </p>
+
+                      <p>
+                        <span className="text-white font-semibold">
+                          Gender:
+                        </span>{" "}
+                        {selectedBeliever.gender}
                       </p>
 
                       <p>
@@ -488,19 +502,26 @@ export function ViewBeliever() {
                         {selectedBeliever.daysCategory}
                       </p>
 
-                      <p>
+                      <p className="break-words">
                         <span className="text-white font-semibold">
                           Family:
                         </span>{" "}
                         {selectedBeliever.familyMemberName}
                       </p>
+
+                      <p>
+                        <span className="text-white font-semibold">
+                          Pincode:
+                        </span>{" "}
+                        {selectedBeliever.pinCode}
+                      </p>
                     </div>
 
                     {/* Buttons */}
-                    <div className="flex gap-4 mt-8">
+                    <div className="flex flex-col sm:flex-row gap-4 mt-8">
                       <button
                         onClick={() => handleEditClick(selectedBeliever)}
-                        className="flex-1 bg-[#c9a84c] text-black py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#d8b45a]"
+                        className="flex-1 bg-[#c9a84c] text-black py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#d8b45a] transition-all"
                       >
                         <Edit size={18} />
                         Edit
@@ -508,7 +529,7 @@ export function ViewBeliever() {
 
                       <button
                         onClick={() => setDeleteModal(selectedBeliever)}
-                        className="flex-1 bg-red-500 py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-red-600"
+                        className="flex-1 bg-red-500 py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-red-600 transition-all"
                       >
                         <Trash2 size={18} />
                         Delete
@@ -517,7 +538,8 @@ export function ViewBeliever() {
                   </>
                 ) : (
                   <>
-                    <h2 className="text-3xl font-bold text-[#c9a84c] mb-6">
+                    {/* EDIT MODE */}
+                    <h2 className="text-2xl sm:text-3xl font-bold text-[#c9a84c] mb-6">
                       Edit Believer
                     </h2>
 
@@ -545,57 +567,143 @@ export function ViewBeliever() {
                         name="phoneNumber"
                         value={editData.phoneNumber || ""}
                         onChange={handleChange}
-                        placeholder="Phone"
+                        placeholder="Phone Number"
                         className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
                       />
+
+                      <select
+                        name="gender"
+                        value={editData.gender || ""}
+                        onChange={handleChange}
+                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
+                      >
+                        <option value="">Select Gender</option>
+
+                        <option value="male">Male</option>
+
+                        <option value="female">Female</option>
+
+                        <option value="other">Other</option>
+                      </select>
 
                       <textarea
                         name="address"
                         value={editData.address || ""}
                         onChange={handleChange}
                         placeholder="Address"
+                        rows={4}
+                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3 resize-none"
+                      />
+
+                      <input
+                        type="text"
+                        name="pinCode"
+                        value={editData.pinCode || ""}
+                        onChange={handleChange}
+                        placeholder="Pin Code"
                         className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
                       />
 
-                      {/* Save */}
-                      <button
-                        disabled={!isDirty || updateLoading}
-                        onClick={handleUpdate}
-                        className={`w-full py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${
-                          isDirty && !updateLoading
-                            ? "bg-[#c9a84c] text-black hover:bg-[#d8b45a]"
-                            : "bg-gray-700 text-gray-400 cursor-not-allowed"
-                        }`}
+                      {/* Church */}
+                      <select
+                        name="churchBelongsTo"
+                        value={editData.churchBelongsTo || ""}
+                        onChange={(e) => {
+                          setEditData({
+                            ...editData,
+
+                            churchBelongsTo: e.target.value,
+
+                            daysCategory: "",
+                          });
+
+                          setIsDirty(true);
+                        }}
+                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
                       >
-                        {updateLoading ? (
+                        <option value="">Select Church</option>
+
+                        <option value="Nagullanka">Nagullanka</option>
+
+                        <option value="Marteru">Marteru</option>
+                      </select>
+
+                      {/* Day */}
+                      <select
+                        name="daysCategory"
+                        value={editData.daysCategory || ""}
+                        onChange={handleChange}
+                        disabled={!editData.churchBelongsTo}
+                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3 disabled:opacity-50"
+                      >
+                        <option value="">Select Day</option>
+
+                        {editData.churchBelongsTo === "Nagullanka" && (
                           <>
-                            <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
-                            Updating...
-                          </>
-                        ) : (
-                          <>
-                            <Save size={18} />
-                            Save Changes
+                            <option value="Friday">Friday</option>
+
+                            <option value="Sunday">Sunday</option>
                           </>
                         )}
-                      </button>
 
-                      {/* Cancel */}
-                      <button
-                        onClick={() => {
-                          setEditMode(false);
+                        {editData.churchBelongsTo === "Marteru" && (
+                          <>
+                            <option value="Saturday">Saturday</option>
 
-                          setEditData({});
+                            <option value="Sunday">Sunday</option>
+                          </>
+                        )}
+                      </select>
 
-                          setImagePreview("");
+                      <input
+                        type="text"
+                        name="familyMemberName"
+                        value={editData.familyMemberName || ""}
+                        onChange={handleChange}
+                        placeholder="Family Member Name"
+                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
+                      />
 
-                          setIsDirty(false);
-                        }}
-                        disabled={updateLoading}
-                        className="w-full mt-3 bg-gray-700 hover:bg-gray-600 text-white py-3 rounded-xl font-bold transition-all disabled:opacity-50"
-                      >
-                        Cancel
-                      </button>
+                      {/* Buttons */}
+                      <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button
+                          disabled={!isDirty || updateLoading}
+                          onClick={handleUpdate}
+                          className={`flex-1 py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${
+                            isDirty && !updateLoading
+                              ? "bg-[#c9a84c] text-black hover:bg-[#d8b45a]"
+                              : "bg-gray-700 text-gray-400 cursor-not-allowed"
+                          }`}
+                        >
+                          {updateLoading ? (
+                            <>
+                              <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
+                              Updating...
+                            </>
+                          ) : (
+                            <>
+                              <Save size={18} />
+                              Save Changes
+                            </>
+                          )}
+                        </button>
+
+                        <button
+                          onClick={() => {
+                            setEditMode(false);
+
+                            setEditData({});
+
+                            setImagePreview("");
+
+                            setIsDirty(false);
+                          }}
+                          disabled={updateLoading}
+                          className="flex-1 bg-gray-700 hover:bg-gray-600 text-white py-3 rounded-xl font-bold transition-all"
+                        >
+                          Cancel
+                        </button>
+                      </div>
                     </div>
                   </>
                 )}

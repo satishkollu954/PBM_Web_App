@@ -28,6 +28,7 @@ import { ViewBeliever } from "../ViewBeliever/ViewBeliever";
 
 import { AddSermons } from "../AddSermons/AddSermons";
 import { ViewContact } from "../ViewContact/ViewContact";
+import { AddBook } from "../AddBook/AddBook";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -206,7 +207,7 @@ export default function Dashboard() {
     },
 
     {
-      name: "Books",
+      name: "Add Book",
       icon: BookOpen,
     },
 
@@ -243,6 +244,9 @@ export default function Dashboard() {
 
       case "Contacts":
         return <ViewContact />;
+
+      case "Add Book":
+        return <AddBook />;
 
       default:
         return (
