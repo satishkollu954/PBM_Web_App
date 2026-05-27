@@ -3,49 +3,44 @@ const Article = require("../Model/Article");
 const cloudinary = require("../Config/cloudinary");
 const streamifier = require("streamifier");
 
-/**
- * Helper — upload a buffer to Cloudinary and return the secure URL.
- * @param {Buffer} buffer - File buffer from multer memoryStorage.
- * @param {string} folder - Cloudinary folder path.
- * @returns {Promise<string>} Secure URL of the uploaded image.
- */
-const uploadToCloudinary = (buffer, folder) => {
-  return new Promise((resolve, reject) => {
-    const stream = cloudinary.uploader.upload_stream(
-      { folder },
-      (error, result) => {
-        if (result) {
-          resolve(result.secure_url);
-        } else {
-          reject(error);
-        }
-      }
-    );
-    streamifier.createReadStream(buffer).pipe(stream);
-  });
-};
-
 // ── Create Article ────────────────────────────────────────────────────────────
 exports.createArticle = async (req, res) => {
   try {
     const { title, body, author, category, date } = req.body;
 
+    let coverUrl = "";
+
+    // Upload Image First (same pattern as believerController)
+    if (req.file) {
+      const streamUpload = (req) => {
+        return new Promise((resolve, reject) => {
+          const stream = cloudinary.uploader.upload_stream(
+            { folder: "PBM_Church_Articles" },
+            (error, result) => {
+              if (result) {
+                resolve(result);
+              } else {
+                reject(error);
+              }
+            },
+          );
+          streamifier.createReadStream(req.file.buffer).pipe(stream);
+        });
+      };
+
+      const result = await streamUpload(req);
+      coverUrl = result.secure_url;
+    }
+
+    // Create Article with cover already set
     const newArticle = await Article.create({
       title,
       body,
       author,
       category,
       date: date || Date.now(),
+      cover: coverUrl,
     });
-
-    if (req.file) {
-      const coverUrl = await uploadToCloudinary(
-        req.file.buffer,
-        "PBM_Church_Articles"
-      );
-      newArticle.cover = coverUrl;
-      await newArticle.save();
-    }
 
     res.status(201).json({
       success: true,
@@ -92,11 +87,26 @@ exports.updateArticle = async (req, res) => {
   try {
     const updatedData = { ...req.body };
 
+    // Upload New Cover (same pattern as believerController)
     if (req.file) {
-      updatedData.cover = await uploadToCloudinary(
-        req.file.buffer,
-        "PBM_Church_Articles"
-      );
+      const streamUpload = (req) => {
+        return new Promise((resolve, reject) => {
+          const stream = cloudinary.uploader.upload_stream(
+            { folder: "PBM_Church_Articles" },
+            (error, result) => {
+              if (result) {
+                resolve(result);
+              } else {
+                reject(error);
+              }
+            },
+          );
+          streamifier.createReadStream(req.file.buffer).pipe(stream);
+        });
+      };
+
+      const result = await streamUpload(req);
+      updatedData.cover = result.secure_url;
     }
 
     const article = await Article.findByIdAndUpdate(

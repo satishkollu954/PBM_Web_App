@@ -9,20 +9,11 @@ exports.createBook = async (req, res) => {
   try {
     const { title, subtitle, author, topic, year } = req.body;
 
-    // Create Empty Book First
-    const newBook = await Book.create({
-      title,
-      subtitle,
-      author,
-      topic,
-      year,
-    });
-
     let coverUrl = "";
 
-    // Upload Image
+    // Upload Image First (same pattern as believerController)
     if (req.file) {
-      const streamUpload = () => {
+      const streamUpload = (req) => {
         return new Promise((resolve, reject) => {
           const stream = cloudinary.uploader.upload_stream(
             {
@@ -42,15 +33,20 @@ exports.createBook = async (req, res) => {
         });
       };
 
-      const result = await streamUpload();
+      const result = await streamUpload(req);
 
       coverUrl = result.secure_url;
-
-      // Update Book Cover
-      newBook.cover = coverUrl;
-
-      await newBook.save();
     }
+
+    // Create Book with cover already set
+    const newBook = await Book.create({
+      title,
+      subtitle,
+      author,
+      topic,
+      year,
+      cover: coverUrl,
+    });
 
     res.status(201).json({
       success: true,
@@ -118,9 +114,9 @@ exports.updateBook = async (req, res) => {
       ...req.body,
     };
 
-    // Upload New Cover
+    // Upload New Cover (same pattern as believerController)
     if (req.file) {
-      const streamUpload = () => {
+      const streamUpload = (req) => {
         return new Promise((resolve, reject) => {
           const stream = cloudinary.uploader.upload_stream(
             {
@@ -140,7 +136,7 @@ exports.updateBook = async (req, res) => {
         });
       };
 
-      const result = await streamUpload();
+      const result = await streamUpload(req);
 
       updatedData.cover = result.secure_url;
     }
