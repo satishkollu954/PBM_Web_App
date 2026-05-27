@@ -1,0 +1,57 @@
+[
+  {
+    "_id": { "$oid": "6650a1b2c3d4e5f601020304" },
+    "title": "The Purpose Driven Life",
+    "subtitle": "What on Earth Am I Here For?",
+    "author": "Rick Warren",
+    "topic": "Christian Living",
+    "year": 2002,
+    "cover": "",
+    "createdAt": { "$date": "2026-05-23T06:00:00.000Z" },
+    "updatedAt": { "$date": "2026-05-23T06:00:00.000Z" }
+  },
+  {
+    "_id": { "$oid": "6650a1b2c3d4e5f601020305" },
+    "title": "Mere Christianity",
+    "subtitle": "A Revised and Amplified Edition",
+    "author": "C.S. Lewis",
+    "topic": "Apologetics",
+    "year": 1952,
+    "cover": "",
+    "createdAt": { "$date": "2026-05-23T06:01:00.000Z" },
+    "updatedAt": { "$date": "2026-05-23T06:01:00.000Z" }
+  },
+  {
+    "_id": { "$oid": "6650a1b2c3d4e5f601020306" },
+    "title": "The Shack",
+    "subtitle": "Where Tragedy Confronts Eternity",
+    "author": "William P. Young",
+    "topic": "Faith & Suffering",
+    "year": 2007,
+    "cover": "",
+    "createdAt": { "$date": "2026-05-23T06:02:00.000Z" },
+    "updatedAt": { "$date": "2026-05-23T06:02:00.000Z" }
+  },
+  {
+    "_id": { "$oid": "6650a1b2c3d4e5f601020307" },
+    "title": "Battlefield of the Mind",
+    "subtitle": "Winning the Battle in Your Mind",
+    "author": "Joyce Meyer",
+    "topic": "Spiritual Warfare",
+    "year": 1995,
+    "cover": "",
+    "createdAt": { "$date": "2026-05-23T06:03:00.000Z" },
+    "updatedAt": { "$date": "2026-05-23T06:03:00.000Z" }
+  },
+  {
+    "_id": { "$oid": "6650a1b2c3d4e5f601020308" },
+    "title": "The Holy Bible",
+    "subtitle": "New International Version",
+    "author": "Various Authors",
+    "topic": "Scripture",
+    "year": 1978,
+    "cover": "",
+    "createdAt": { "$date": "2026-05-23T06:04:00.000Z" },
+    "updatedAt": { "$date": "2026-05-23T06:04:00.000Z" }
+  }
+]
