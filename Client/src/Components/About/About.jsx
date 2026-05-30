@@ -55,7 +55,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-24 bg-[#0d1b2a] relative">
+    <section id="about" className="py-24 bg-[#FFFDF5] relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial="hidden"
@@ -71,7 +71,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={headingVariants}
-              className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3"
+              className="text-[#7A5C00] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3"
             >
               Who We Are
             </motion.span>
@@ -80,7 +80,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={headingVariants}
-              className="text-4xl md:text-5xl font-cinzel font-bold text-white mb-6"
+              className="text-4xl md:text-5xl font-cinzel font-bold text-[#1E1535] mb-6"
             >
               Our Story & Purpose
             </motion.h2>
@@ -89,7 +89,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={textVariants}
-              className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed"
+              className="text-[#33275A] text-lg max-w-3xl mx-auto leading-relaxed"
             >
               PBM Church is more than just a place to attend on Sundays. We are
               a family of believers dedicated to living out the Gospel in our
@@ -102,16 +102,16 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
             <motion.div
               variants={itemVariants}
-              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/50 to-[#c9a84c]/10 hover:from-[#c9a84c]/70 transition-all duration-300 md:scale-105 md:-translate-y-2 shadow-lg shadow-[#c9a84c]/10"
+              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/50 to-[#c9a84c]/10 hover:from-[#c9a84c]/70 transition-all duration-300 md:scale-105 md:-translate-y-2 shadow-lg shadow-[#c9a84c]/20"
             >
-              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/30">
+              <div className="bg-white h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/50">
                 <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/30 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Eye className="text-[#c9a84c]" size={32} />
                 </div>
                 <h3 className="text-2xl font-cinzel font-bold text-[#c9a84c] mb-4">
                   Our Vision
                 </h3>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-[#33275A] leading-relaxed">
                   To see our city transformed by the power of the Gospel,
                   creating a community where every individual experiences the
                   profound grace and light of Jesus Christ.
@@ -122,16 +122,16 @@ export default function About() {
             {/* Center card — Mission (visually elevated for hierarchy) */}
             <motion.div
               variants={itemVariants}
-              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/50 to-[#c9a84c]/10 hover:from-[#c9a84c]/70 transition-all duration-300 md:scale-105 md:-translate-y-2 shadow-lg shadow-[#c9a84c]/10"
+              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/50 to-[#c9a84c]/10 hover:from-[#c9a84c]/70 transition-all duration-300 md:scale-105 md:-translate-y-2 shadow-lg shadow-[#c9a84c]/20"
             >
-              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/30">
+              <div className="bg-white h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/50">
                 <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/30 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Target className="text-[#c9a84c]" size={32} />
                 </div>
                 <h3 className="text-2xl font-cinzel font-bold text-[#c9a84c] mb-4">
                   Our Mission
                 </h3>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-[#33275A] leading-relaxed">
                   To lead people into a growing relationship with Jesus Christ
                   through passionate worship, deep biblical teaching, and
                   intentional community service.
@@ -141,16 +141,16 @@ export default function About() {
 
             <motion.div
               variants={itemVariants}
-              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/50 to-[#c9a84c]/10 hover:from-[#c9a84c]/70 transition-all duration-300 md:scale-105 md:-translate-y-2 shadow-lg shadow-[#c9a84c]/10"
+              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/50 to-[#c9a84c]/10 hover:from-[#c9a84c]/70 transition-all duration-300 md:scale-105 md:-translate-y-2 shadow-lg shadow-[#c9a84c]/20"
             >
-              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/30">
+              <div className="bg-white h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/50">
                 <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/30 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Star className="text-[#c9a84c]" size={32} />
                 </div>
                 <h3 className="text-2xl font-cinzel font-bold text-[#c9a84c] mb-4">
                   Core Values
                 </h3>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-[#33275A] leading-relaxed">
                   Biblical Truth, Authentic Community, Relentless Grace,
                   Sacrificial Love, and Spirit-led Living are the pillars that
                   guide our every action.
@@ -172,7 +172,7 @@ export default function About() {
             <div className="w-full grid gap-6">
               <motion.div
                 variants={photoCardVariants}
-                className="w-full h-44 md:h-56 rounded-3xl overflow-hidden border border-[#c9a84c]/30 shadow-[0_18px_50px_rgba(0,0,0,0.55)]"
+                className="w-full h-44 md:h-56 rounded-3xl overflow-hidden border border-[#c9a84c]/50 shadow-[0_18px_50px_rgba(0,0,0,0.55)]"
               >
                 <img
                   src={pbmnglImage}
@@ -182,7 +182,7 @@ export default function About() {
               </motion.div>
               <motion.div
                 variants={photoCardVariants}
-                className="w-full h-44 md:h-56 rounded-3xl overflow-hidden border border-[#c9a84c]/30 shadow-[0_18px_50px_rgba(0,0,0,0.55)]"
+                className="w-full h-44 md:h-56 rounded-3xl overflow-hidden border border-[#c9a84c]/50 shadow-[0_18px_50px_rgba(0,0,0,0.55)]"
               >
                 <img
                   src={pbmmrtImage}
@@ -194,7 +194,7 @@ export default function About() {
                 variants={photoCardVariants}
                 className="text-center md:text-left px-2"
               >
-                <h3 className="text-xl md:text-2xl font-cinzel font-bold text-white mb-3 tracking-wide">
+                <h3 className="text-xl md:text-2xl font-cinzel font-bold text-[#1E1535] mb-3 tracking-wide">
                   Photo Memories
                 </h3>
                 <p className="text-gray-400 text-base md:text-lg leading-relaxed max-w-4xl mx-auto">
@@ -208,4 +208,10 @@ export default function About() {
     </section>
   );
 }
+
+
+
+
+
+
 

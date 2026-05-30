@@ -50,7 +50,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-[#050811] pt-8 pb-4 border-t-2 border-[#c9a84c]/50 relative overflow-hidden">
+    <footer className="bg-[#1C1608] pt-8 pb-4 border-t-2 border-[#c9a84c]/50 relative overflow-hidden">
       {/* Decorative */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full h-32 bg-[#c9a84c]/5 blur-[100px] pointer-events-none"></div>
 
@@ -72,25 +72,25 @@ export default function Footer() {
             <div className="flex gap-4">
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
+                className="w-10 h-10 rounded-full bg-[#3A3020] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
                 <Facebook size={18} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
+                className="w-10 h-10 rounded-full bg-[#3A3020] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
                 <Instagram size={18} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
+                className="w-10 h-10 rounded-full bg-[#3A3020] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
                 <Youtube size={18} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
+                className="w-10 h-10 rounded-full bg-[#3A3020] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
                 <Twitter size={18} />
               </a>
@@ -221,7 +221,7 @@ export default function Footer() {
           </div>
 
           {/* Daily Verse */}
-          <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6 flex flex-col items-center justify-center text-center shadow-xl hover:border-[#c9a84c]/40 transition-all duration-300">
+          <div className="bg-[#2E2510] border border-[#c9a84c]/20 rounded-3xl p-6 flex flex-col items-center justify-center text-center shadow-xl hover:border-[#c9a84c]/40 transition-all duration-300">
             <div className="w-12 h-12 rounded-full bg-[#c9a84c]/10 flex items-center justify-center text-[#c9a84c] text-xl mb-6">
               ♡
             </div>
@@ -255,3 +255,4 @@ export default function Footer() {
     </footer>
   );
 }
+

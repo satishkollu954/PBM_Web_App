@@ -53,35 +53,35 @@
 }
 
 :root {
-  --background: 224 52% 9%;
-  --foreground: 0 0% 98%;
+  --background: 48 100% 98%;       /* warm cream #FFFDF5 */
+  --foreground: 257 45% 14%;       /* deep purple #1E1535 */
 
-  --border: 43 65% 55% / 0.2;
+  --border: 43 55% 45% / 0.35;    /* gold border, slightly more visible */
 
-  --card: 224 52% 11%;
-  --card-foreground: 0 0% 98%;
-  --card-border: 43 65% 55% / 0.2;
+  --card: 0 0% 100%;               /* white card on lavender sections */
+  --card-foreground: 257 45% 14%;
+  --card-border: 43 55% 45% / 0.3;
 
-  --popover: 224 52% 11%;
-  --popover-foreground: 0 0% 98%;
-  --popover-border: 43 65% 55% / 0.2;
+  --popover: 0 0% 100%;
+  --popover-foreground: 257 45% 14%;
+  --popover-border: 43 55% 45% / 0.3;
 
   --primary: 43 65% 55%;
-  --primary-foreground: 224 52% 9%;
+  --primary-foreground: 257 45% 14%;
 
-  --secondary: 224 52% 15%;
-  --secondary-foreground: 0 0% 98%;
+  --secondary: 45 70% 94%;         /* warm cream secondary #FFF5D9 */
+  --secondary-foreground: 257 45% 14%;
 
-  --muted: 224 52% 15%;
-  --muted-foreground: 224 20% 70%;
+  --muted: 45 50% 96%;
+  --muted-foreground: 258 37% 26%; /* deep purple #33275A */
 
   --accent: 43 65% 55%;
-  --accent-foreground: 224 52% 9%;
+  --accent-foreground: 257 45% 14%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 98%;
 
-  --input: 43 65% 55% / 0.3;
+  --input: 43 55% 45% / 0.25;
   --ring: 43 65% 55%;
 
   --app-font-sans: 'Lato', sans-serif;

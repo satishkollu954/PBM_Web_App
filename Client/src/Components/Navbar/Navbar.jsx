@@ -112,11 +112,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#0a0f1e]/95 backdrop-blur-md border-b border-[#c9a84c]/20 py-2 shadow-lg shadow-black/20"
-          : "bg-[#0a0f1e]/70 backdrop-blur-sm py-4"
-      }`}
+      className="fixed top-0 w-full z-50 bg-[#FFFDF5] border-b-2 border-[#c9a84c] shadow-sm shadow-[#c9a84c]/10 py-3"
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
@@ -124,13 +120,9 @@ export default function Navbar() {
           <img
             src={pbmLogo}
             alt="PBM Prayer Fellowship Logo"
-            className={`transition-all duration-300 rounded-lg border border-[#c9a84c]/30 shadow-md group-hover:shadow-[0_0_15px_rgba(201,168,76,0.3)] ${
-              scrolled ? "h-11 w-11" : "h-14 w-14"
-            } object-cover`}
+            className="h-12 w-12 object-cover rounded-lg border border-[#c9a84c]/30 shadow-md group-hover:shadow-[0_0_15px_rgba(201,168,76,0.3)] transition-all duration-300"
           />
-          <span className={`font-cinzel font-bold hidden sm:block transition-all duration-300 ${
-            scrolled ? "text-lg" : "text-xl"
-          }`}>
+          <span className="font-cinzel font-bold text-lg hidden sm:block">
             PBM Fellowship
           </span>
         </Link>
@@ -147,7 +139,7 @@ export default function Navbar() {
                     className={`text-sm uppercase tracking-wider transition-colors relative group ${
                       isActive
                         ? "text-[#c9a84c] font-semibold"
-                        : "text-white hover:text-[#c9a84c]"
+                        : "text-[#1E1535] hover:text-[#c9a84c]"
                     }`}
                   >
                     {link.name}
@@ -163,7 +155,7 @@ export default function Navbar() {
             <li ref={resourcesRef} className="relative">
               <button
                 onClick={() => setResourcesOpen((prev) => !prev)}
-                className="flex items-center gap-1 text-white hover:text-[#c9a84c] text-sm uppercase tracking-wider transition-colors relative group focus:outline-none"
+                className="flex items-center gap-1 text-[#1E1535] hover:text-[#c9a84c] text-sm uppercase tracking-wider transition-colors relative group focus:outline-none"
                 aria-haspopup="true"
                 aria-expanded={resourcesOpen}
               >
@@ -182,7 +174,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.15 }}
-                    className="absolute top-full left-0 mt-3 w-40 bg-[#0a0f1e] border border-[#c9a84c]/30 rounded-lg shadow-xl overflow-hidden z-50"
+                    className="absolute top-full left-0 mt-3 w-40 bg-[#FFFDF5] border border-[#c9a84c]/60 rounded-lg shadow-xl overflow-hidden z-50"
                     role="menu"
                   >
                     {resourcesLinks.map((item) => (
@@ -191,7 +183,7 @@ export default function Navbar() {
                           to={item.path}
                           onClick={() => setResourcesOpen(false)}
                           role="menuitem"
-                          className="block px-4 py-3 text-sm text-white uppercase tracking-wider hover:bg-[#c9a84c]/10 hover:text-[#c9a84c] transition-colors"
+                          className="block px-4 py-3 text-sm text-[#1E1535] uppercase tracking-wider hover:bg-[#c9a84c]/10 hover:text-[#c9a84c] transition-colors"
                         >
                           {item.name}
                         </Link>
@@ -239,7 +231,7 @@ export default function Navbar() {
               opacity: 0,
               y: -20,
             }}
-            className="absolute top-full left-0 w-full bg-[#0a0f1e] border-b border-[#c9a84c]/20 shadow-lg md:hidden"
+            className="absolute top-full left-0 w-full bg-[#FFFDF5] border-b-2 border-[#c9a84c] shadow-lg md:hidden"
           >
             <ul className="flex flex-col items-center py-6 space-y-4">
               {navLinks.map((link) => {
@@ -252,7 +244,7 @@ export default function Navbar() {
                       className={`text-lg uppercase tracking-widest transition-colors ${
                         isActive
                           ? "text-[#c9a84c] font-semibold"
-                          : "text-white hover:text-[#c9a84c]"
+                          : "text-[#1E1535] hover:text-[#c9a84c]"
                       }`}
                     >
                       {link.name}
@@ -265,7 +257,7 @@ export default function Navbar() {
               <li className="flex flex-col items-center">
                 <button
                   onClick={() => setMobileResourcesOpen((prev) => !prev)}
-                  className="flex items-center gap-2 text-white hover:text-[#c9a84c] text-lg uppercase tracking-widest focus:outline-none"
+                  className="flex items-center gap-2 text-[#1E1535] hover:text-[#c9a84c] text-lg uppercase tracking-widest focus:outline-none"
                   aria-haspopup="true"
                   aria-expanded={mobileResourcesOpen}
                 >

@@ -113,15 +113,15 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#0a0f1e] relative">
+    <section id="contact" className="py-24 bg-[#FFFDF5] relative">
       <div className="container mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-16">
-          <span className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
+          <span className="text-[#7A5C00] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
             Reach Out
           </span>
 
-          <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-[#1E1535] mb-6">
             Get in Touch
           </h2>
         </div>
@@ -141,9 +141,9 @@ export default function Contact() {
             viewport={{
               once: true,
             }}
-            className="bg-[#0d1b2a] border border-[#c9a84c]/20 p-8 rounded-2xl backdrop-blur-sm shadow-xl"
+            className="bg-white border border-[#c9a84c]/40 p-8 rounded-2xl backdrop-blur-sm shadow-xl"
           >
-            <h3 className="text-2xl font-cinzel font-bold text-white mb-6">
+            <h3 className="text-2xl font-cinzel font-bold text-[#1E1535] mb-6">
               Send a Message
             </h3>
 
@@ -151,7 +151,7 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Name */}
               <div className="space-y-2">
-                <label className="text-sm text-gray-300 font-semibold">
+                <label className="text-sm text-[#33275A] font-semibold">
                   Name *
                 </label>
 
@@ -161,10 +161,10 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Enter your name"
-                  className={`w-full bg-[#0a0f1e] border rounded p-3 text-white focus:outline-none transition-colors ${
+                  className={`w-full bg-white border rounded p-3 text-[#1E1535] focus:outline-none transition-colors ${
                     errors.name
                       ? "border-red-500"
-                      : "border-[#c9a84c]/30 focus:border-[#c9a84c]"
+                      : "border-[#c9a84c]/50 focus:border-[#c9a84c]"
                   }`}
                 />
 
@@ -175,7 +175,7 @@ export default function Contact() {
 
               {/* Phone */}
               <div className="space-y-2">
-                <label className="text-sm text-gray-300 font-semibold">
+                <label className="text-sm text-[#33275A] font-semibold">
                   Phone Number *
                 </label>
 
@@ -185,10 +185,10 @@ export default function Contact() {
                   value={formData.phoneNumber}
                   onChange={handleChange}
                   placeholder="Enter phone number"
-                  className={`w-full bg-[#0a0f1e] border rounded p-3 text-white focus:outline-none transition-colors ${
+                  className={`w-full bg-white border rounded p-3 text-[#1E1535] focus:outline-none transition-colors ${
                     errors.phoneNumber
                       ? "border-red-500"
-                      : "border-[#c9a84c]/30 focus:border-[#c9a84c]"
+                      : "border-[#c9a84c]/50 focus:border-[#c9a84c]"
                   }`}
                 />
 
@@ -199,7 +199,7 @@ export default function Contact() {
 
               {/* Email */}
               <div className="space-y-2">
-                <label className="text-sm text-gray-300 font-semibold">
+                <label className="text-sm text-[#33275A] font-semibold">
                   Email
                 </label>
 
@@ -209,10 +209,10 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Enter email"
-                  className={`w-full bg-[#0a0f1e] border rounded p-3 text-white focus:outline-none transition-colors ${
+                  className={`w-full bg-white border rounded p-3 text-[#1E1535] focus:outline-none transition-colors ${
                     errors.email
                       ? "border-red-500"
-                      : "border-[#c9a84c]/30 focus:border-[#c9a84c]"
+                      : "border-[#c9a84c]/50 focus:border-[#c9a84c]"
                   }`}
                 />
 
@@ -223,7 +223,7 @@ export default function Contact() {
 
               {/* Message */}
               <div className="space-y-2">
-                <label className="text-sm text-gray-300 font-semibold">
+                <label className="text-sm text-[#33275A] font-semibold">
                   Message
                 </label>
 
@@ -233,7 +233,7 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Enter your message"
-                  className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 rounded p-3 text-white focus:outline-none focus:border-[#c9a84c] transition-colors"
+                  className="w-full bg-white border border-[#c9a84c]/50 rounded p-3 text-[#1E1535] focus:outline-none focus:border-[#c9a84c] transition-colors"
                 ></textarea>
               </div>
 
@@ -266,14 +266,14 @@ export default function Contact() {
             {/* Info Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Location */}
-              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 p-6 rounded-xl text-center">
+              <div className="bg-white border border-[#c9a84c]/40 p-6 rounded-xl text-center">
                 <MapPin className="text-[#c9a84c] mx-auto mb-3" size={28} />
 
-                <h4 className="font-cinzel text-white font-bold mb-1">
+                <h4 className="font-cinzel text-[#1E1535] font-bold mb-1">
                   Location
                 </h4>
 
-                <p className="text-sm text-gray-300">
+                <p className="text-sm text-[#33275A]">
                   123 Grace Avenue
                   <br />
                   Cityville, ST 12345
@@ -281,14 +281,14 @@ export default function Contact() {
               </div>
 
               {/* Service */}
-              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 p-6 rounded-xl text-center">
+              <div className="bg-white border border-[#c9a84c]/40 p-6 rounded-xl text-center">
                 <Clock className="text-[#c9a84c] mx-auto mb-3" size={28} />
 
-                <h4 className="font-cinzel text-white font-bold mb-1">
+                <h4 className="font-cinzel text-[#1E1535] font-bold mb-1">
                   Services
                 </h4>
 
-                <p className="text-sm text-gray-300">
+                <p className="text-sm text-[#33275A]">
                   Sundays at 10:00 AM
                   <br />
                   Wednesdays at 7:00 PM
@@ -297,50 +297,50 @@ export default function Contact() {
             </div>
 
             {/* Socials */}
-            <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 p-6 rounded-xl flex justify-center gap-6">
-              <a href="#" className="text-gray-300 hover:text-[#c9a84c]">
+            <div className="bg-white border border-[#c9a84c]/40 p-6 rounded-xl flex justify-center gap-6">
+              <a href="#" className="text-[#33275A] hover:text-[#c9a84c]">
                 <Instagram size={24} />
               </a>
 
-              <a href="#" className="text-gray-300 hover:text-[#c9a84c]">
+              <a href="#" className="text-[#33275A] hover:text-[#c9a84c]">
                 <Youtube size={24} />
               </a>
             </div>
 
             {/* FAQ */}
-            <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 p-8 rounded-xl flex-1">
-              <h3 className="text-xl font-cinzel font-bold text-white mb-6">
+            <div className="bg-white border border-[#c9a84c]/40 p-8 rounded-xl flex-1">
+              <h3 className="text-xl font-cinzel font-bold text-[#1E1535] mb-6">
                 Frequently Asked Questions
               </h3>
 
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
-                  <AccordionTrigger className="text-white">
+                  <AccordionTrigger className="text-[#1E1535]">
                     What should I wear?
                   </AccordionTrigger>
 
-                  <AccordionContent className="text-gray-300">
+                  <AccordionContent className="text-[#33275A]">
                     Come as you are! Everyone is welcome.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-2">
-                  <AccordionTrigger className="text-white">
+                  <AccordionTrigger className="text-[#1E1535]">
                     Is there a kids program?
                   </AccordionTrigger>
 
-                  <AccordionContent className="text-gray-300">
+                  <AccordionContent className="text-[#33275A]">
                     Yes, we have special programs for children during Sunday
                     services.
                   </AccordionContent>
                 </AccordionItem>
 
                 <AccordionItem value="item-3">
-                  <AccordionTrigger className="text-white">
+                  <AccordionTrigger className="text-[#1E1535]">
                     Do you stream online?
                   </AccordionTrigger>
 
-                  <AccordionContent className="text-gray-300">
+                  <AccordionContent className="text-[#33275A]">
                     Yes, all our services are streamed live on YouTube.
                   </AccordionContent>
                 </AccordionItem>
@@ -362,14 +362,14 @@ export default function Contact() {
           viewport={{
             once: true,
           }}
-          className="max-w-6xl mx-auto h-[400px] bg-[#1a2333] rounded-2xl border border-[#c9a84c]/20 flex items-center justify-center relative overflow-hidden"
+          className="max-w-6xl mx-auto h-[400px] bg-[#1a2333] rounded-2xl border border-[#c9a84c]/40 flex items-center justify-center relative overflow-hidden"
         >
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
 
           <div className="text-center z-10">
             <MapPin className="text-[#c9a84c] mx-auto mb-4" size={48} />
 
-            <h3 className="text-2xl font-cinzel font-bold text-white mb-2">
+            <h3 className="text-2xl font-cinzel font-bold text-[#1E1535] mb-2">
               Google Maps Integration
             </h3>
 
@@ -380,4 +380,11 @@ export default function Contact() {
     </section>
   );
 }
+
+
+
+
+
+
+
 

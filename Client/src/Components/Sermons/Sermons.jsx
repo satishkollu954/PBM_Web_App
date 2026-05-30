@@ -96,7 +96,7 @@ export default function Sermons() {
   );
 
   return (
-    <section id="sermons" className="py-24 bg-[#0d1b2a] relative">
+    <section id="sermons" className="py-24 bg-[#FFFDF5] relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial="hidden"
@@ -112,7 +112,7 @@ export default function Sermons() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={headingVariants}
-              className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3"
+              className="text-[#7A5C00] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3"
             >
               Hear the Word
             </motion.span>
@@ -121,7 +121,7 @@ export default function Sermons() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={headingVariants}
-              className="text-4xl md:text-5xl font-cinzel font-bold text-white mb-6"
+              className="text-4xl md:text-5xl font-cinzel font-bold text-[#1E1535] mb-6"
             >
               Sermons & Messages
             </motion.h2>
@@ -131,7 +131,7 @@ export default function Sermons() {
               viewport={{ once: true, amount: 0.3 }}
               variants={headingVariants}
               transition={{ delay: 0.15 }}
-              className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed"
+              className="text-[#33275A] text-lg max-w-3xl mx-auto leading-relaxed"
             >
               Listen to inspiring messages and teachings that will deepen your faith and understanding of God's Word.
             </motion.p>
@@ -143,8 +143,8 @@ export default function Sermons() {
               onClick={() => setSelectedMedia("audio")}
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 ${
                 selectedMedia === "audio"
-                  ? "bg-[#c9a84c] text-[#0d1b2a]"
-                  : "bg-white/10 text-white hover:bg-white/20"
+                  ? "bg-[#c9a84c] text-[#1E1535]"
+                  : "bg-white border border-[#c9a84c]/40 text-[#33275A] hover:border-[#c9a84c] hover:text-[#1E1535]"
               }`}
             >
               Audio
@@ -155,7 +155,7 @@ export default function Sermons() {
               className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 ${
                 selectedMedia === "youtube"
                   ? "bg-red-600 text-white"
-                  : "bg-white/10 text-white hover:bg-white/20"
+                  : "bg-white border border-[#c9a84c]/40 text-[#33275A] hover:border-[#c9a84c] hover:text-[#1E1535]"
               }`}
             >
               YouTube
@@ -171,23 +171,23 @@ export default function Sermons() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
                 variants={itemVariants}
-                className="bg-gradient-to-br from-[#0a0f1e] to-[#1a2a3a] border border-[#c9a84c]/20 rounded-2xl overflow-hidden hover:border-[#c9a84c]/40 transition-all duration-300 group"
+                className="bg-gradient-to-br from-[#FFFDF5] to-[#1a2a3a] border border-[#c9a84c]/40 rounded-2xl overflow-hidden hover:border-[#c9a84c]/40 transition-all duration-300 group"
               >
                 {/* Sermon Card Header */}
-                <div className="bg-gradient-to-r from-[#c9a84c]/20 to-[#0d1b2a] p-6 relative overflow-hidden">
+                  <div className="bg-gradient-to-r from-[#c9a84c]/20 to-[#FFF8E7] p-6 relative overflow-hidden">
                   <div className="absolute -top-8 -right-8 w-24 h-24 bg-[#c9a84c]/10 rounded-full blur-xl group-hover:bg-[#c9a84c]/20 transition-all duration-300"></div>
                   <div className="relative z-10">
-                    <h3 className="text-xl md:text-2xl font-cinzel font-bold text-white mb-2 line-clamp-2">
+                    <h3 className="text-xl md:text-2xl font-cinzel font-bold text-[#1E1535] mb-2 line-clamp-2">
                       {sermon.title}
                     </h3>
                     <p className="text-[#c9a84c] text-sm font-semibold">{sermon.speaker}</p>
-                    <p className="text-gray-300 text-xs mt-1">{sermon.date}</p>
+                    <p className="text-[#33275A] text-xs mt-1">{sermon.date}</p>
                   </div>
                 </div>
 
                 {/* Sermon Content */}
                 <div className="p-6 space-y-6">
-                  <p className="text-gray-300 leading-relaxed text-sm">
+                  <p className="text-[#33275A] leading-relaxed text-sm">
                     {sermon.description}
                   </p>
 
@@ -216,7 +216,7 @@ export default function Sermons() {
                       </div>
                       <audio
                         controls
-                        className="w-full h-8 rounded-lg bg-[#0a0f1e] accent-[#c9a84c]"
+                        className="w-full h-8 rounded-lg bg-[#FFFDF5] accent-[#c9a84c]"
                       >
                         <source src={sermon.audioUrl} type="audio/mpeg" />
                         Your browser does not support the audio element.
@@ -230,7 +230,7 @@ export default function Sermons() {
                       href={sermon.youtubeLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-cinzel font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105"
+                      className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-[#1E1535] font-cinzel font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105"
                     >
                       <Youtube size={20} />
                       <span>Watch on YouTube</span>
@@ -245,4 +245,10 @@ export default function Sermons() {
     </section>
   );
 }
+
+
+
+
+
+
 

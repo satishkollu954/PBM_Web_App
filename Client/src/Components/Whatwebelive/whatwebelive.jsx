@@ -45,7 +45,7 @@ export default function Whatwebelive() {
   };
 
   return (
-    <section id="whaatwebelive" className="py-24 bg-[#0d1b2a] relative">
+    <section id="whaatwebelive" className="py-24 bg-[#FFFDF5] relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial="hidden"
@@ -72,7 +72,7 @@ export default function Whatwebelive() {
               viewport={{ once: true, margin: "-50px" }}
               variants={textVariants}
               transition={{ delay: 0.2 }}
-              className="text-gray-200 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light italic"
+              className="text-[#2D2050] text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light italic"
             >
               "God created the creation necessary for all mankind, and then He made man in His own image and after His likeness.
               God created human beings for His glory, but man showed disobedience to God and learned to rely on his own will rather than God's will.
@@ -88,7 +88,7 @@ export default function Whatwebelive() {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={cardVariants}
-              className="bg-[#0a0f1e] border-2 border-[#c9a84c]/40 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group md:scale-105 md:-translate-y-1 shadow-lg shadow-[#c9a84c]/10"
+              className="bg-white border-2 border-[#c9a84c]/40 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group md:scale-105 md:-translate-y-1 shadow-lg shadow-[#c9a84c]/20"
             >
               <div className="w-14 h-14 bg-[#c9a84c]/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/30 transition-colors">
                 <Anchor className="text-[#c9a84c]" size={28} />
@@ -96,7 +96,7 @@ export default function Whatwebelive() {
               <h3 className="text-3xl font-cinzel font-bold text-[#c9a84c] mb-4 tracking-wide">
                 Forgiveness
               </h3>
-              <p className="text-gray-300 leading-relaxed font-light text-base">
+              <p className="text-[#33275A] leading-relaxed font-light text-base">
                 The journey of a new believer is a beautiful path of grace, 
                 where forgiveness is received through 
                 faith and every step is guided by love, prayer, and divine promises.
@@ -109,7 +109,7 @@ export default function Whatwebelive() {
               viewport={{ once: true, margin: "-50px" }}
               variants={cardVariants}
               transition={{ delay: 0.1 }}
-              className="bg-[#0a0f1e] border-2 border-[#c9a84c]/40 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group md:scale-105 md:-translate-y-1 shadow-lg shadow-[#c9a84c]/10"
+              className="bg-white border-2 border-[#c9a84c]/40 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group md:scale-105 md:-translate-y-1 shadow-lg shadow-[#c9a84c]/20"
             >
               <div className="w-14 h-14 bg-[#c9a84c]/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/30 transition-colors">
                 <Sun className="text-[#c9a84c]" size={28} />
@@ -117,7 +117,7 @@ export default function Whatwebelive() {
               <h3 className="text-3xl font-cinzel font-bold text-[#c9a84c] mb-4 tracking-wide">
                 Repentence
               </h3>
-              <p className="text-gray-300 leading-relaxed font-light text-base">
+              <p className="text-[#33275A] leading-relaxed font-light text-base">
                 Repentance is a sincere change of heart and mind, 
                 where we turn away from wrong choices and embrace 
                 a new life of forgiveness and grace.
@@ -130,7 +130,7 @@ export default function Whatwebelive() {
               viewport={{ once: true, margin: "-50px" }}
               variants={cardVariants}
               transition={{ delay: 0.2 }}
-              className="bg-[#0a0f1e] border-2 border-[#c9a84c]/40 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group md:scale-105 md:-translate-y-1 shadow-lg shadow-[#c9a84c]/10"
+              className="bg-white border-2 border-[#c9a84c]/40 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group md:scale-105 md:-translate-y-1 shadow-lg shadow-[#c9a84c]/20"
             >
               <div className="w-14 h-14 bg-[#c9a84c]/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/30 transition-colors">
                 <Heart className="text-[#c9a84c]" size={28} />
@@ -138,7 +138,7 @@ export default function Whatwebelive() {
               <h3 className="text-3xl font-cinzel font-bold text-[#c9a84c] mb-4 tracking-wide">
                 Salvation
               </h3>
-              <p className="text-gray-300 leading-relaxed font-light text-base">
+              <p className="text-[#33275A] leading-relaxed font-light text-base">
                 Salvation is God's gift of deliverance from sin, 
                 bringing a transformed life today and the promise of eternal life through faith.
               </p>
@@ -151,7 +151,7 @@ export default function Whatwebelive() {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={itemVariants}
-            className="bg-gradient-to-r from-[#0a0f1e] to-[#0d1b2a] border border-[#c9a84c]/30 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden"
+            className="bg-gradient-to-r from-[#FFFDF5] to-[#FFF8E7] border border-[#c9a84c]/50 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden"
           >
             <div className="absolute -right-20 -top-20 w-64 h-64 bg-[#c9a84c]/10 rounded-full blur-[60px] pointer-events-none"></div>
 
@@ -164,11 +164,11 @@ export default function Whatwebelive() {
             </div>
 
             <div className="flex-1 text-center md:text-left z-10">
-              <h3 className="text-3xl font-cinzel font-bold text-white mb-2 tracking-wide">
+              <h3 className="text-3xl font-cinzel font-bold text-[#1E1535] mb-2 tracking-wide">
                 A Message from Our Pastor
               </h3>
               <h4 className="text-[#c9a84c] mb-6 text-xl font-cinzel tracking-widest">Bro. Pratap Kumar</h4>
-              <p className="text-gray-200 italic mb-6 text-lg leading-relaxed relative font-light">
+              <p className="text-[#2D2050] italic mb-6 text-lg leading-relaxed relative font-light">
                 <span className="text-5xl text-[#c9a84c]/40 absolute -top-6 -left-8 font-serif">
                   "
                 </span>
@@ -187,3 +187,9 @@ export default function Whatwebelive() {
     </section>
   );
 }
+
+
+
+
+
+

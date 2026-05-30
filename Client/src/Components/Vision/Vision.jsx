@@ -16,7 +16,7 @@ export default function Vision() {
   };
 
   return (
-    <section id="vision" className="py-24 bg-[#0a0f1e] relative">
+    <section id="vision" className="py-24 bg-[#FFFDF5] relative">
       {/* Decorative background */}
       <div className="absolute top-1/2 left-0 w-64 h-64 bg-[#c9a84c]/5 rounded-full blur-[80px] pointer-events-none"></div>
 
@@ -30,10 +30,10 @@ export default function Vision() {
         >
           {/* Header */}
           <div className="text-center mb-16">
-            <span className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
+            <span className="text-[#7A5C00] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
               Where We Are Going
             </span>
-            <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-white mb-6">
+            <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-[#1E1535] mb-6">
               Vision, Mission & Values
             </h2>
           </div>
@@ -45,11 +45,11 @@ export default function Vision() {
               variants={itemVariants}
               className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/30 to-transparent hover:from-[#c9a84c]/50 transition-all duration-300"
             >
-              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/10">
+              <div className="bg-white h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/40">
                 <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/20 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Eye className="text-[#c9a84c]" size={32} />
                 </div>
-                <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
+                <h3 className="text-2xl font-cinzel font-bold text-[#1E1535] mb-4">
                   Our Vision
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -65,11 +65,11 @@ export default function Vision() {
               variants={itemVariants}
               className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/30 to-transparent hover:from-[#c9a84c]/50 transition-all duration-300"
             >
-              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/10">
+              <div className="bg-white h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/40">
                 <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/20 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Target className="text-[#c9a84c]" size={32} />
                 </div>
-                <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
+                <h3 className="text-2xl font-cinzel font-bold text-[#1E1535] mb-4">
                   Our Mission
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -85,11 +85,11 @@ export default function Vision() {
               variants={itemVariants}
               className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/30 to-transparent hover:from-[#c9a84c]/50 transition-all duration-300"
             >
-              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/10">
+              <div className="bg-white h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/40">
                 <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/20 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Star className="text-[#c9a84c]" size={32} />
                 </div>
-                <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
+                <h3 className="text-2xl font-cinzel font-bold text-[#1E1535] mb-4">
                   Core Values
                 </h3>
                 <p className="text-gray-400 leading-relaxed">
@@ -107,7 +107,7 @@ export default function Vision() {
             className="text-center relative py-12"
           >
             <Quote className="text-[#c9a84c]/20 w-32 h-32 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-            <h3 className="text-2xl md:text-4xl font-cinzel text-white leading-relaxed max-w-4xl mx-auto relative z-10">
+            <h3 className="text-2xl md:text-4xl font-cinzel text-[#1E1535] leading-relaxed max-w-4xl mx-auto relative z-10">
               "Your word is a lamp for my feet, a light on my path."
             </h3>
             <p className="text-[#c9a84c] font-cinzel mt-6 text-xl tracking-widest relative z-10">
@@ -119,4 +119,10 @@ export default function Vision() {
     </section>
   );
 }
+
+
+
+
+
+
 

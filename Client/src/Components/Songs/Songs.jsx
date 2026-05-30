@@ -25,7 +25,7 @@ function getYouTubeId(url) {
 
 export default function Songs() {
   return (
-    <section id="songs" className="py-24 bg-[#0d1b2a] relative">
+    <section id="songs" className="py-24 bg-[#FFFDF5] relative">
       <div className="container mx-auto px-6">
         <motion.div
           initial="hidden"
@@ -35,13 +35,13 @@ export default function Songs() {
           className="max-w-6xl mx-auto"
         >
           <div className="text-center mb-12">
-            <span className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
+            <span className="text-[#7A5C00] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
               Worship Media
             </span>
-            <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-[#1E1535] mb-4">
               Recorded, YouTube & PDF Songs
             </h2>
-            <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
+            <p className="text-[#33275A] text-lg max-w-3xl mx-auto leading-relaxed">
               This is a static preview showing recorded audio, YouTube links, and PDF resources. You can replace these with backend data later.
             </p>
           </div>
@@ -58,13 +58,13 @@ export default function Songs() {
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
-                    className="bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-3xl p-6"
+                    className="bg-white border border-[#c9a84c]/40 rounded-3xl p-6"
                   >
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                       <div>
-                        <h4 className="text-lg font-cinzel font-bold text-white">{song.title}</h4>
-                        <p className="text-gray-300 text-sm">{song.artist}</p>
-                        <p className="text-gray-300 text-sm mt-2">{song.description}</p>
+                        <h4 className="text-lg font-cinzel font-bold text-[#1E1535]">{song.title}</h4>
+                        <p className="text-[#33275A] text-sm">{song.artist}</p>
+                        <p className="text-[#33275A] text-sm mt-2">{song.description}</p>
                       </div>
 
                       <div>
@@ -94,14 +94,14 @@ export default function Songs() {
                       initial={{ opacity: 0, y: 16 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, amount: 0.2 }}
-                      className="block bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-2xl overflow-hidden"
+                      className="block bg-white border border-[#c9a84c]/40 rounded-2xl overflow-hidden"
                     >
                       <div className="h-40 bg-black/20 overflow-hidden">
-                        {thumb ? <img src={thumb} alt={song.title} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-gray-300">No preview</div>}
+                        {thumb ? <img src={thumb} alt={song.title} className="w-full h-full object-cover" /> : <div className="w-full h-full flex items-center justify-center text-[#33275A]">No preview</div>}
                       </div>
                       <div className="p-4">
-                        <h4 className="text-lg font-cinzel font-bold text-white">{song.title}</h4>
-                        <p className="text-gray-300 text-sm">{song.artist}</p>
+                        <h4 className="text-lg font-cinzel font-bold text-[#1E1535]">{song.title}</h4>
+                        <p className="text-[#33275A] text-sm">{song.artist}</p>
                       </div>
                     </motion.a>
                   );
@@ -119,11 +119,11 @@ export default function Songs() {
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
-                    className="bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-3xl p-6 flex items-center justify-between"
+                    className="bg-white border border-[#c9a84c]/40 rounded-3xl p-6 flex items-center justify-between"
                   >
                     <div>
-                      <h4 className="text-lg font-cinzel font-bold text-white">{song.title}</h4>
-                      <p className="text-gray-300 text-sm">{song.artist}</p>
+                      <h4 className="text-lg font-cinzel font-bold text-[#1E1535]">{song.title}</h4>
+                      <p className="text-[#33275A] text-sm">{song.artist}</p>
                     </div>
                     <a href={song.fileUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#c9a84c] px-4 py-2 text-sm font-semibold text-[#0d1b2a]">
                       <FileText size={16} />
@@ -139,4 +139,10 @@ export default function Songs() {
     </section>
   );
 }
+
+
+
+
+
+
 

@@ -161,7 +161,7 @@ function FeaturedCarousel() {
   const scrollTo = useCallback((index) => emblaApi?.scrollTo(index), [emblaApi]);
 
   return (
-    <div className="relative rounded-2xl overflow-hidden mb-16 border border-[#c9a84c]/20">
+    <div className="relative rounded-2xl overflow-hidden mb-16 border border-[#c9a84c]/40">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {featuredEvents.map((event) => (
@@ -180,9 +180,9 @@ function FeaturedCarousel() {
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e]/90 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#FFFDF5]/90 via-transparent to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8">
-                    <h3 className="text-2xl md:text-4xl font-cinzel font-bold text-white drop-shadow-lg">
+                    <h3 className="text-2xl md:text-4xl font-cinzel font-bold text-[#1E1535] drop-shadow-lg">
                       {event.title}
                     </h3>
                   </div>
@@ -196,14 +196,14 @@ function FeaturedCarousel() {
       {/* Navigation Arrows */}
       <button
         onClick={scrollPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#0a0f1e]/70 border border-[#c9a84c]/30 rounded-full flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c]/20 transition-colors"
+        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 border border-[#c9a84c]/50 rounded-full flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c]/20 transition-colors"
         aria-label="Previous slide"
       >
         <ChevronLeft size={20} />
       </button>
       <button
         onClick={scrollNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#0a0f1e]/70 border border-[#c9a84c]/30 rounded-full flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c]/20 transition-colors"
+        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/70 border border-[#c9a84c]/50 rounded-full flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c]/20 transition-colors"
         aria-label="Next slide"
       >
         <ChevronRight size={20} />
@@ -265,12 +265,12 @@ function EventCarousel({ events }) {
               key={event.id}
               className="flex-[0_0_100%] md:flex-[0_0_calc(50%-12px)] lg:flex-[0_0_calc(33.333%-16px)] min-w-0"
             >
-              <div className="bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl p-6 h-full flex flex-col hover:-translate-y-1 transition-transform duration-300 group">
+              <div className="bg-white border border-[#c9a84c]/40 rounded-xl p-6 h-full flex flex-col hover:-translate-y-1 transition-transform duration-300 group">
                 <div className="flex items-center gap-2 text-[#c9a84c] text-sm mb-3">
                   <Calendar size={16} />
                   <span>{event.date}</span>
                 </div>
-                <h4 className="text-xl font-cinzel font-bold text-white mb-3 group-hover:text-[#c9a84c] transition-colors">
+                <h4 className="text-xl font-cinzel font-bold text-[#1E1535] mb-3 group-hover:text-[#c9a84c] transition-colors">
                   {event.title}
                 </h4>
                 <p className="text-gray-400 leading-relaxed flex-1 mb-4">
@@ -297,7 +297,7 @@ function EventCarousel({ events }) {
           <button
             onClick={scrollPrev}
             disabled={!canScrollPrev}
-            className="w-9 h-9 bg-[#0a0f1e] border border-[#c9a84c]/30 rounded-full flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c]/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            className="w-9 h-9 bg-white border border-[#c9a84c]/50 rounded-full flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c]/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
             aria-label="Previous events"
           >
             <ChevronLeft size={18} />
@@ -305,7 +305,7 @@ function EventCarousel({ events }) {
           <button
             onClick={scrollNext}
             disabled={!canScrollNext}
-            className="w-9 h-9 bg-[#0a0f1e] border border-[#c9a84c]/30 rounded-full flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c]/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            className="w-9 h-9 bg-white border border-[#c9a84c]/50 rounded-full flex items-center justify-center text-[#c9a84c] hover:bg-[#c9a84c]/20 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
             aria-label="Next events"
           >
             <ChevronRight size={18} />
@@ -325,7 +325,7 @@ export default function Events() {
   ];
 
   return (
-    <section id="events" className="py-24 bg-[#0d1b2a] relative">
+    <section id="events" className="py-24 bg-[#FFFDF5] relative">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
@@ -336,13 +336,13 @@ export default function Events() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
+            <span className="text-[#7A5C00] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
               What&apos;s Happening
             </span>
-            <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-white mb-4">
+            <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-[#1E1535] mb-4">
               Events
             </h2>
-            <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+            <p className="text-[#33275A] text-lg max-w-2xl mx-auto">
               Stay connected with our church community through worship gatherings,
               outreach programs, and fellowship events.
             </p>
@@ -365,7 +365,7 @@ export default function Events() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <div className="flex items-center gap-1 mb-8 bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-lg p-1 w-fit" role="tablist">
+            <div className="flex items-center gap-1 mb-8 bg-white border border-[#c9a84c]/40 rounded-lg p-1 w-fit" role="tablist">
               {tabs.map((tab) => (
                 <button
                   key={tab.key}
@@ -375,7 +375,7 @@ export default function Events() {
                   className={`px-6 py-2.5 rounded-md text-sm font-semibold uppercase tracking-wider transition-all duration-300 ${
                     activeTab === tab.key
                       ? "bg-[#c9a84c] text-[#0a0f1e]"
-                      : "text-gray-400 hover:text-white"
+                      : "text-gray-400 hover:text-[#1E1535]"
                   }`}
                 >
                   {tab.label}
@@ -394,4 +394,10 @@ export default function Events() {
     </section>
   );
 }
+
+
+
+
+
+
 

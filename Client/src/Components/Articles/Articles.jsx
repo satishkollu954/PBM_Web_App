@@ -48,7 +48,7 @@ export default function Articles() {
   });
 
   return (
-    <section className="min-h-screen bg-[#0d1b2a] pt-28 pb-20 px-6">
+    <section className="min-h-screen bg-[#FFFDF5] pt-28 pb-20 px-6">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -62,7 +62,7 @@ export default function Articles() {
         <h1 className="text-4xl md:text-5xl font-cinzel font-bold text-[#c9a84c] mb-4">
           Articles
         </h1>
-        <p className="text-gray-300 max-w-xl mx-auto text-base">
+        <p className="text-[#33275A] max-w-xl mx-auto text-base">
           Writings and reflections to strengthen your faith and deepen your
           walk with God.
         </p>
@@ -71,7 +71,7 @@ export default function Articles() {
 
       {/* Loading / Error */}
       {loading && (
-        <p className="text-center text-gray-300 py-16">Loading articles...</p>
+        <p className="text-center text-[#33275A] py-16">Loading articles...</p>
       )}
       {error && (
         <p className="text-center text-red-400 py-16" role="alert">
@@ -97,7 +97,7 @@ export default function Articles() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search articles..."
-              className="w-full pl-9 pr-4 py-3 bg-[#0a0f1e] border border-[#c9a84c]/30 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-[#c9a84c] transition-colors"
+              className="w-full pl-9 pr-4 py-3 bg-white border border-[#c9a84c]/50 rounded-lg text-[#1E1535] placeholder-gray-500 focus:outline-none focus:border-[#c9a84c] transition-colors"
             />
           </div>
 
@@ -114,7 +114,7 @@ export default function Articles() {
                 className={`px-4 py-2 rounded-full text-sm uppercase tracking-wider transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] ${
                   activeCategory === cat
                     ? "bg-[#c9a84c] text-[#0d1b2a] font-semibold"
-                    : "border border-[#c9a84c]/40 text-gray-300 hover:border-[#c9a84c] hover:text-[#c9a84c]"
+                    : "border border-[#c9a84c]/40 text-[#33275A] hover:border-[#c9a84c] hover:text-[#c9a84c]"
                 }`}
                 aria-pressed={activeCategory === cat}
               >
@@ -132,7 +132,7 @@ export default function Articles() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: idx * 0.07 }}
-                  className="bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl overflow-hidden hover:border-[#c9a84c]/60 hover:shadow-lg hover:shadow-[#c9a84c]/5 transition-all flex flex-col cursor-pointer"
+                  className="bg-white border border-[#c9a84c]/40 rounded-xl overflow-hidden hover:border-[#c9a84c]/60 hover:shadow-lg hover:shadow-[#c9a84c]/5 transition-all flex flex-col cursor-pointer"
                   onClick={() => setSelectedArticle(article)}
                 >
                   {/* Cover image */}
@@ -147,10 +147,10 @@ export default function Articles() {
                     <span className="inline-block text-xs uppercase tracking-widest text-[#c9a84c] bg-[#c9a84c]/10 px-3 py-1 rounded-full mb-3 self-start">
                       {article.category}
                     </span>
-                    <h2 className="text-lg font-cinzel font-semibold text-white mb-2 leading-snug">
+                    <h2 className="text-lg font-cinzel font-semibold text-[#1E1535] mb-2 leading-snug">
                       {article.title}
                     </h2>
-                    <p className="text-gray-300 text-sm mb-4 leading-relaxed line-clamp-3 flex-1">
+                    <p className="text-[#33275A] text-sm mb-4 leading-relaxed line-clamp-3 flex-1">
                       {article.body}
                     </p>
                     <div className="flex justify-between items-center text-xs text-gray-500 border-t border-[#c9a84c]/10 pt-3 mt-auto">
@@ -202,7 +202,7 @@ export default function Articles() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 40, scale: 0.97 }}
               transition={{ duration: 0.3 }}
-              className="bg-[#0a0f1e] border border-[#c9a84c]/30 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl shadow-black/60"
+              className="bg-white border border-[#c9a84c]/50 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl shadow-black/60"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Cover */}
@@ -223,13 +223,13 @@ export default function Articles() {
                       <Tag size={10} className="inline mr-1" aria-hidden="true" />
                       {selectedArticle.category}
                     </span>
-                    <h2 className="text-2xl font-cinzel font-bold text-white leading-snug">
+                    <h2 className="text-2xl font-cinzel font-bold text-[#1E1535] leading-snug">
                       {selectedArticle.title}
                     </h2>
                   </div>
                   <button
                     onClick={() => setSelectedArticle(null)}
-                    className="text-gray-300 hover:text-white transition-colors flex-shrink-0 mt-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] rounded"
+                    className="text-[#33275A] hover:text-[#1E1535] transition-colors flex-shrink-0 mt-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] rounded"
                     aria-label="Close article"
                   >
                     <X size={22} />
@@ -256,7 +256,7 @@ export default function Articles() {
                 </div>
 
                 {/* Full body */}
-                <p className="text-gray-300 text-base leading-relaxed whitespace-pre-wrap">
+                <p className="text-[#33275A] text-base leading-relaxed whitespace-pre-wrap">
                   {selectedArticle.body}
                 </p>
               </div>
@@ -267,3 +267,9 @@ export default function Articles() {
     </section>
   );
 }
+
+
+
+
+
+

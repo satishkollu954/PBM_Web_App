@@ -4,8 +4,11 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background glow and effects */}
-      <div className="absolute inset-0 bg-[#0a0f1e] z-0"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#c9a84c]/10 rounded-full blur-[120px] pointer-events-none z-0"></div>
+      <div className="absolute inset-0 bg-[#FFFDF5] z-0"></div>
+      {/* Warm gold dual glow — spiritual atmosphere */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-[#c9a84c]/8 rounded-full blur-[170px] pointer-events-none z-0"></div>
+      <div className="absolute top-1/3 left-1/3 w-[700px] h-[700px] bg-[#c9a84c]/12 rounded-full blur-[160px] pointer-events-none z-0"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#c9a84c]/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
 
       {/* Animated Particles/Noise placeholder overlay */}
       <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-0 mix-blend-overlay pointer-events-none"></div>
@@ -17,16 +20,16 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <span className="text-[#e6c860] font-cinzel uppercase tracking-[0.3em] text-sm md:text-base block mb-4">
+          <span className="text-[#7A5C00] font-cinzel uppercase tracking-[0.3em] text-sm md:text-base block mb-4">
             Where Faith Meets Community
           </span>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-cinzel font-bold text-white mb-6 leading-tight drop-shadow-lg">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-cinzel font-bold text-[#1E1535] mb-6 leading-tight drop-shadow-lg">
             Welcome to <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#c9a84c] to-[#f0c040]">
               PBM Church
             </span>
           </h1>
-          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-lato leading-relaxed">
+          <p className="text-[#33275A] text-lg md:text-xl max-w-2xl mx-auto mb-10 font-lato leading-relaxed">
             Experience the transformative power of God's love in a community
             that embraces you just as you are. Join us in worship, fellowship,
             and growth.
@@ -68,4 +71,8 @@ export default function Hero() {
     </section>
   );
 }
+
+
+
+
 
