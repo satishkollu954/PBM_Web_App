@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Plus, Pencil, Trash2, X, FileText, ImagePlus } from "lucide-react";
+import { Plus, Pencil, Trash2, X, FileText, ImagePlus, XCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const EMPTY_FORM = {
@@ -400,7 +400,6 @@ export default function ManageArticles() {
                 {/* Cover Image */}
                 <div>
                   <label
-                    htmlFor="article-cover"
                     className="block text-sm text-gray-400 mb-1"
                   >
                     Cover Image{" "}
@@ -410,35 +409,50 @@ export default function ManageArticles() {
                       </span>
                     )}
                   </label>
-                  <label
-                    htmlFor="article-cover"
-                    className="flex items-center gap-3 cursor-pointer bg-[#0a0f1e] border border-dashed border-[#c9a84c]/40 rounded-lg px-3 py-3 hover:border-[#c9a84c] transition-colors"
-                  >
-                    {coverPreview ? (
-                      <img
-                        src={coverPreview}
-                        alt="Cover preview"
-                        className="w-12 h-12 object-cover rounded"
+                  <div className="relative">
+                    <label
+                      htmlFor="article-cover"
+                      className="flex items-center gap-3 cursor-pointer bg-[#0a0f1e] border border-dashed border-[#c9a84c]/40 rounded-lg px-3 py-3 hover:border-[#c9a84c] transition-colors"
+                    >
+                      {coverPreview ? (
+                        <img
+                          src={coverPreview}
+                          alt="Cover preview"
+                          className="w-12 h-12 object-cover rounded"
+                        />
+                      ) : (
+                        <ImagePlus size={28} className="text-[#c9a84c]/50" />
+                      )}
+                      <span className="text-gray-400 text-sm">
+                        {form.cover
+                          ? form.cover.name
+                          : coverPreview
+                          ? "Click to change image"
+                          : "Click to upload cover"}
+                      </span>
+                      <input
+                        id="article-cover"
+                        name="cover"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleChange}
+                        className="sr-only"
                       />
-                    ) : (
-                      <ImagePlus size={28} className="text-[#c9a84c]/50" />
+                    </label>
+                    {coverPreview && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setForm((prev) => ({ ...prev, cover: null }));
+                          setCoverPreview("");
+                        }}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-400 transition-colors"
+                        aria-label="Remove cover image"
+                      >
+                        <XCircle size={20} />
+                      </button>
                     )}
-                    <span className="text-gray-400 text-sm">
-                      {form.cover
-                        ? form.cover.name
-                        : coverPreview
-                        ? "Click to change image"
-                        : "Click to upload cover"}
-                    </span>
-                    <input
-                      id="article-cover"
-                      name="cover"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleChange}
-                      className="sr-only"
-                    />
-                  </label>
+                  </div>
                 </div>
 
                 {/* Actions */}

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Plus, Pencil, Trash2, X, BookOpen, ImagePlus } from "lucide-react";
+import { Plus, Pencil, Trash2, X, BookOpen, ImagePlus, XCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const EMPTY_FORM = {
@@ -272,15 +272,27 @@ export default function ManageBooks() {
                   >
                     Title <span aria-hidden="true" className="text-red-400">*</span>
                   </label>
-                  <input
-                    id="book-title"
-                    name="title"
-                    value={form.title}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
-                    placeholder="e.g. The Normal Christian Life"
-                  />
+                  <div className="relative">
+                    <input
+                      id="book-title"
+                      name="title"
+                      value={form.title}
+                      onChange={handleChange}
+                      required
+                      className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 pr-9 focus:outline-none focus:border-[#c9a84c] transition-colors"
+                      placeholder="e.g. The Normal Christian Life"
+                    />
+                    {form.title && (
+                      <button
+                        type="button"
+                        onClick={() => setForm((prev) => ({ ...prev, title: "" }))}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-400 transition-colors"
+                        aria-label="Clear title"
+                      >
+                        <XCircle size={18} />
+                      </button>
+                    )}
+                  </div>
                 </div>
 
                 {/* Subtitle */}
@@ -289,14 +301,13 @@ export default function ManageBooks() {
                     htmlFor="book-subtitle"
                     className="block text-sm text-gray-400 mb-1"
                   >
-                    Subtitle <span aria-hidden="true" className="text-red-400">*</span>
+                    Subtitle
                   </label>
                   <input
                     id="book-subtitle"
                     name="subtitle"
                     value={form.subtitle}
                     onChange={handleChange}
-                    required
                     className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
                     placeholder="e.g. A classic on the Christian walk"
                   />
@@ -346,7 +357,7 @@ export default function ManageBooks() {
                     htmlFor="book-year"
                     className="block text-sm text-gray-400 mb-1"
                   >
-                    Year <span aria-hidden="true" className="text-red-400">*</span>
+                    Year
                   </label>
                   <input
                     id="book-year"
@@ -356,7 +367,6 @@ export default function ManageBooks() {
                     max={new Date().getFullYear()}
                     value={form.year}
                     onChange={handleChange}
-                    required
                     className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
                     placeholder="e.g. 1999"
                   />
@@ -365,7 +375,6 @@ export default function ManageBooks() {
                 {/* Cover Image */}
                 <div>
                   <label
-                    htmlFor="book-cover"
                     className="block text-sm text-gray-400 mb-1"
                   >
                     Cover Image{" "}
@@ -375,35 +384,50 @@ export default function ManageBooks() {
                       </span>
                     )}
                   </label>
-                  <label
-                    htmlFor="book-cover"
-                    className="flex items-center gap-3 cursor-pointer bg-[#0a0f1e] border border-dashed border-[#c9a84c]/40 rounded-lg px-3 py-3 hover:border-[#c9a84c] transition-colors"
-                  >
-                    {coverPreview ? (
-                      <img
-                        src={coverPreview}
-                        alt="Cover preview"
-                        className="w-12 h-16 object-cover rounded"
+                  <div className="relative">
+                    <label
+                      htmlFor="book-cover"
+                      className="flex items-center gap-3 cursor-pointer bg-[#0a0f1e] border border-dashed border-[#c9a84c]/40 rounded-lg px-3 py-3 hover:border-[#c9a84c] transition-colors"
+                    >
+                      {coverPreview ? (
+                        <img
+                          src={coverPreview}
+                          alt="Cover preview"
+                          className="w-12 h-16 object-cover rounded"
+                        />
+                      ) : (
+                        <ImagePlus size={28} className="text-[#c9a84c]/50" />
+                      )}
+                      <span className="text-gray-400 text-sm">
+                        {form.cover
+                          ? form.cover.name
+                          : coverPreview
+                          ? "Click to change image"
+                          : "Click to upload cover"}
+                      </span>
+                      <input
+                        id="book-cover"
+                        name="cover"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleChange}
+                        className="sr-only"
                       />
-                    ) : (
-                      <ImagePlus size={28} className="text-[#c9a84c]/50" />
+                    </label>
+                    {coverPreview && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setForm((prev) => ({ ...prev, cover: null }));
+                          setCoverPreview("");
+                        }}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-400 transition-colors"
+                        aria-label="Remove cover image"
+                      >
+                        <XCircle size={20} />
+                      </button>
                     )}
-                    <span className="text-gray-400 text-sm">
-                      {form.cover
-                        ? form.cover.name
-                        : coverPreview
-                        ? "Click to change image"
-                        : "Click to upload cover"}
-                    </span>
-                    <input
-                      id="book-cover"
-                      name="cover"
-                      type="file"
-                      accept="image/*"
-                      onChange={handleChange}
-                      className="sr-only"
-                    />
-                  </label>
+                  </div>
                 </div>
 
                 {/* Actions */}

@@ -10,8 +10,8 @@ const bookSchema = new mongoose.Schema(
 
     subtitle: {
       type: String,
-      required: true,
       trim: true,
+      default: "",
     },
 
     author: {
@@ -28,7 +28,6 @@ const bookSchema = new mongoose.Schema(
 
     year: {
       type: Number,
-      required: true,
     },
 
     cover: {

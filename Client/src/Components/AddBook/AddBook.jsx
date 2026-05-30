@@ -13,6 +13,7 @@ import {
   Calendar,
   Layers,
   FileText,
+  XCircle,
 } from "lucide-react";
 
 export function AddBook() {
@@ -76,20 +77,12 @@ export function AddBook() {
       newErrors.title = "Title is required";
     }
 
-    if (!formData.subtitle.trim()) {
-      newErrors.subtitle = "Subtitle is required";
-    }
-
     if (!formData.author.trim()) {
       newErrors.author = "Author is required";
     }
 
     if (!formData.topic.trim()) {
       newErrors.topic = "Topic is required";
-    }
-
-    if (!formData.year) {
-      newErrors.year = "Year is required";
     }
 
     if (
@@ -217,18 +210,30 @@ export function AddBook() {
                   Book Title
                 </label>
 
-                <input
-                  type="text"
-                  name="title"
-                  value={formData.title}
-                  onChange={handleChange}
-                  placeholder="Enter book title"
-                  className={`w-full bg-[#081120] border rounded-2xl px-5 py-4 text-white focus:outline-none ${
-                    errors.title
-                      ? "border-red-500"
-                      : "border-[#c9a84c]/20 focus:border-[#c9a84c]"
-                  }`}
-                />
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="title"
+                    value={formData.title}
+                    onChange={handleChange}
+                    placeholder="Enter book title"
+                    className={`w-full bg-[#081120] border rounded-2xl px-5 py-4 pr-10 text-white focus:outline-none ${
+                      errors.title
+                        ? "border-red-500"
+                        : "border-[#c9a84c]/20 focus:border-[#c9a84c]"
+                    }`}
+                  />
+                  {formData.title && (
+                    <button
+                      type="button"
+                      onClick={() => setFormData((prev) => ({ ...prev, title: "" }))}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-400 transition-colors"
+                      aria-label="Clear title"
+                    >
+                      <XCircle size={20} />
+                    </button>
+                  )}
+                </div>
 
                 {errors.title && (
                   <p className="text-red-400 text-sm mt-2">{errors.title}</p>
@@ -370,11 +375,26 @@ export function AddBook() {
                 }`}
               >
                 {preview ? (
-                  <img
-                    src={preview}
-                    alt="Preview"
-                    className="w-full h-[420px] object-cover"
-                  />
+                  <div className="relative">
+                    <img
+                      src={preview}
+                      alt="Preview"
+                      className="w-full h-[420px] object-cover"
+                    />
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setCover(null);
+                        setPreview("");
+                      }}
+                      className="absolute top-3 right-3 bg-black/60 hover:bg-red-500/80 text-white rounded-full p-1.5 transition-colors"
+                      aria-label="Remove cover image"
+                    >
+                      <XCircle size={22} />
+                    </button>
+                  </div>
                 ) : (
                   <div className="h-[420px] flex flex-col items-center justify-center bg-[#081120]">
                     <Upload className="text-[#c9a84c] mb-4" size={50} />
