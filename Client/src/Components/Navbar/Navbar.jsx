@@ -8,6 +8,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useCookies } from "react-cookie";
 
+import pbmLogo from "../../assets/pbmlogo-2.jpeg";
+
 export default function Navbar() {
   const navigate = useNavigate();
 
@@ -117,9 +119,13 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-cinzel font-bold text-[#c9a84c]">
-          <span className="mr-2">&#10013;</span>
-          PBM Church
+        <Link to="/" className="flex items-center gap-3 text-[#c9a84c]">
+          <img
+            src={pbmLogo}
+            alt="PBM Church Logo"
+            className="h-20 w-auto rounded-full border border-[#c9a84c]/30 shadow-md"
+          />
+          <span className="text-2xl font-cinzel font-bold">PBM Church</span>
         </Link>
 
         {/* Desktop Menu */}
