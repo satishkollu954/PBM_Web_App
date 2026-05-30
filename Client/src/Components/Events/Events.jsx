@@ -336,7 +336,7 @@ export default function Events() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <span className="text-[#c9a84c] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
+            <span className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
               What&apos;s Happening
             </span>
             <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-white mb-4">
@@ -394,3 +394,4 @@ export default function Events() {
     </section>
   );
 }
+

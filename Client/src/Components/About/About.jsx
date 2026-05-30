@@ -71,7 +71,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={headingVariants}
-              className="text-[#c9a84c] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3"
+              className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3"
             >
               Who We Are
             </motion.span>
@@ -102,16 +102,16 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
             <motion.div
               variants={itemVariants}
-              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/30 to-transparent hover:from-[#c9a84c]/50 transition-all duration-300"
+              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/50 to-[#c9a84c]/10 hover:from-[#c9a84c]/70 transition-all duration-300 md:scale-105 md:-translate-y-2 shadow-lg shadow-[#c9a84c]/10"
             >
-              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/10">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/20 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/30">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/30 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Eye className="text-[#c9a84c]" size={32} />
                 </div>
-                <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
+                <h3 className="text-2xl font-cinzel font-bold text-[#c9a84c] mb-4">
                   Our Vision
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed">
                   To see our city transformed by the power of the Gospel,
                   creating a community where every individual experiences the
                   profound grace and light of Jesus Christ.
@@ -119,18 +119,19 @@ export default function About() {
               </div>
             </motion.div>
 
+            {/* Center card — Mission (visually elevated for hierarchy) */}
             <motion.div
               variants={itemVariants}
-              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/30 to-transparent hover:from-[#c9a84c]/50 transition-all duration-300"
+              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/50 to-[#c9a84c]/10 hover:from-[#c9a84c]/70 transition-all duration-300 md:scale-105 md:-translate-y-2 shadow-lg shadow-[#c9a84c]/10"
             >
-              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/10">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/20 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/30">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/30 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Target className="text-[#c9a84c]" size={32} />
                 </div>
-                <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
+                <h3 className="text-2xl font-cinzel font-bold text-[#c9a84c] mb-4">
                   Our Mission
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed">
                   To lead people into a growing relationship with Jesus Christ
                   through passionate worship, deep biblical teaching, and
                   intentional community service.
@@ -140,16 +141,16 @@ export default function About() {
 
             <motion.div
               variants={itemVariants}
-              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/30 to-transparent hover:from-[#c9a84c]/50 transition-all duration-300"
+              className="relative group p-1 rounded-2xl bg-gradient-to-b from-[#c9a84c]/50 to-[#c9a84c]/10 hover:from-[#c9a84c]/70 transition-all duration-300 md:scale-105 md:-translate-y-2 shadow-lg shadow-[#c9a84c]/10"
             >
-              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/10">
-                <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/20 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-[#0d1b2a] h-full rounded-xl p-8 backdrop-blur-sm border border-[#c9a84c]/30">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#c9a84c]/30 to-transparent rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Star className="text-[#c9a84c]" size={32} />
                 </div>
-                <h3 className="text-2xl font-cinzel font-bold text-white mb-4">
+                <h3 className="text-2xl font-cinzel font-bold text-[#c9a84c] mb-4">
                   Core Values
                 </h3>
-                <p className="text-gray-400 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed">
                   Biblical Truth, Authentic Community, Relentless Grace,
                   Sacrificial Love, and Spirit-led Living are the pillars that
                   guide our every action.
@@ -207,3 +208,4 @@ export default function About() {
     </section>
   );
 }
+

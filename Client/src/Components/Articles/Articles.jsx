@@ -62,7 +62,7 @@ export default function Articles() {
         <h1 className="text-4xl md:text-5xl font-cinzel font-bold text-[#c9a84c] mb-4">
           Articles
         </h1>
-        <p className="text-gray-400 max-w-xl mx-auto text-base">
+        <p className="text-gray-300 max-w-xl mx-auto text-base">
           Writings and reflections to strengthen your faith and deepen your
           walk with God.
         </p>
@@ -71,7 +71,7 @@ export default function Articles() {
 
       {/* Loading / Error */}
       {loading && (
-        <p className="text-center text-gray-400 py-16">Loading articles...</p>
+        <p className="text-center text-gray-300 py-16">Loading articles...</p>
       )}
       {error && (
         <p className="text-center text-red-400 py-16" role="alert">
@@ -150,7 +150,7 @@ export default function Articles() {
                     <h2 className="text-lg font-cinzel font-semibold text-white mb-2 leading-snug">
                       {article.title}
                     </h2>
-                    <p className="text-gray-400 text-sm mb-4 leading-relaxed line-clamp-3 flex-1">
+                    <p className="text-gray-300 text-sm mb-4 leading-relaxed line-clamp-3 flex-1">
                       {article.body}
                     </p>
                     <div className="flex justify-between items-center text-xs text-gray-500 border-t border-[#c9a84c]/10 pt-3 mt-auto">
@@ -229,7 +229,7 @@ export default function Articles() {
                   </div>
                   <button
                     onClick={() => setSelectedArticle(null)}
-                    className="text-gray-400 hover:text-white transition-colors flex-shrink-0 mt-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] rounded"
+                    className="text-gray-300 hover:text-white transition-colors flex-shrink-0 mt-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] rounded"
                     aria-label="Close article"
                   >
                     <X size={22} />

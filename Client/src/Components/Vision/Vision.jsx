@@ -30,7 +30,7 @@ export default function Vision() {
         >
           {/* Header */}
           <div className="text-center mb-16">
-            <span className="text-[#c9a84c] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
+            <span className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
               Where We Are Going
             </span>
             <h2 className="text-4xl md:text-5xl font-cinzel font-bold text-white mb-6">
@@ -119,3 +119,4 @@ export default function Vision() {
     </section>
   );
 }
+

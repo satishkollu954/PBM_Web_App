@@ -117,7 +117,7 @@ export default function Contact() {
       <div className="container mx-auto px-6">
         {/* Heading */}
         <div className="text-center mb-16">
-          <span className="text-[#c9a84c] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
+          <span className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
             Reach Out
           </span>
 
@@ -151,7 +151,7 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Name */}
               <div className="space-y-2">
-                <label className="text-sm text-gray-400 font-semibold">
+                <label className="text-sm text-gray-300 font-semibold">
                   Name *
                 </label>
 
@@ -175,7 +175,7 @@ export default function Contact() {
 
               {/* Phone */}
               <div className="space-y-2">
-                <label className="text-sm text-gray-400 font-semibold">
+                <label className="text-sm text-gray-300 font-semibold">
                   Phone Number *
                 </label>
 
@@ -199,7 +199,7 @@ export default function Contact() {
 
               {/* Email */}
               <div className="space-y-2">
-                <label className="text-sm text-gray-400 font-semibold">
+                <label className="text-sm text-gray-300 font-semibold">
                   Email
                 </label>
 
@@ -223,7 +223,7 @@ export default function Contact() {
 
               {/* Message */}
               <div className="space-y-2">
-                <label className="text-sm text-gray-400 font-semibold">
+                <label className="text-sm text-gray-300 font-semibold">
                   Message
                 </label>
 
@@ -273,7 +273,7 @@ export default function Contact() {
                   Location
                 </h4>
 
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-gray-300">
                   123 Grace Avenue
                   <br />
                   Cityville, ST 12345
@@ -288,7 +288,7 @@ export default function Contact() {
                   Services
                 </h4>
 
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-gray-300">
                   Sundays at 10:00 AM
                   <br />
                   Wednesdays at 7:00 PM
@@ -298,11 +298,11 @@ export default function Contact() {
 
             {/* Socials */}
             <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 p-6 rounded-xl flex justify-center gap-6">
-              <a href="#" className="text-gray-400 hover:text-[#c9a84c]">
+              <a href="#" className="text-gray-300 hover:text-[#c9a84c]">
                 <Instagram size={24} />
               </a>
 
-              <a href="#" className="text-gray-400 hover:text-[#c9a84c]">
+              <a href="#" className="text-gray-300 hover:text-[#c9a84c]">
                 <Youtube size={24} />
               </a>
             </div>
@@ -319,7 +319,7 @@ export default function Contact() {
                     What should I wear?
                   </AccordionTrigger>
 
-                  <AccordionContent className="text-gray-400">
+                  <AccordionContent className="text-gray-300">
                     Come as you are! Everyone is welcome.
                   </AccordionContent>
                 </AccordionItem>
@@ -329,7 +329,7 @@ export default function Contact() {
                     Is there a kids program?
                   </AccordionTrigger>
 
-                  <AccordionContent className="text-gray-400">
+                  <AccordionContent className="text-gray-300">
                     Yes, we have special programs for children during Sunday
                     services.
                   </AccordionContent>
@@ -340,7 +340,7 @@ export default function Contact() {
                     Do you stream online?
                   </AccordionTrigger>
 
-                  <AccordionContent className="text-gray-400">
+                  <AccordionContent className="text-gray-300">
                     Yes, all our services are streamed live on YouTube.
                   </AccordionContent>
                 </AccordionItem>
@@ -380,3 +380,4 @@ export default function Contact() {
     </section>
   );
 }
+

@@ -17,7 +17,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <span className="text-[#c9a84c] font-cinzel uppercase tracking-[0.3em] text-sm md:text-base block mb-4">
+          <span className="text-[#e6c860] font-cinzel uppercase tracking-[0.3em] text-sm md:text-base block mb-4">
             Where Faith Meets Community
           </span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-cinzel font-bold text-white mb-6 leading-tight drop-shadow-lg">
@@ -68,3 +68,4 @@ export default function Hero() {
     </section>
   );
 }
+

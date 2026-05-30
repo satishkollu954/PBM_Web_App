@@ -112,7 +112,7 @@ export default function Sermons() {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
               variants={headingVariants}
-              className="text-[#c9a84c] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3"
+              className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3"
             >
               Hear the Word
             </motion.span>
@@ -181,7 +181,7 @@ export default function Sermons() {
                       {sermon.title}
                     </h3>
                     <p className="text-[#c9a84c] text-sm font-semibold">{sermon.speaker}</p>
-                    <p className="text-gray-400 text-xs mt-1">{sermon.date}</p>
+                    <p className="text-gray-300 text-xs mt-1">{sermon.date}</p>
                   </div>
                 </div>
 
@@ -245,3 +245,4 @@ export default function Sermons() {
     </section>
   );
 }
+

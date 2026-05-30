@@ -88,12 +88,12 @@ export default function Whatwebelive() {
               whileInView="visible"
               viewport={{ once: true, margin: "-50px" }}
               variants={cardVariants}
-              className="bg-[#0a0f1e] border border-[#c9a84c]/20 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group"
+              className="bg-[#0a0f1e] border-2 border-[#c9a84c]/40 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group md:scale-105 md:-translate-y-1 shadow-lg shadow-[#c9a84c]/10"
             >
-              <div className="w-14 h-14 bg-[#c9a84c]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/20 transition-colors">
+              <div className="w-14 h-14 bg-[#c9a84c]/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/30 transition-colors">
                 <Anchor className="text-[#c9a84c]" size={28} />
               </div>
-              <h3 className="text-3xl font-cinzel font-bold text-white mb-4 tracking-wide">
+              <h3 className="text-3xl font-cinzel font-bold text-[#c9a84c] mb-4 tracking-wide">
                 Forgiveness
               </h3>
               <p className="text-gray-300 leading-relaxed font-light text-base">
@@ -109,12 +109,12 @@ export default function Whatwebelive() {
               viewport={{ once: true, margin: "-50px" }}
               variants={cardVariants}
               transition={{ delay: 0.1 }}
-              className="bg-[#0a0f1e] border border-[#c9a84c]/20 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group"
+              className="bg-[#0a0f1e] border-2 border-[#c9a84c]/40 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group md:scale-105 md:-translate-y-1 shadow-lg shadow-[#c9a84c]/10"
             >
-              <div className="w-14 h-14 bg-[#c9a84c]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/20 transition-colors">
+              <div className="w-14 h-14 bg-[#c9a84c]/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/30 transition-colors">
                 <Sun className="text-[#c9a84c]" size={28} />
               </div>
-              <h3 className="text-3xl font-cinzel font-bold text-white mb-4 tracking-wide">
+              <h3 className="text-3xl font-cinzel font-bold text-[#c9a84c] mb-4 tracking-wide">
                 Repentence
               </h3>
               <p className="text-gray-300 leading-relaxed font-light text-base">
@@ -130,12 +130,12 @@ export default function Whatwebelive() {
               viewport={{ once: true, margin: "-50px" }}
               variants={cardVariants}
               transition={{ delay: 0.2 }}
-              className="bg-[#0a0f1e] border border-[#c9a84c]/20 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group"
+              className="bg-[#0a0f1e] border-2 border-[#c9a84c]/40 p-8 rounded-xl backdrop-blur-sm hover:-translate-y-2 transition-transform duration-300 group md:scale-105 md:-translate-y-1 shadow-lg shadow-[#c9a84c]/10"
             >
-              <div className="w-14 h-14 bg-[#c9a84c]/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/20 transition-colors">
+              <div className="w-14 h-14 bg-[#c9a84c]/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-[#c9a84c]/30 transition-colors">
                 <Heart className="text-[#c9a84c]" size={28} />
               </div>
-              <h3 className="text-3xl font-cinzel font-bold text-white mb-4 tracking-wide">
+              <h3 className="text-3xl font-cinzel font-bold text-[#c9a84c] mb-4 tracking-wide">
                 Salvation
               </h3>
               <p className="text-gray-300 leading-relaxed font-light text-base">

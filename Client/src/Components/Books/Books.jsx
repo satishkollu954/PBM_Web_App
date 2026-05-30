@@ -160,7 +160,7 @@ export default function Books() {
       <div className="container mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="text-[#c9a84c] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
+          <span className="text-[#e6c860] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
             Library
           </span>
 
@@ -191,7 +191,7 @@ export default function Books() {
                   className={`text-sm uppercase tracking-wider font-medium pb-2 border-b-2 transition-colors ${
                     activeTab === tab
                       ? "text-[#c9a84c] border-[#c9a84c]"
-                      : "text-gray-400 border-transparent hover:text-white"
+                      : "text-gray-300 border-transparent hover:text-white"
                   }`}
                 >
                   {tab}
@@ -270,7 +270,7 @@ export default function Books() {
                   <motion.article
                     key={book._id}
                     variants={itemVariants}
-                    className="group cursor-pointer"
+                    className="group cursor-pointer p-3 rounded-xl border border-transparent hover:border-[#c9a84c]/20 hover:bg-[#0a0f1e]/50 hover:shadow-lg hover:shadow-[#c9a84c]/5 hover:-translate-y-1 transition-all duration-200"
                   >
                     <div className="relative aspect-[3/4] rounded-lg overflow-hidden mb-4 shadow-lg shadow-black/30">
                       <img
@@ -284,7 +284,7 @@ export default function Books() {
                       {book.title}
                     </h3>
 
-                    <p className="text-gray-400 text-xs leading-snug">
+                    <p className="text-gray-300 text-xs leading-snug">
                       {book.subtitle}
                     </p>
                   </motion.article>
@@ -297,7 +297,7 @@ export default function Books() {
           {activeTab === "All Books" && filteredAndSortedBooks.length === 0 && (
             <div className="text-center py-16">
               <BookOpen className="mx-auto text-gray-600 mb-4" size={48} />
-              <p className="text-gray-400 text-lg">No books found</p>
+              <p className="text-gray-300 text-lg">No books found</p>
             </div>
           )}
 
@@ -343,7 +343,7 @@ export default function Books() {
               <h3 className="text-white font-cinzel text-xl mb-6">{selectedTopic}</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
                 {filteredAndSortedBooks.map((book) => (
-                  <article key={book._id} className="group cursor-pointer">
+                  <article key={book._id} className="group cursor-pointer p-3 rounded-xl border border-transparent hover:border-[#c9a84c]/20 hover:bg-[#0a0f1e]/50 hover:shadow-lg hover:shadow-[#c9a84c]/5 hover:-translate-y-1 transition-all duration-200">
                     <div className="relative aspect-[3/4] rounded-lg overflow-hidden mb-4 shadow-lg shadow-black/30">
                       <img
                         src={book.cover}
@@ -354,12 +354,12 @@ export default function Books() {
                     <h3 className="text-white font-cinzel font-semibold text-sm leading-tight mb-1 group-hover:text-[#c9a84c] transition-colors">
                       {book.title}
                     </h3>
-                    <p className="text-gray-400 text-xs leading-snug">{book.subtitle}</p>
+                    <p className="text-gray-300 text-xs leading-snug">{book.subtitle}</p>
                   </article>
                 ))}
               </div>
               {filteredAndSortedBooks.length === 0 && (
-                <p className="text-gray-400 text-center py-12">No books found in this topic.</p>
+                <p className="text-gray-300 text-center py-12">No books found in this topic.</p>
               )}
             </motion.div>
           )}
@@ -406,7 +406,7 @@ export default function Books() {
               <h3 className="text-white font-cinzel text-xl mb-6">{selectedAuthor}</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
                 {filteredAndSortedBooks.map((book) => (
-                  <article key={book._id} className="group cursor-pointer">
+                  <article key={book._id} className="group cursor-pointer p-3 rounded-xl border border-transparent hover:border-[#c9a84c]/20 hover:bg-[#0a0f1e]/50 hover:shadow-lg hover:shadow-[#c9a84c]/5 hover:-translate-y-1 transition-all duration-200">
                     <div className="relative aspect-[3/4] rounded-lg overflow-hidden mb-4 shadow-lg shadow-black/30">
                       <img
                         src={book.cover}
@@ -417,12 +417,12 @@ export default function Books() {
                     <h3 className="text-white font-cinzel font-semibold text-sm leading-tight mb-1 group-hover:text-[#c9a84c] transition-colors">
                       {book.title}
                     </h3>
-                    <p className="text-gray-400 text-xs leading-snug">{book.subtitle}</p>
+                    <p className="text-gray-300 text-xs leading-snug">{book.subtitle}</p>
                   </article>
                 ))}
               </div>
               {filteredAndSortedBooks.length === 0 && (
-                <p className="text-gray-400 text-center py-12">No books found for this author.</p>
+                <p className="text-gray-300 text-center py-12">No books found for this author.</p>
               )}
             </motion.div>
           )}
@@ -469,7 +469,7 @@ export default function Books() {
               <h3 className="text-white font-cinzel text-xl mb-6">{selectedYear}</h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
                 {filteredAndSortedBooks.map((book) => (
-                  <article key={book._id} className="group cursor-pointer">
+                  <article key={book._id} className="group cursor-pointer p-3 rounded-xl border border-transparent hover:border-[#c9a84c]/20 hover:bg-[#0a0f1e]/50 hover:shadow-lg hover:shadow-[#c9a84c]/5 hover:-translate-y-1 transition-all duration-200">
                     <div className="relative aspect-[3/4] rounded-lg overflow-hidden mb-4 shadow-lg shadow-black/30">
                       <img
                         src={book.cover}
@@ -480,12 +480,12 @@ export default function Books() {
                     <h3 className="text-white font-cinzel font-semibold text-sm leading-tight mb-1 group-hover:text-[#c9a84c] transition-colors">
                       {book.title}
                     </h3>
-                    <p className="text-gray-400 text-xs leading-snug">{book.subtitle}</p>
+                    <p className="text-gray-300 text-xs leading-snug">{book.subtitle}</p>
                   </article>
                 ))}
               </div>
               {filteredAndSortedBooks.length === 0 && (
-                <p className="text-gray-400 text-center py-12">No books found for this year.</p>
+                <p className="text-gray-300 text-center py-12">No books found for this year.</p>
               )}
             </motion.div>
           )}
@@ -494,3 +494,5 @@ export default function Books() {
     </section>
   );
 }
+
+

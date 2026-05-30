@@ -65,32 +65,32 @@ export default function Footer() {
               <span className="mr-2 text-2xl">&#10013;</span>
               PBM Church
             </a>
-            <p className="text-gray-400 text-xs leading-relaxed mb-4">
+            <p className="text-gray-300 text-xs leading-relaxed mb-4">
               A community of faith, hope, and love. Gathering to worship,
               scattering to serve, growing in grace together.
             </p>
             <div className="flex gap-4">
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-400 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
+                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
                 <Facebook size={18} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-400 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
+                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
                 <Instagram size={18} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-400 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
+                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
                 <Youtube size={18} />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-400 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
+                className="w-10 h-10 rounded-full bg-[#0d1b2a] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
                 <Twitter size={18} />
               </a>
