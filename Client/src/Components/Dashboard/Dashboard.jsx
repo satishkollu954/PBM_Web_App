@@ -268,8 +268,8 @@ export default function Dashboard() {
             {/* Dashboard Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
               {/* Total Believers */}
-              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6 hover:border-[#c9a84c]/50 transition-all">
-                <h3 className="text-gray-400 text-sm mb-3">Total Believers</h3>
+              <div className="bg-white border border-[#c9a84c]/30 rounded-3xl p-6 hover:border-[#c9a84c]/60 transition-all shadow-sm">
+                <h3 className="text-[#1E1535]/60 text-sm mb-3">Total Believers</h3>
 
                 <p className="text-5xl font-bold text-[#c9a84c]">
                   {dashboardData.totalBelievers}
@@ -277,8 +277,8 @@ export default function Dashboard() {
               </div>
 
               {/* Nagullanka */}
-              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
-                <h3 className="text-gray-400 text-sm mb-3">
+              <div className="bg-white border border-[#c9a84c]/30 rounded-3xl p-6 shadow-sm">
+                <h3 className="text-[#1E1535]/60 text-sm mb-3">
                   Nagullanka Believers
                 </h3>
 
@@ -288,17 +288,17 @@ export default function Dashboard() {
 
                 <div className="mt-5 space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">Friday</span>
+                    <span className="text-[#1E1535]/60">Friday</span>
 
-                    <span className="text-white font-bold">
+                    <span className="text-[#1E1535] font-bold">
                       {dashboardData.nagFridayCount}
                     </span>
                   </div>
 
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">Sunday</span>
+                    <span className="text-[#1E1535]/60">Sunday</span>
 
-                    <span className="text-white font-bold">
+                    <span className="text-[#1E1535] font-bold">
                       {dashboardData.nagSundayCount}
                     </span>
                   </div>
@@ -306,8 +306,8 @@ export default function Dashboard() {
               </div>
 
               {/* Marteru */}
-              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
-                <h3 className="text-gray-400 text-sm mb-3">
+              <div className="bg-white border border-[#c9a84c]/30 rounded-3xl p-6 shadow-sm">
+                <h3 className="text-[#1E1535]/60 text-sm mb-3">
                   Marteru Believers
                 </h3>
 
@@ -317,17 +317,17 @@ export default function Dashboard() {
 
                 <div className="mt-5 space-y-2">
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">Saturday</span>
+                    <span className="text-[#1E1535]/60">Saturday</span>
 
-                    <span className="text-white font-bold">
+                    <span className="text-[#1E1535] font-bold">
                       {dashboardData.marSaturdayCount}
                     </span>
                   </div>
 
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-400">Sunday</span>
+                    <span className="text-[#1E1535]/60">Sunday</span>
 
-                    <span className="text-white font-bold">
+                    <span className="text-[#1E1535] font-bold">
                       {dashboardData.marSundayCount}
                     </span>
                   </div>
@@ -335,8 +335,8 @@ export default function Dashboard() {
               </div>
 
               {/* Books */}
-              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
-                <h3 className="text-gray-400 text-sm mb-3">Books</h3>
+              <div className="bg-white border border-[#c9a84c]/30 rounded-3xl p-6 shadow-sm">
+                <h3 className="text-[#1E1535]/60 text-sm mb-3">Books</h3>
 
                 <p className="text-5xl font-bold text-[#c9a84c]">
                   {dashboardData.booksCount}
@@ -344,8 +344,8 @@ export default function Dashboard() {
               </div>
 
               {/* Events */}
-              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
-                <h3 className="text-gray-400 text-sm mb-3">Events</h3>
+              <div className="bg-white border border-[#c9a84c]/30 rounded-3xl p-6 shadow-sm">
+                <h3 className="text-[#1E1535]/60 text-sm mb-3">Events</h3>
 
                 <p className="text-5xl font-bold text-[#c9a84c]">
                   {dashboardData.eventsCount}
@@ -353,8 +353,8 @@ export default function Dashboard() {
               </div>
 
               {/* Songs */}
-              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
-                <h3 className="text-gray-400 text-sm mb-3">Worship Songs</h3>
+              <div className="bg-white border border-[#c9a84c]/30 rounded-3xl p-6 shadow-sm">
+                <h3 className="text-[#1E1535]/60 text-sm mb-3">Worship Songs</h3>
 
                 <p className="text-5xl font-bold text-[#c9a84c]">
                   {dashboardData.songsCount}
@@ -362,9 +362,9 @@ export default function Dashboard() {
               </div>
 
               {/* Sermons */}
-              <div className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl p-6">
+              <div className="bg-white border border-[#c9a84c]/30 rounded-3xl p-6 shadow-sm">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="text-gray-400 text-sm">Youtube Sermons</h3>
+                  <h3 className="text-[#1E1535]/60 text-sm">Youtube Sermons</h3>
 
                   <Youtube className="text-red-500" size={22} />
                 </div>
@@ -380,17 +380,17 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#081120] pt-16 md:pt-20">
+    <div className="flex min-h-screen bg-[#FFFDF5] pt-16 md:pt-20">
       {/* Sidebar */}
       <div
-        className={`fixed md:relative z-30 w-72 bg-[#0d1b2a] border-r border-[#c9a84c]/20 transform transition-transform duration-300 ${
+        className={`fixed md:relative z-30 w-72 bg-white border-r border-[#c9a84c]/30 transform transition-transform duration-300 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         } md:translate-x-0`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-[#c9a84c]/20">
+        <div className="flex items-center justify-between p-5 border-b border-[#c9a84c]/30">
           <div>
-            <p className="text-xs text-gray-400 uppercase tracking-widest">
+            <p className="text-xs text-[#1E1535]/60 uppercase tracking-widest">
               Admin Panel
             </p>
           </div>
@@ -418,8 +418,8 @@ export default function Dashboard() {
                 }}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
                   activeMenu === item.name
-                    ? "bg-[#c9a84c]/15 text-[#c9a84c]"
-                    : "text-gray-300 hover:bg-[#c9a84c]/10 hover:text-[#c9a84c]"
+                    ? "bg-[#c9a84c]/15 text-[#c9a84c] font-semibold"
+                    : "text-[#1E1535] hover:bg-[#c9a84c]/10 hover:text-[#c9a84c]"
                 }`}
               >
                 <Icon size={20} />
@@ -432,7 +432,7 @@ export default function Dashboard() {
           {/* Logout */}
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-400 hover:bg-red-500/10 transition-all mt-8"
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-500 hover:bg-red-500/10 transition-all mt-8"
           >
             <LogOut size={20} />
             Logout
@@ -443,7 +443,7 @@ export default function Dashboard() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Mobile Header */}
-        <header className="md:hidden bg-[#0d1b2a] border-b border-[#c9a84c]/20 px-4 py-3 flex items-center justify-between">
+        <header className="md:hidden bg-white border-b border-[#c9a84c]/30 px-4 py-3 flex items-center justify-between">
           <button
             onClick={() => setSidebarOpen(true)}
             className="text-[#c9a84c]"
@@ -458,9 +458,9 @@ export default function Dashboard() {
         <main className="flex-1 p-6 md:p-8 overflow-y-auto">
           {activeMenu === "Dashboard" && (
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-white mb-2">Dashboard</h2>
+              <h2 className="text-3xl font-bold text-[#1E1535] mb-2">Dashboard</h2>
 
-              <p className="text-gray-400">
+              <p className="text-[#1E1535]/60">
                 Welcome to PBM Church Admin Dashboard
               </p>
             </div>

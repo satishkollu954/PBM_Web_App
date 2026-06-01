@@ -231,19 +231,19 @@ export function ViewBeliever() {
   const totalPages = Math.ceil(filteredBelievers.length / believersPerPage);
 
   return (
-    <section className="min-h-screen text-white">
+    <section className="min-h-screen text-[#1E1535]">
       {/* Header */}
       <div className="flex flex-col lg:flex-row justify-between gap-5 mb-10">
         <div>
           <h1 className="text-4xl font-bold text-[#c9a84c] mb-2">Believers</h1>
 
-          <p className="text-gray-400">Manage all church believers</p>
+          <p className="text-[#1E1535]/60">Manage all church believers</p>
         </div>
 
         {/* Search */}
         <div className="relative w-full lg:w-96">
           <Search
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-[#1E1535]/60"
             size={20}
           />
 
@@ -252,7 +252,7 @@ export function ViewBeliever() {
             placeholder="Search believer..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-[#111827] border border-[#c9a84c]/20 rounded-2xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#c9a84c]"
+            className="w-full bg-white border border-[#c9a84c]/30 rounded-2xl py-3 pl-12 pr-4 text-[#1E1535] focus:outline-none focus:border-[#c9a84c]"
           />
         </div>
       </div>
@@ -274,7 +274,7 @@ export function ViewBeliever() {
 
               setCurrentPage(1);
             }}
-            className="w-full bg-[#111827] border border-[#c9a84c]/20 rounded-2xl py-3 px-4 text-white focus:outline-none focus:border-[#c9a84c]"
+            className="w-full bg-white border border-[#c9a84c]/30 rounded-2xl py-3 px-4 text-[#1E1535] focus:outline-none focus:border-[#c9a84c]"
           >
             <option value="">Select Church</option>
 
@@ -285,8 +285,8 @@ export function ViewBeliever() {
 
           {/* Church Count */}
           {selectedChurch && (
-            <div className="mt-3 bg-[#111827] border border-[#c9a84c]/20 rounded-xl px-4 py-3">
-              <span className="text-gray-300">Total Believers:</span>
+            <div className="mt-3 bg-white border border-[#c9a84c]/30 rounded-xl px-4 py-3">
+              <span className="text-[#1E1535]/70">Total Believers:</span>
 
               <span className="text-[#c9a84c] font-bold ml-2">
                 {churchCount}
@@ -309,7 +309,7 @@ export function ViewBeliever() {
 
               setCurrentPage(1);
             }}
-            className="w-full bg-[#111827] border border-[#c9a84c]/20 rounded-2xl py-3 px-4 text-white focus:outline-none focus:border-[#c9a84c] disabled:opacity-50"
+            className="w-full bg-white border border-[#c9a84c]/30 rounded-2xl py-3 px-4 text-[#1E1535] focus:outline-none focus:border-[#c9a84c] disabled:opacity-50"
           >
             <option value="">Select Day Category</option>
 
@@ -323,8 +323,8 @@ export function ViewBeliever() {
 
           {/* Day Count */}
           {selectedDay && (
-            <div className="mt-3 bg-[#111827] border border-[#c9a84c]/20 rounded-xl px-4 py-3">
-              <span className="text-gray-300">Filtered Count:</span>
+            <div className="mt-3 bg-white border border-[#c9a84c]/30 rounded-xl px-4 py-3">
+              <span className="text-[#1E1535]/70">Filtered Count:</span>
 
               <span className="text-[#c9a84c] font-bold ml-2">{dayCount}</span>
             </div>
@@ -351,15 +351,15 @@ export function ViewBeliever() {
             {currentBelievers.map((believer) => (
               <div
                 key={believer._id}
-                className="bg-[#111827] border border-[#c9a84c]/20 rounded-2xl overflow-hidden hover:border-[#c9a84c]/50 transition-all duration-300 cursor-pointer hover:-translate-y-1"
+                className="bg-white border border-[#c9a84c]/30 rounded-2xl overflow-hidden hover:border-[#c9a84c]/50 transition-all duration-300 cursor-pointer hover:-translate-y-1"
                 onClick={() => setSelectedBeliever(believer)}
               >
                 {/* Image */}
-                <div className="h-64 bg-[#0a0f1e] flex items-center justify-center overflow-hidden">
+                <div className="h-64 bg-[#FFFDF5] flex items-center justify-center overflow-hidden">
                   <img
                     src={believer.photo}
                     alt={believer.firstName}
-                    className="w-full h-full object-contain bg-[#0a0f1e] hover:scale-105 transition-all duration-500"
+                    className="w-full h-full object-contain bg-[#FFFDF5] hover:scale-105 transition-all duration-500"
                   />
                 </div>
 
@@ -369,15 +369,15 @@ export function ViewBeliever() {
                     {believer.firstName} {believer.lastName}
                   </h2>
 
-                  <p className="text-sm text-gray-300 mt-2 truncate">
+                  <p className="text-sm text-[#1E1535]/70 mt-2 truncate">
                     {believer.phoneNumber}
                   </p>
 
-                  <p className="text-sm text-gray-400 truncate">
+                  <p className="text-sm text-[#1E1535]/60 truncate">
                     {believer.churchBelongsTo}
                   </p>
 
-                  <p className="text-sm text-gray-400">
+                  <p className="text-sm text-[#1E1535]/60">
                     {believer.daysCategory}
                   </p>
                 </div>
@@ -387,7 +387,7 @@ export function ViewBeliever() {
 
           {/* Empty */}
           {currentBelievers.length === 0 && (
-            <div className="text-center py-20 text-gray-400 text-xl">
+            <div className="text-center py-20 text-[#1E1535]/60 text-xl">
               No believers found
             </div>
           )}
@@ -398,7 +398,7 @@ export function ViewBeliever() {
               <button
                 disabled={currentPage === 1}
                 onClick={() => setCurrentPage(currentPage - 1)}
-                className="bg-[#111827] border border-[#c9a84c]/20 p-3 rounded-xl disabled:opacity-50"
+                className="bg-white border border-[#c9a84c]/30 p-3 rounded-xl disabled:opacity-50"
               >
                 <ChevronLeft />
               </button>
@@ -410,7 +410,7 @@ export function ViewBeliever() {
               <button
                 disabled={currentPage === totalPages}
                 onClick={() => setCurrentPage(currentPage + 1)}
-                className="bg-[#111827] border border-[#c9a84c]/20 p-3 rounded-xl disabled:opacity-50"
+                className="bg-white border border-[#c9a84c]/30 p-3 rounded-xl disabled:opacity-50"
               >
                 <ChevronRight />
               </button>
@@ -422,7 +422,7 @@ export function ViewBeliever() {
       {/* Popup */}
       {selectedBeliever && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4">
-          <div className="bg-[#111827] border border-[#c9a84c]/20 rounded-2xl w-full max-w-6xl max-h-[95vh] overflow-y-auto relative">
+          <div className="bg-white border border-[#c9a84c]/30 rounded-2xl w-full max-w-6xl max-h-[95vh] overflow-y-auto relative">
             {/* Close Button */}
             <button
               onClick={() => {
@@ -434,7 +434,7 @@ export function ViewBeliever() {
 
                 setEditData({});
               }}
-              className="absolute top-4 right-4 z-50 bg-black/50 hover:bg-black text-white p-2 rounded-full"
+              className="absolute top-4 right-4 z-50 bg-black/50 hover:bg-black text-[#1E1535] p-2 rounded-full"
             >
               <X size={22} />
             </button>
@@ -442,7 +442,7 @@ export function ViewBeliever() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-4 sm:p-6 lg:p-8">
               {/* LEFT IMAGE */}
               <div className="w-full">
-                <div className="w-full bg-[#0a0f1e] rounded-2xl overflow-hidden border border-[#c9a84c]/10">
+                <div className="w-full bg-[#FFFDF5] rounded-2xl overflow-hidden border border-[#c9a84c]/10">
                   <img
                     src={imagePreview || selectedBeliever.photo}
                     alt=""
@@ -455,7 +455,7 @@ export function ViewBeliever() {
                     <input
                       type="file"
                       onChange={handleImageChange}
-                      className="w-full text-sm text-gray-300"
+                      className="w-full text-sm text-[#1E1535]/70"
                     />
                   </div>
                 )}
@@ -470,47 +470,47 @@ export function ViewBeliever() {
                       {selectedBeliever.firstName} {selectedBeliever.lastName}
                     </h2>
 
-                    <div className="space-y-4 text-gray-300">
+                    <div className="space-y-4 text-[#1E1535]/70">
                       <p className="break-words">
-                        <span className="text-white font-semibold">Phone:</span>{" "}
+                        <span className="text-[#1E1535] font-semibold">Phone:</span>{" "}
                         {selectedBeliever.phoneNumber}
                       </p>
 
                       <p className="break-words">
-                        <span className="text-white font-semibold">
+                        <span className="text-[#1E1535] font-semibold">
                           Address:
                         </span>{" "}
                         {selectedBeliever.address}
                       </p>
 
                       <p>
-                        <span className="text-white font-semibold">
+                        <span className="text-[#1E1535] font-semibold">
                           Gender:
                         </span>{" "}
                         {selectedBeliever.gender}
                       </p>
 
                       <p>
-                        <span className="text-white font-semibold">
+                        <span className="text-[#1E1535] font-semibold">
                           Church:
                         </span>{" "}
                         {selectedBeliever.churchBelongsTo}
                       </p>
 
                       <p>
-                        <span className="text-white font-semibold">Day:</span>{" "}
+                        <span className="text-[#1E1535] font-semibold">Day:</span>{" "}
                         {selectedBeliever.daysCategory}
                       </p>
 
                       <p className="break-words">
-                        <span className="text-white font-semibold">
+                        <span className="text-[#1E1535] font-semibold">
                           Family:
                         </span>{" "}
                         {selectedBeliever.familyMemberName}
                       </p>
 
                       <p>
-                        <span className="text-white font-semibold">
+                        <span className="text-[#1E1535] font-semibold">
                           Pincode:
                         </span>{" "}
                         {selectedBeliever.pinCode}
@@ -529,7 +529,7 @@ export function ViewBeliever() {
 
                       <button
                         onClick={() => setDeleteModal(selectedBeliever)}
-                        className="flex-1 bg-red-500 py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-red-600 transition-all"
+                        className="flex-1 bg-red-500 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-red-600 transition-all"
                       >
                         <Trash2 size={18} />
                         Delete
@@ -550,7 +550,7 @@ export function ViewBeliever() {
                         value={editData.firstName || ""}
                         onChange={handleChange}
                         placeholder="First Name"
-                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
+                        className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl px-4 py-3"
                       />
 
                       <input
@@ -559,7 +559,7 @@ export function ViewBeliever() {
                         value={editData.lastName || ""}
                         onChange={handleChange}
                         placeholder="Last Name"
-                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
+                        className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl px-4 py-3"
                       />
 
                       <input
@@ -568,14 +568,14 @@ export function ViewBeliever() {
                         value={editData.phoneNumber || ""}
                         onChange={handleChange}
                         placeholder="Phone Number"
-                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
+                        className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl px-4 py-3"
                       />
 
                       <select
                         name="gender"
                         value={editData.gender || ""}
                         onChange={handleChange}
-                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
+                        className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl px-4 py-3"
                       >
                         <option value="">Select Gender</option>
 
@@ -592,7 +592,7 @@ export function ViewBeliever() {
                         onChange={handleChange}
                         placeholder="Address"
                         rows={4}
-                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3 resize-none"
+                        className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl px-4 py-3 resize-none"
                       />
 
                       <input
@@ -601,7 +601,7 @@ export function ViewBeliever() {
                         value={editData.pinCode || ""}
                         onChange={handleChange}
                         placeholder="Pin Code"
-                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
+                        className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl px-4 py-3"
                       />
 
                       {/* Church */}
@@ -619,7 +619,7 @@ export function ViewBeliever() {
 
                           setIsDirty(true);
                         }}
-                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
+                        className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl px-4 py-3"
                       >
                         <option value="">Select Church</option>
 
@@ -634,7 +634,7 @@ export function ViewBeliever() {
                         value={editData.daysCategory || ""}
                         onChange={handleChange}
                         disabled={!editData.churchBelongsTo}
-                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3 disabled:opacity-50"
+                        className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl px-4 py-3 disabled:opacity-50"
                       >
                         <option value="">Select Day</option>
 
@@ -661,7 +661,7 @@ export function ViewBeliever() {
                         value={editData.familyMemberName || ""}
                         onChange={handleChange}
                         placeholder="Family Member Name"
-                        className="w-full bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl px-4 py-3"
+                        className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl px-4 py-3"
                       />
 
                       {/* Buttons */}
@@ -672,7 +672,7 @@ export function ViewBeliever() {
                           className={`flex-1 py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${
                             isDirty && !updateLoading
                               ? "bg-[#c9a84c] text-black hover:bg-[#d8b45a]"
-                              : "bg-gray-700 text-gray-400 cursor-not-allowed"
+                              : "bg-gray-200 text-[#1E1535]/60 cursor-not-allowed"
                           }`}
                         >
                           {updateLoading ? (
@@ -699,7 +699,7 @@ export function ViewBeliever() {
                             setIsDirty(false);
                           }}
                           disabled={updateLoading}
-                          className="flex-1 bg-gray-700 hover:bg-gray-600 text-white py-3 rounded-xl font-bold transition-all"
+                          className="flex-1 bg-gray-200 hover:bg-gray-200 text-[#1E1535] py-3 rounded-xl font-bold transition-all"
                         >
                           Cancel
                         </button>
@@ -716,19 +716,19 @@ export function ViewBeliever() {
       {/* Delete Modal */}
       {deleteModal && (
         <div className="fixed inset-0 z-[60] bg-black/80 flex items-center justify-center p-4">
-          <div className="bg-[#111827] border border-red-500/30 rounded-2xl p-8 w-full max-w-md text-center">
+          <div className="bg-white border border-red-500/30 rounded-2xl p-8 w-full max-w-md text-center">
             <h2 className="text-2xl font-bold text-red-400 mb-4">
               Delete Believer
             </h2>
 
-            <p className="text-gray-300 mb-8">
+            <p className="text-[#1E1535]/70 mb-8">
               Are you sure you want to delete this believer?
             </p>
 
             <div className="flex gap-4">
               <button
                 onClick={() => setDeleteModal(null)}
-                className="flex-1 bg-gray-700 py-3 rounded-xl"
+                className="flex-1 bg-gray-200 py-3 rounded-xl"
               >
                 Cancel
               </button>
@@ -736,7 +736,7 @@ export function ViewBeliever() {
               <button
                 onClick={() => handleDelete(deleteModal._id)}
                 disabled={deleteLoading}
-                className="flex-1 bg-red-500 py-3 rounded-xl disabled:opacity-70"
+                className="flex-1 bg-red-500 text-white py-3 rounded-xl disabled:opacity-70"
               >
                 {deleteLoading ? "Deleting..." : "Delete"}
               </button>

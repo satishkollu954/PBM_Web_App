@@ -185,7 +185,7 @@ export function AddEvent() {
             Manage Events
           </h2>
 
-          <p className="text-xs md:text-base text-gray-400 mt-1 md:mt-2">
+          <p className="text-xs md:text-base text-[#1E1535]/60 mt-1 md:mt-2">
             {events.length} event total
           </p>
         </div>
@@ -204,9 +204,9 @@ export function AddEvent() {
 
       {/* Desktop Table */}
       <div className="hidden md:block overflow-x-auto">
-        <table className="w-full text-white">
+        <table className="w-full text-[#1E1535]">
           <thead>
-            <tr className="border-b border-[#c9a84c]/20">
+            <tr className="border-b border-[#c9a84c]/30">
               <th className="p-4 text-left">Banner</th>
               <th className="p-4 text-left">Title</th>
               <th className="p-4 text-left">Start</th>
@@ -279,7 +279,7 @@ export function AddEvent() {
         {filteredEvents.map((event) => (
           <div
             key={event._id}
-            className="bg-[#020d1f] border border-[#c9a84c]/20 rounded-2xl overflow-hidden"
+            className="bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-2xl overflow-hidden"
           >
             <img
               src={event.bannerImage}
@@ -292,7 +292,7 @@ export function AddEvent() {
                 {event.title}
               </h3>
 
-              <div className="mt-3 text-sm text-gray-300 space-y-1">
+              <div className="mt-3 text-sm text-[#1E1535]/70 space-y-1">
                 <p>
                   <strong>Start:</strong>{" "}
                   {new Date(event.startDate).toLocaleDateString()}
@@ -343,20 +343,20 @@ export function AddEvent() {
       {/* DELETE MODAL */}
       {showDeleteModal && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
-          <div className="bg-[#081223] p-8 rounded-2xl border border-[#c9a84c]/20">
-            <h3 className="text-2xl text-white mb-6">Delete Event?</h3>
+          <div className="bg-white p-8 rounded-2xl border border-[#c9a84c]/30">
+            <h3 className="text-2xl text-[#1E1535] mb-6">Delete Event?</h3>
 
             <div className="flex gap-4">
               <button
                 onClick={handleDelete}
-                className="bg-red-500 px-6 py-3 rounded-xl"
+                className="bg-red-500 text-white px-6 py-3 rounded-xl"
               >
                 Delete
               </button>
 
               <button
                 onClick={() => setShowDeleteModal(false)}
-                className="bg-gray-600 px-6 py-3 rounded-xl"
+                className="bg-gray-200 px-6 py-3 rounded-xl"
               >
                 Cancel
               </button>
@@ -366,7 +366,7 @@ export function AddEvent() {
       )}
       {showFormModal && (
         <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
-          <div className="bg-[#081223] border border-[#c9a84c]/20 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-8">
+          <div className="bg-white border border-[#c9a84c]/30 rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-y-auto p-8">
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-8">
               <h2 className="text-3xl font-cinzel text-[#c9a84c]">
                 {editId ? "Edit Event" : "Add Event"}
@@ -377,7 +377,7 @@ export function AddEvent() {
                   setShowFormModal(false);
                   resetForm();
                 }}
-                className="text-white text-3xl"
+                className="text-[#1E1535] text-3xl"
               >
                 ×
               </button>
@@ -390,14 +390,14 @@ export function AddEvent() {
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="Event Title"
-                className="bg-[#020d1f] border border-[#c9a84c]/20 rounded-xl p-4 text-white"
+                className="bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl p-4 text-[#1E1535]"
               />
 
               <input
                 type="file"
                 accept="image/*"
                 onChange={(e) => setBannerImage(e.target.files[0])}
-                className="bg-[#020d1f] border border-[#c9a84c]/20 rounded-xl p-4 text-white"
+                className="bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl p-4 text-[#1E1535]"
               />
 
               <textarea
@@ -406,11 +406,11 @@ export function AddEvent() {
                 value={formData.description}
                 onChange={handleChange}
                 placeholder="Event Description"
-                className="md:col-span-2 bg-[#020d1f] border border-[#c9a84c]/20 rounded-xl p-4 text-white"
+                className="md:col-span-2 bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl p-4 text-[#1E1535]"
               />
 
               <div>
-                <label className="block text-sm text-gray-300 mb-2">
+                <label className="block text-sm text-[#1E1535]/70 mb-2">
                   Start Date *
                 </label>
 
@@ -421,15 +421,15 @@ export function AddEvent() {
                   onChange={handleChange}
                   required
                   style={{
-                    colorScheme: "dark",
+                    colorScheme: "light",
                   }}
                   min={new Date().toISOString().split("T")[0]}
-                  className="w-full bg-[#020d1f] border border-[#c9a84c]/20 rounded-xl p-4 text-white"
+                  className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl p-4 text-[#1E1535]"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-gray-300 mb-2">
+                <label className="block text-sm text-[#1E1535]/70 mb-2">
                   End Date *
                 </label>
 
@@ -442,9 +442,9 @@ export function AddEvent() {
                   disabled={!formData.startDate}
                   min={formData.startDate}
                   style={{
-                    colorScheme: "dark",
+                    colorScheme: "light",
                   }}
-                  className="w-full bg-[#020d1f] border border-[#c9a84c]/20 rounded-xl p-4 text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl p-4 text-[#1E1535] disabled:opacity-50 disabled:cursor-not-allowed"
                 />
               </div>
 
@@ -452,10 +452,10 @@ export function AddEvent() {
                 type="file"
                 accept=".pdf"
                 onChange={(e) => setSongSheetPdf(e.target.files[0])}
-                className="bg-[#020d1f] border border-[#c9a84c]/20 rounded-xl p-4 text-white"
+                className="bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl p-4 text-[#1E1535]"
               />
 
-              <label className="flex items-center gap-3 text-white">
+              <label className="flex items-center gap-3 text-[#1E1535]">
                 <input
                   type="checkbox"
                   name="isActive"
@@ -484,7 +484,7 @@ export function AddEvent() {
                     setShowFormModal(false);
                     resetForm();
                   }}
-                  className="bg-gray-600 text-white px-8 py-3 rounded-xl"
+                  className="bg-gray-200 text-[#1E1535] px-8 py-3 rounded-xl"
                 >
                   Cancel
                 </button>

@@ -145,11 +145,11 @@ export default function ManageBooks() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
-          <h2 className="text-xl md:text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-xl md:text-2xl font-bold text-[#1E1535] flex items-center gap-2">
             <BookOpen size={24} className="text-[#c9a84c]" />
             Manage Books
           </h2>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-[#1E1535]/60 text-sm mt-1">
             {books.length} book{books.length !== 1 ? "s" : ""} total
           </p>
         </div>
@@ -164,9 +164,9 @@ export default function ManageBooks() {
 
       {/* Table */}
       {loading ? (
-        <p className="text-gray-400 text-center py-16">Loading books...</p>
+        <p className="text-[#1E1535]/60 text-center py-16">Loading books...</p>
       ) : books.length === 0 ? (
-        <p className="text-gray-500 text-center py-16">
+        <p className="text-[#1E1535]/50 text-center py-16">
           No books yet. Click "Add Book" to get started.
         </p>
       ) : (
@@ -174,7 +174,7 @@ export default function ManageBooks() {
           {/* Desktop Table */}
           <div className="hidden md:block overflow-x-auto rounded-xl border border-[#c9a84c]/20">
             <table className="w-full text-sm text-left">
-              <thead className="bg-[#0a0f1e] text-[#c9a84c] uppercase text-xs">
+              <thead className="bg-[#FFFDF5] text-[#c9a84c] uppercase text-xs">
                 <tr>
                   <th className="px-4 py-3">Cover</th>
                   <th className="px-4 py-3">Title</th>
@@ -189,7 +189,7 @@ export default function ManageBooks() {
                 {books.map((book) => (
                   <tr
                     key={book._id}
-                    className="bg-[#0d1b2a] border-b border-[#c9a84c]/10"
+                    className="bg-white border-b border-[#c9a84c]/10"
                   >
                     <td className="px-4 py-3">
                       <img
@@ -200,16 +200,16 @@ export default function ManageBooks() {
                     </td>
 
                     <td className="px-4 py-3">
-                      <p className="font-semibold text-white">{book.title}</p>
+                      <p className="font-semibold text-[#1E1535]">{book.title}</p>
 
-                      <p className="text-gray-400 text-xs">{book.subtitle}</p>
+                      <p className="text-[#1E1535]/60 text-xs">{book.subtitle}</p>
                     </td>
 
-                    <td className="px-4 py-3 text-gray-300">{book.author}</td>
+                    <td className="px-4 py-3 text-[#1E1535]/70">{book.author}</td>
 
-                    <td className="px-4 py-3 text-gray-300">{book.topic}</td>
+                    <td className="px-4 py-3 text-[#1E1535]/70">{book.topic}</td>
 
-                    <td className="px-4 py-3 text-gray-300">{book.year}</td>
+                    <td className="px-4 py-3 text-[#1E1535]/70">{book.year}</td>
 
                     <td className="px-4 py-3">
                       <div className="flex justify-end gap-2">
@@ -239,7 +239,7 @@ export default function ManageBooks() {
             {books.map((book) => (
               <div
                 key={book._id}
-                className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-xl p-4"
+                className="bg-white border border-[#c9a84c]/20 rounded-xl p-4"
               >
                 <div className="flex gap-3">
                   {book.cover ? (
@@ -255,11 +255,11 @@ export default function ManageBooks() {
                   )}
 
                   <div className="flex-1">
-                    <h3 className="text-white font-semibold text-sm">
+                    <h3 className="text-[#1E1535] font-semibold text-sm">
                       {book.title}
                     </h3>
 
-                    <p className="text-gray-400 text-xs mt-1">
+                    <p className="text-[#1E1535]/60 text-xs mt-1">
                       {book.subtitle}
                     </p>
 
@@ -272,7 +272,7 @@ export default function ManageBooks() {
                 </div>
 
                 <div className="flex justify-between items-center mt-4">
-                  <span className="text-gray-400 text-xs">
+                  <span className="text-[#1E1535]/60 text-xs">
                     Year: {book.year}
                   </span>
 
@@ -314,20 +314,20 @@ export default function ManageBooks() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-[#0d1b2a] border border-[#c9a84c]/30 rounded-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto"
+              className="bg-white border border-[#c9a84c]/30 rounded-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto"
             >
               {/* Modal Header */}
               <div className="flex items-center justify-between mb-5">
                 <h3
                   id="book-form-title"
-                  className="text-lg font-bold text-white"
+                  className="text-lg font-bold text-[#1E1535]"
                 >
                   {editTarget ? "Edit Book" : "Add New Book"}
                 </h3>
                 <button
                   onClick={closeForm}
                   aria-label="Close form"
-                  className="text-gray-400 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] rounded"
+                  className="text-[#1E1535]/60 hover:text-[#1E1535] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] rounded"
                 >
                   <X size={20} />
                 </button>
@@ -339,7 +339,7 @@ export default function ManageBooks() {
                 <div>
                   <label
                     htmlFor="book-title"
-                    className="block text-sm text-gray-400 mb-1"
+                    className="block text-sm text-[#1E1535]/60 mb-1"
                   >
                     Title{" "}
                     <span aria-hidden="true" className="text-red-400">
@@ -353,7 +353,7 @@ export default function ManageBooks() {
                       value={form.title}
                       onChange={handleChange}
                       required
-                      className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 pr-9 focus:outline-none focus:border-[#c9a84c] transition-colors"
+                      className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] rounded-lg px-3 py-2 pr-9 focus:outline-none focus:border-[#c9a84c] transition-colors"
                       placeholder="e.g. The Normal Christian Life"
                     />
                     {form.title && (
@@ -362,7 +362,7 @@ export default function ManageBooks() {
                         onClick={() =>
                           setForm((prev) => ({ ...prev, title: "" }))
                         }
-                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-400 transition-colors"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-[#1E1535]/60 hover:text-red-400 transition-colors"
                         aria-label="Clear title"
                       >
                         <XCircle size={18} />
@@ -375,7 +375,7 @@ export default function ManageBooks() {
                 <div>
                   <label
                     htmlFor="book-subtitle"
-                    className="block text-sm text-gray-400 mb-1"
+                    className="block text-sm text-[#1E1535]/60 mb-1"
                   >
                     Subtitle
                   </label>
@@ -384,7 +384,7 @@ export default function ManageBooks() {
                     name="subtitle"
                     value={form.subtitle}
                     onChange={handleChange}
-                    className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
+                    className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
                     placeholder="e.g. A classic on the Christian walk"
                   />
                 </div>
@@ -393,7 +393,7 @@ export default function ManageBooks() {
                 <div>
                   <label
                     htmlFor="book-author"
-                    className="block text-sm text-gray-400 mb-1"
+                    className="block text-sm text-[#1E1535]/60 mb-1"
                   >
                     Author{" "}
                     <span aria-hidden="true" className="text-red-400">
@@ -406,7 +406,7 @@ export default function ManageBooks() {
                     value={form.author}
                     onChange={handleChange}
                     required
-                    className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
+                    className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
                     placeholder="e.g. Watchman Nee"
                   />
                 </div>
@@ -415,7 +415,7 @@ export default function ManageBooks() {
                 <div>
                   <label
                     htmlFor="book-topic"
-                    className="block text-sm text-gray-400 mb-1"
+                    className="block text-sm text-[#1E1535]/60 mb-1"
                   >
                     Topic{" "}
                     <span aria-hidden="true" className="text-red-400">
@@ -428,7 +428,7 @@ export default function ManageBooks() {
                     value={form.topic}
                     onChange={handleChange}
                     required
-                    className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
+                    className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
                     placeholder="e.g. Spiritual Growth"
                   />
                 </div>
@@ -437,7 +437,7 @@ export default function ManageBooks() {
                 <div>
                   <label
                     htmlFor="book-year"
-                    className="block text-sm text-gray-400 mb-1"
+                    className="block text-sm text-[#1E1535]/60 mb-1"
                   >
                     Year
                   </label>
@@ -449,17 +449,17 @@ export default function ManageBooks() {
                     max={new Date().getFullYear()}
                     value={form.year}
                     onChange={handleChange}
-                    className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
+                    className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
                     placeholder="e.g. 1999"
                   />
                 </div>
 
                 {/* Cover Image */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-1">
+                  <label className="block text-sm text-[#1E1535]/60 mb-1">
                     Cover Image{" "}
                     {editTarget && (
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-[#1E1535]/50">
                         (leave empty to keep current)
                       </span>
                     )}
@@ -467,7 +467,7 @@ export default function ManageBooks() {
                   <div className="relative">
                     <label
                       htmlFor="book-cover"
-                      className="flex items-center gap-3 cursor-pointer bg-[#0a0f1e] border border-dashed border-[#c9a84c]/40 rounded-lg px-3 py-3 hover:border-[#c9a84c] transition-colors"
+                      className="flex items-center gap-3 cursor-pointer bg-[#FFFDF5] border border-dashed border-[#c9a84c]/40 rounded-lg px-3 py-3 hover:border-[#c9a84c] transition-colors"
                     >
                       {coverPreview ? (
                         <img
@@ -478,7 +478,7 @@ export default function ManageBooks() {
                       ) : (
                         <ImagePlus size={28} className="text-[#c9a84c]/50" />
                       )}
-                      <span className="text-gray-400 text-sm">
+                      <span className="text-[#1E1535]/60 text-sm">
                         {form.cover
                           ? form.cover.name
                           : coverPreview
@@ -501,7 +501,7 @@ export default function ManageBooks() {
                           setForm((prev) => ({ ...prev, cover: null }));
                           setCoverPreview("");
                         }}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-400 transition-colors"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-[#1E1535]/60 hover:text-red-400 transition-colors"
                         aria-label="Remove cover image"
                       >
                         <XCircle size={20} />
@@ -515,7 +515,7 @@ export default function ManageBooks() {
                   <button
                     type="button"
                     onClick={closeForm}
-                    className="flex-1 border border-[#c9a84c]/30 text-gray-300 hover:text-white rounded-lg py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
+                    className="flex-1 border border-[#c9a84c]/30 text-[#1E1535]/70 hover:text-[#1E1535] rounded-lg py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
                   >
                     Cancel
                   </button>
@@ -553,22 +553,22 @@ export default function ManageBooks() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-[#0d1b2a] border border-red-500/30 rounded-2xl p-6 w-full max-w-sm text-center"
+              className="bg-white border border-red-500/30 rounded-2xl p-6 w-full max-w-sm text-center"
             >
               <Trash2 size={36} className="text-red-400 mx-auto mb-3" />
               <h3
                 id="delete-book-title"
-                className="text-lg font-bold text-white mb-2"
+                className="text-lg font-bold text-[#1E1535] mb-2"
               >
                 Delete Book?
               </h3>
-              <p className="text-gray-400 text-sm mb-5">
+              <p className="text-[#1E1535]/60 text-sm mb-5">
                 This action cannot be undone.
               </p>
               <div className="flex gap-3">
                 <button
                   onClick={() => setDeleteId(null)}
-                  className="flex-1 border border-[#c9a84c]/30 text-gray-300 hover:text-white rounded-lg py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
+                  className="flex-1 border border-[#c9a84c]/30 text-[#1E1535]/70 hover:text-[#1E1535] rounded-lg py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
                 >
                   Cancel
                 </button>

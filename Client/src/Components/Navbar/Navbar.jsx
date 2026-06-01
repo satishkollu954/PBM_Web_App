@@ -95,11 +95,6 @@ export default function Navbar() {
       path: "/events",
     },
 
-    {
-      name: "Contact",
-      path: "/contact",
-    },
-
     ...(isLoggedIn
       ? [
           {
@@ -192,6 +187,25 @@ export default function Navbar() {
                   </motion.ul>
                 )}
               </AnimatePresence>
+            </li>
+
+            {/* Contact (placed after Resources) */}
+            <li>
+              <Link
+                to="/contact"
+                className={`text-sm uppercase tracking-wider transition-colors relative group ${
+                  location.pathname === "/contact"
+                    ? "text-[#c9a84c] font-semibold"
+                    : "text-[#1E1535] hover:text-[#c9a84c]"
+                }`}
+              >
+                Contact
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-[#c9a84c] transition-all duration-300 ${
+                    location.pathname === "/contact" ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                ></span>
+              </Link>
             </li>
           </ul>
 
@@ -294,6 +308,21 @@ export default function Navbar() {
                     </motion.ul>
                   )}
                 </AnimatePresence>
+              </li>
+
+              {/* Contact (placed after Resources) */}
+              <li>
+                <Link
+                  to="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className={`text-lg uppercase tracking-widest transition-colors ${
+                    location.pathname === "/contact"
+                      ? "text-[#c9a84c] font-semibold"
+                      : "text-[#1E1535] hover:text-[#c9a84c]"
+                  }`}
+                >
+                  Contact
+                </Link>
               </li>
 
               {/* Mobile Logout */}

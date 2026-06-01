@@ -151,11 +151,11 @@ export default function ManageArticles() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-2xl font-bold text-[#1E1535] flex items-center gap-2">
             <FileText size={24} className="text-[#c9a84c]" />
             Manage Articles
           </h2>
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-[#1E1535]/60 text-sm mt-1">
             {articles.length} article{articles.length !== 1 ? "s" : ""} total
           </p>
         </div>
@@ -170,15 +170,15 @@ export default function ManageArticles() {
 
       {/* Table */}
       {loading ? (
-        <p className="text-gray-400 text-center py-16">Loading articles...</p>
+        <p className="text-[#1E1535]/60 text-center py-16">Loading articles...</p>
       ) : articles.length === 0 ? (
-        <p className="text-gray-500 text-center py-16">No articles found</p>
+        <p className="text-[#1E1535]/50 text-center py-16">No articles found</p>
       ) : (
         <>
           {/* Desktop Table */}
           <div className="hidden md:block overflow-x-auto rounded-xl border border-[#c9a84c]/20">
             <table className="w-full text-sm text-left">
-              <thead className="bg-[#0a0f1e] text-[#c9a84c] uppercase text-xs">
+              <thead className="bg-[#FFFDF5] text-[#c9a84c] uppercase text-xs">
                 <tr>
                   <th className="px-4 py-3">Cover</th>
                   <th className="px-4 py-3">Title</th>
@@ -193,7 +193,7 @@ export default function ManageArticles() {
                 {articles.map((article) => (
                   <tr
                     key={article._id}
-                    className="bg-[#0d1b2a] border-b border-[#c9a84c]/10"
+                    className="bg-white border-b border-[#c9a84c]/10"
                   >
                     <td className="px-4 py-3">
                       <img
@@ -204,16 +204,16 @@ export default function ManageArticles() {
                     </td>
 
                     <td className="px-4 py-3">
-                      <p className="text-white font-semibold">
+                      <p className="text-[#1E1535] font-semibold">
                         {article.title}
                       </p>
 
-                      <p className="text-gray-400 text-xs">
+                      <p className="text-[#1E1535]/60 text-xs">
                         {article.body?.slice(0, 60)}...
                       </p>
                     </td>
 
-                    <td className="px-4 py-3 text-gray-300">
+                    <td className="px-4 py-3 text-[#1E1535]/70">
                       {article.author}
                     </td>
 
@@ -223,7 +223,7 @@ export default function ManageArticles() {
                       </span>
                     </td>
 
-                    <td className="px-4 py-3 text-gray-300">
+                    <td className="px-4 py-3 text-[#1E1535]/70">
                       {new Date(article.date).toLocaleDateString()}
                     </td>
 
@@ -255,7 +255,7 @@ export default function ManageArticles() {
             {articles.map((article) => (
               <div
                 key={article._id}
-                className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-xl p-4"
+                className="bg-white border border-[#c9a84c]/20 rounded-xl p-4"
               >
                 <div className="flex gap-3">
                   <img
@@ -265,7 +265,7 @@ export default function ManageArticles() {
                   />
 
                   <div className="flex-1">
-                    <h3 className="text-white font-semibold text-sm">
+                    <h3 className="text-[#1E1535] font-semibold text-sm">
                       {article.title}
                     </h3>
 
@@ -279,12 +279,12 @@ export default function ManageArticles() {
                   </div>
                 </div>
 
-                <p className="text-gray-400 text-xs mt-3 line-clamp-3">
+                <p className="text-[#1E1535]/60 text-xs mt-3 line-clamp-3">
                   {article.body}
                 </p>
 
                 <div className="flex justify-between items-center mt-4">
-                  <span className="text-gray-500 text-xs">
+                  <span className="text-[#1E1535]/50 text-xs">
                     {new Date(article.date).toLocaleDateString()}
                   </span>
 
@@ -326,20 +326,20 @@ export default function ManageArticles() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-[#0d1b2a] border border-[#c9a84c]/30 rounded-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto"
+              className="bg-white border border-[#c9a84c]/30 rounded-2xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto"
             >
               {/* Modal Header */}
               <div className="flex items-center justify-between mb-5">
                 <h3
                   id="article-form-title"
-                  className="text-lg font-bold text-white"
+                  className="text-lg font-bold text-[#1E1535]"
                 >
                   {editTarget ? "Edit Article" : "Add New Article"}
                 </h3>
                 <button
                   onClick={closeForm}
                   aria-label="Close form"
-                  className="text-gray-400 hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] rounded"
+                  className="text-[#1E1535]/60 hover:text-[#1E1535] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c] rounded"
                 >
                   <X size={20} />
                 </button>
@@ -351,7 +351,7 @@ export default function ManageArticles() {
                 <div>
                   <label
                     htmlFor="article-title"
-                    className="block text-sm text-gray-400 mb-1"
+                    className="block text-sm text-[#1E1535]/60 mb-1"
                   >
                     Title{" "}
                     <span aria-hidden="true" className="text-red-400">
@@ -364,7 +364,7 @@ export default function ManageArticles() {
                     value={form.title}
                     onChange={handleChange}
                     required
-                    className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
+                    className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
                     placeholder="e.g. Walking in Faith"
                   />
                 </div>
@@ -373,7 +373,7 @@ export default function ManageArticles() {
                 <div>
                   <label
                     htmlFor="article-author"
-                    className="block text-sm text-gray-400 mb-1"
+                    className="block text-sm text-[#1E1535]/60 mb-1"
                   >
                     Author{" "}
                     <span aria-hidden="true" className="text-red-400">
@@ -386,7 +386,7 @@ export default function ManageArticles() {
                     value={form.author}
                     onChange={handleChange}
                     required
-                    className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
+                    className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
                     placeholder="e.g. Pastor John"
                   />
                 </div>
@@ -395,7 +395,7 @@ export default function ManageArticles() {
                 <div>
                   <label
                     htmlFor="article-category"
-                    className="block text-sm text-gray-400 mb-1"
+                    className="block text-sm text-[#1E1535]/60 mb-1"
                   >
                     Category{" "}
                     <span aria-hidden="true" className="text-red-400">
@@ -408,7 +408,7 @@ export default function ManageArticles() {
                     value={form.category}
                     onChange={handleChange}
                     required
-                    className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
+                    className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
                     placeholder="e.g. Faith, Prayer, Grace"
                   />
                 </div>
@@ -417,7 +417,7 @@ export default function ManageArticles() {
                 <div>
                   <label
                     htmlFor="article-date"
-                    className="block text-sm text-gray-400 mb-1"
+                    className="block text-sm text-[#1E1535]/60 mb-1"
                   >
                     Date{" "}
                     <span aria-hidden="true" className="text-red-400">
@@ -432,7 +432,7 @@ export default function ManageArticles() {
                     onChange={handleChange}
                     required
                     max={todayValue()}
-                    className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
+                    className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors"
                   />
                 </div>
 
@@ -440,7 +440,7 @@ export default function ManageArticles() {
                 <div>
                   <label
                     htmlFor="article-body"
-                    className="block text-sm text-gray-400 mb-1"
+                    className="block text-sm text-[#1E1535]/60 mb-1"
                   >
                     Content{" "}
                     <span aria-hidden="true" className="text-red-400">
@@ -454,17 +454,17 @@ export default function ManageArticles() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full bg-[#0a0f1e] border border-[#c9a84c]/30 text-white rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors resize-y"
+                    className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] rounded-lg px-3 py-2 focus:outline-none focus:border-[#c9a84c] transition-colors resize-y"
                     placeholder="Write the article content here..."
                   />
                 </div>
 
                 {/* Cover Image */}
                 <div>
-                  <label className="block text-sm text-gray-400 mb-1">
+                  <label className="block text-sm text-[#1E1535]/60 mb-1">
                     Cover Image{" "}
                     {editTarget && (
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs text-[#1E1535]/50">
                         (leave empty to keep current)
                       </span>
                     )}
@@ -472,7 +472,7 @@ export default function ManageArticles() {
                   <div className="relative">
                     <label
                       htmlFor="article-cover"
-                      className="flex items-center gap-3 cursor-pointer bg-[#0a0f1e] border border-dashed border-[#c9a84c]/40 rounded-lg px-3 py-3 hover:border-[#c9a84c] transition-colors"
+                      className="flex items-center gap-3 cursor-pointer bg-[#FFFDF5] border border-dashed border-[#c9a84c]/40 rounded-lg px-3 py-3 hover:border-[#c9a84c] transition-colors"
                     >
                       {coverPreview ? (
                         <img
@@ -483,7 +483,7 @@ export default function ManageArticles() {
                       ) : (
                         <ImagePlus size={28} className="text-[#c9a84c]/50" />
                       )}
-                      <span className="text-gray-400 text-sm">
+                      <span className="text-[#1E1535]/60 text-sm">
                         {form.cover
                           ? form.cover.name
                           : coverPreview
@@ -506,7 +506,7 @@ export default function ManageArticles() {
                           setForm((prev) => ({ ...prev, cover: null }));
                           setCoverPreview("");
                         }}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-400 transition-colors"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-[#1E1535]/60 hover:text-red-400 transition-colors"
                         aria-label="Remove cover image"
                       >
                         <XCircle size={20} />
@@ -520,7 +520,7 @@ export default function ManageArticles() {
                   <button
                     type="button"
                     onClick={closeForm}
-                    className="flex-1 border border-[#c9a84c]/30 text-gray-300 hover:text-white rounded-lg py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
+                    className="flex-1 border border-[#c9a84c]/30 text-[#1E1535]/70 hover:text-[#1E1535] rounded-lg py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
                   >
                     Cancel
                   </button>
@@ -558,22 +558,22 @@ export default function ManageArticles() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="bg-[#0d1b2a] border border-red-500/30 rounded-2xl p-6 w-full max-w-sm text-center"
+              className="bg-white border border-red-500/30 rounded-2xl p-6 w-full max-w-sm text-center"
             >
               <Trash2 size={36} className="text-red-400 mx-auto mb-3" />
               <h3
                 id="delete-article-title"
-                className="text-lg font-bold text-white mb-2"
+                className="text-lg font-bold text-[#1E1535] mb-2"
               >
                 Delete Article?
               </h3>
-              <p className="text-gray-400 text-sm mb-5">
+              <p className="text-[#1E1535]/60 text-sm mb-5">
                 This action cannot be undone.
               </p>
               <div className="flex gap-3">
                 <button
                   onClick={() => setDeleteId(null)}
-                  className="flex-1 border border-[#c9a84c]/30 text-gray-300 hover:text-white rounded-lg py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
+                  className="flex-1 border border-[#c9a84c]/30 text-[#1E1535]/70 hover:text-[#1E1535] rounded-lg py-2 text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
                 >
                   Cancel
                 </button>

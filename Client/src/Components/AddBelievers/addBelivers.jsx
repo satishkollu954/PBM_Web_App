@@ -103,15 +103,15 @@ export function AddBeliever() {
   };
 
   return (
-    <section className="min-h-screen bg-[#081120] py-12 px-4">
+    <section className="min-h-screen bg-[#FFFDF5] py-12 px-4">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-5xl mx-auto bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl shadow-2xl overflow-hidden"
+        className="max-w-5xl mx-auto bg-white border border-[#c9a84c]/30 rounded-3xl shadow-2xl overflow-hidden"
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#c9a84c] to-[#d8b45a] p-8 text-[#081120]">
+        <div className="bg-gradient-to-r from-[#c9a84c] to-[#d8b45a] p-8 text-[#1E1535]">
           <h1 className="text-4xl font-bold mb-2">Add Believer</h1>
 
           <p className="text-lg opacity-80">Fill believer details carefully</p>
@@ -124,7 +124,7 @@ export function AddBeliever() {
         >
           {/* First Name */}
           <div>
-            <label className="text-gray-300 mb-2 block">First Name *</label>
+            <label className="text-[#1E1535]/70 mb-2 block">First Name *</label>
 
             <div className="relative">
               <User
@@ -137,7 +137,7 @@ export function AddBeliever() {
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                className={`w-full pl-10 p-3 rounded-xl bg-[#081120] border ${errors.firstName ? "border-red-500" : "border-[#c9a84c]/20"} text-white focus:outline-none focus:border-[#c9a84c]`}
+                className={`w-full pl-10 p-3 rounded-xl bg-[#FFFDF5] border ${errors.firstName ? "border-red-500" : "border-[#c9a84c]/30"} text-[#1E1535] focus:outline-none focus:border-[#c9a84c]`}
               />
             </div>
 
@@ -148,14 +148,14 @@ export function AddBeliever() {
 
           {/* Last Name */}
           <div>
-            <label className="text-gray-300 mb-2 block">Last Name *</label>
+            <label className="text-[#1E1535]/70 mb-2 block">Last Name *</label>
 
             <input
               type="text"
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              className={`w-full p-3 rounded-xl bg-[#081120] border ${errors.lastName ? "border-red-500" : "border-[#c9a84c]/20"} text-white focus:outline-none focus:border-[#c9a84c]`}
+              className={`w-full p-3 rounded-xl bg-[#FFFDF5] border ${errors.lastName ? "border-red-500" : "border-[#c9a84c]/30"} text-[#1E1535] focus:outline-none focus:border-[#c9a84c]`}
             />
 
             {errors.lastName && (
@@ -165,7 +165,7 @@ export function AddBeliever() {
 
           {/* Phone */}
           <div>
-            <label className="text-gray-300 mb-2 block">Phone Number *</label>
+            <label className="text-[#1E1535]/70 mb-2 block">Phone Number *</label>
 
             <div className="relative">
               <Phone
@@ -178,7 +178,7 @@ export function AddBeliever() {
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
-                className={`w-full pl-10 p-3 rounded-xl bg-[#081120] border ${errors.phoneNumber ? "border-red-500" : "border-[#c9a84c]/20"} text-white focus:outline-none focus:border-[#c9a84c]`}
+                className={`w-full pl-10 p-3 rounded-xl bg-[#FFFDF5] border ${errors.phoneNumber ? "border-red-500" : "border-[#c9a84c]/30"} text-[#1E1535] focus:outline-none focus:border-[#c9a84c]`}
               />
             </div>
 
@@ -189,13 +189,13 @@ export function AddBeliever() {
 
           {/* Gender */}
           <div>
-            <label className="text-gray-300 mb-2 block">Gender *</label>
+            <label className="text-[#1E1535]/70 mb-2 block">Gender *</label>
 
             <select
               name="gender"
               value={formData.gender}
               onChange={handleChange}
-              className={`w-full p-3 rounded-xl bg-[#081120] border ${errors.gender ? "border-red-500" : "border-[#c9a84c]/20"} text-white focus:outline-none focus:border-[#c9a84c]`}
+              className={`w-full p-3 rounded-xl bg-[#FFFDF5] border ${errors.gender ? "border-red-500" : "border-[#c9a84c]/30"} text-[#1E1535] focus:outline-none focus:border-[#c9a84c]`}
             >
               <option value="">Select Gender</option>
 
@@ -213,7 +213,7 @@ export function AddBeliever() {
 
           {/* Address */}
           <div className="md:col-span-2">
-            <label className="text-gray-300 mb-2 block">Address *</label>
+            <label className="text-[#1E1535]/70 mb-2 block">Address *</label>
 
             <div className="relative">
               <MapPin
@@ -226,7 +226,7 @@ export function AddBeliever() {
                 value={formData.address}
                 onChange={handleChange}
                 rows="4"
-                className={`w-full pl-10 p-3 rounded-xl bg-[#081120] border ${errors.address ? "border-red-500" : "border-[#c9a84c]/20"} text-white focus:outline-none focus:border-[#c9a84c]`}
+                className={`w-full pl-10 p-3 rounded-xl bg-[#FFFDF5] border ${errors.address ? "border-red-500" : "border-[#c9a84c]/30"} text-[#1E1535] focus:outline-none focus:border-[#c9a84c]`}
               />
             </div>
 
@@ -237,20 +237,20 @@ export function AddBeliever() {
 
           {/* Pincode */}
           <div>
-            <label className="text-gray-300 mb-2 block">Pin Code</label>
+            <label className="text-[#1E1535]/70 mb-2 block">Pin Code</label>
 
             <input
               type="text"
               name="pinCode"
               value={formData.pinCode}
               onChange={handleChange}
-              className="w-full p-3 rounded-xl bg-[#081120] border border-[#c9a84c]/20 text-white focus:outline-none focus:border-[#c9a84c]"
+              className="w-full p-3 rounded-xl bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] focus:outline-none focus:border-[#c9a84c]"
             />
           </div>
 
           {/* Church */}
           <div>
-            <label className="text-gray-300 mb-2 block">
+            <label className="text-[#1E1535]/70 mb-2 block">
               Church Belongs To *
             </label>
 
@@ -258,7 +258,7 @@ export function AddBeliever() {
               name="churchBelongsTo"
               value={formData.churchBelongsTo}
               onChange={handleChange}
-              className={`w-full p-3 rounded-xl bg-[#081120] border ${errors.churchBelongsTo ? "border-red-500" : "border-[#c9a84c]/20"} text-white focus:outline-none focus:border-[#c9a84c]`}
+              className={`w-full p-3 rounded-xl bg-[#FFFDF5] border ${errors.churchBelongsTo ? "border-red-500" : "border-[#c9a84c]/30"} text-[#1E1535] focus:outline-none focus:border-[#c9a84c]`}
             >
               <option value="">Select Church</option>
 
@@ -270,13 +270,13 @@ export function AddBeliever() {
 
           {/* Days Category */}
           <div>
-            <label className="text-gray-300 mb-2 block">Days Category *</label>
+            <label className="text-[#1E1535]/70 mb-2 block">Days Category *</label>
 
             <select
               name="daysCategory"
               value={formData.daysCategory}
               onChange={handleChange}
-              className={`w-full p-3 rounded-xl bg-[#081120] border ${errors.daysCategory ? "border-red-500" : "border-[#c9a84c]/20"} text-white focus:outline-none focus:border-[#c9a84c]`}
+              className={`w-full p-3 rounded-xl bg-[#FFFDF5] border ${errors.daysCategory ? "border-red-500" : "border-[#c9a84c]/30"} text-[#1E1535] focus:outline-none focus:border-[#c9a84c]`}
             >
               <option value="">Select Day</option>
 
@@ -290,7 +290,7 @@ export function AddBeliever() {
 
           {/* Family Member */}
           <div>
-            <label className="text-gray-300 mb-2 block">
+            <label className="text-[#1E1535]/70 mb-2 block">
               Family Member Name
             </label>
 
@@ -305,23 +305,23 @@ export function AddBeliever() {
                 name="familyMemberName"
                 value={formData.familyMemberName}
                 onChange={handleChange}
-                className="w-full pl-10 p-3 rounded-xl bg-[#081120] border border-[#c9a84c]/20 text-white focus:outline-none focus:border-[#c9a84c]"
+                className="w-full pl-10 p-3 rounded-xl bg-[#FFFDF5] border border-[#c9a84c]/30 text-[#1E1535] focus:outline-none focus:border-[#c9a84c]"
               />
             </div>
           </div>
 
           {/* Photo */}
           <div>
-            <label className="text-gray-300 mb-2 block">Upload Photo</label>
+            <label className="text-[#1E1535]/70 mb-2 block">Upload Photo</label>
 
-            <div className="border-2 border-dashed border-[#c9a84c]/20 rounded-xl p-6 text-center bg-[#081120] hover:border-[#c9a84c] transition-all">
+            <div className="border-2 border-dashed border-[#c9a84c]/30 rounded-xl p-6 text-center bg-[#FFFDF5] hover:border-[#c9a84c] transition-all">
               <Upload className="mx-auto text-[#c9a84c] mb-2" size={28} />
 
               <input
                 type="file"
                 accept="image/*"
                 onChange={(e) => setPhoto(e.target.files[0])}
-                className="text-white"
+                className="text-[#1E1535]"
               />
             </div>
           </div>
@@ -331,7 +331,7 @@ export function AddBeliever() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-[#c9a84c] to-[#d8b45a] hover:opacity-90 text-[#081120] font-bold py-4 rounded-xl transition-all duration-300"
+              className="w-full bg-gradient-to-r from-[#c9a84c] to-[#d8b45a] hover:opacity-90 text-[#1E1535] font-bold py-4 rounded-xl transition-all duration-300"
             >
               {loading ? "Submitting..." : "Submit Believer"}
             </button>

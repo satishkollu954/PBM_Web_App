@@ -112,13 +112,13 @@ export function ViewContact() {
   const totalPages = Math.ceil(filteredContacts.length / contactsPerPage);
 
   return (
-    <div className="text-white">
+    <div className="text-[#1E1535]">
       {/* Header */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-8">
         <div>
-          <h2 className="text-3xl font-bold text-white">View Contacts</h2>
+          <h2 className="text-3xl font-bold text-[#1E1535]">View Contacts</h2>
 
-          <p className="text-gray-400 mt-2">
+          <p className="text-[#1E1535]/60 mt-2">
             Manage all contact form submissions
           </p>
         </div>
@@ -126,7 +126,7 @@ export function ViewContact() {
         {/* Search */}
         <div className="relative w-full lg:w-96">
           <Search
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-[#1E1535]/60"
             size={20}
           />
 
@@ -135,14 +135,14 @@ export function ViewContact() {
             placeholder="Search by name, phone, email..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-2xl py-3 pl-12 pr-4 text-white focus:outline-none focus:border-[#c9a84c]"
+            className="w-full bg-white border border-[#c9a84c]/30 rounded-2xl py-3 pl-12 pr-4 text-[#1E1535] focus:outline-none focus:border-[#c9a84c]"
           />
         </div>
       </div>
 
       {/* Count */}
       <div className="mb-6">
-        <div className="inline-flex items-center gap-3 bg-[#0d1b2a] border border-[#c9a84c]/20 px-5 py-3 rounded-2xl">
+        <div className="inline-flex items-center gap-3 bg-white border border-[#c9a84c]/30 px-5 py-3 rounded-2xl">
           <MessageSquare className="text-[#c9a84c]" size={22} />
 
           <span className="text-lg font-semibold">Total Contacts:</span>
@@ -156,10 +156,10 @@ export function ViewContact() {
       {/* Loading */}
       {loading ? (
         <div className="flex justify-center py-20">
-          <div className="w-14 h-14 border-4 border-[#c9a84c]/20 border-t-[#c9a84c] rounded-full animate-spin"></div>
+          <div className="w-14 h-14 border-4 border-[#c9a84c]/30 border-t-[#c9a84c] rounded-full animate-spin"></div>
         </div>
       ) : currentContacts.length === 0 ? (
-        <div className="text-center py-20 text-gray-400">No contacts found</div>
+        <div className="text-center py-20 text-[#1E1535]/60">No contacts found</div>
       ) : (
         <>
           {/* Cards */}
@@ -170,15 +170,15 @@ export function ViewContact() {
                 whileHover={{
                   y: -5,
                 }}
-                className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl overflow-hidden hover:border-[#c9a84c]/50 transition-all"
+                className="bg-white border border-[#c9a84c]/30 rounded-3xl overflow-hidden hover:border-[#c9a84c]/50 transition-all"
               >
                 {/* Card Header */}
                 <div className="p-5 border-b border-[#c9a84c]/10">
-                  <h3 className="text-xl font-bold text-white truncate">
+                  <h3 className="text-xl font-bold text-[#1E1535] truncate">
                     {contact.name}
                   </h3>
 
-                  <div className="flex items-center gap-2 mt-2 text-gray-400 text-sm">
+                  <div className="flex items-center gap-2 mt-2 text-[#1E1535]/60 text-sm">
                     <Calendar size={15} />
 
                     {new Date(contact.createdAt).toLocaleDateString()}
@@ -190,21 +190,21 @@ export function ViewContact() {
                   <div className="flex items-center gap-3">
                     <Phone size={18} className="text-[#c9a84c]" />
 
-                    <span className="text-gray-300">{contact.phoneNumber}</span>
+                    <span className="text-[#1E1535]/70">{contact.phoneNumber}</span>
                   </div>
 
                   <div className="flex items-center gap-3">
                     <Mail size={18} className="text-[#c9a84c]" />
 
-                    <span className="text-gray-300 truncate">
+                    <span className="text-[#1E1535]/70 truncate">
                       {contact.email || "N/A"}
                     </span>
                   </div>
 
                   <div>
-                    <p className="text-gray-500 text-sm mb-2">Message</p>
+                    <p className="text-[#1E1535]/50 text-sm mb-2">Message</p>
 
-                    <p className="text-gray-300 line-clamp-3 text-sm leading-relaxed">
+                    <p className="text-[#1E1535]/70 line-clamp-3 text-sm leading-relaxed">
                       {contact.message || "No message"}
                     </p>
                   </div>
@@ -214,7 +214,7 @@ export function ViewContact() {
                 <div className="p-5 border-t border-[#c9a84c]/10 flex gap-3">
                   <button
                     onClick={() => setSelectedContact(contact)}
-                    className="flex-1 bg-[#c9a84c] hover:bg-[#d8b45a] text-[#081120] py-2 rounded-xl font-semibold transition-all"
+                    className="flex-1 bg-[#c9a84c] hover:bg-[#d8b45a] text-[#1E1535] py-2 rounded-xl font-semibold transition-all"
                   >
                     View
                   </button>
@@ -247,8 +247,8 @@ export function ViewContact() {
                     onClick={() => setCurrentPage(i + 1)}
                     className={`w-11 h-11 rounded-xl font-semibold transition-all ${
                       currentPage === i + 1
-                        ? "bg-[#c9a84c] text-[#081120]"
-                        : "bg-[#0d1b2a] border border-[#c9a84c]/20 text-white hover:border-[#c9a84c]"
+                        ? "bg-[#c9a84c] text-[#1E1535]"
+                        : "bg-white border border-[#c9a84c]/30 text-[#1E1535] hover:border-[#c9a84c]"
                     }`}
                   >
                     {i + 1}
@@ -288,7 +288,7 @@ export function ViewContact() {
                 scale: 0.9,
                 opacity: 0,
               }}
-              className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+              className="bg-white border border-[#c9a84c]/30 rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
             >
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-[#c9a84c]/10">
@@ -296,7 +296,7 @@ export function ViewContact() {
 
                 <button
                   onClick={() => setSelectedContact(null)}
-                  className="text-gray-400 hover:text-white"
+                  className="text-[#1E1535]/60 hover:text-[#1E1535]"
                 >
                   <X size={24} />
                 </button>
@@ -305,7 +305,7 @@ export function ViewContact() {
               {/* Body */}
               <div className="p-6 space-y-6">
                 <div>
-                  <p className="text-gray-500 text-sm mb-2">Name</p>
+                  <p className="text-[#1E1535]/50 text-sm mb-2">Name</p>
 
                   <p className="text-xl font-semibold">
                     {selectedContact.name}
@@ -313,21 +313,21 @@ export function ViewContact() {
                 </div>
 
                 <div>
-                  <p className="text-gray-500 text-sm mb-2">Phone Number</p>
+                  <p className="text-[#1E1535]/50 text-sm mb-2">Phone Number</p>
 
                   <p className="text-lg">{selectedContact.phoneNumber}</p>
                 </div>
 
                 <div>
-                  <p className="text-gray-500 text-sm mb-2">Email</p>
+                  <p className="text-[#1E1535]/50 text-sm mb-2">Email</p>
 
                   <p className="text-lg">{selectedContact.email || "N/A"}</p>
                 </div>
 
                 <div>
-                  <p className="text-gray-500 text-sm mb-2">Message</p>
+                  <p className="text-[#1E1535]/50 text-sm mb-2">Message</p>
 
-                  <div className="bg-[#081120] border border-[#c9a84c]/10 rounded-2xl p-5 leading-relaxed text-gray-300">
+                  <div className="bg-[#FFFDF5] border border-[#c9a84c]/10 rounded-2xl p-5 leading-relaxed text-[#1E1535]/70">
                     {selectedContact.message || "No message"}
                   </div>
                 </div>
@@ -365,20 +365,20 @@ export function ViewContact() {
                 scale: 0.9,
                 opacity: 0,
               }}
-              className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-3xl w-full max-w-md p-8"
+              className="bg-white border border-[#c9a84c]/30 rounded-3xl w-full max-w-md p-8"
             >
-              <h3 className="text-2xl font-bold text-white mb-4">
+              <h3 className="text-2xl font-bold text-[#1E1535] mb-4">
                 Delete Contact
               </h3>
 
-              <p className="text-gray-400 leading-relaxed mb-8">
+              <p className="text-[#1E1535]/60 leading-relaxed mb-8">
                 Are you sure you want to delete this contact?
               </p>
 
               <div className="flex gap-4">
                 <button
                   onClick={() => setDeleteModal(false)}
-                  className="flex-1 border border-[#c9a84c]/20 hover:border-[#c9a84c] py-3 rounded-xl transition-all"
+                  className="flex-1 border border-[#c9a84c]/30 hover:border-[#c9a84c] py-3 rounded-xl transition-all"
                 >
                   Cancel
                 </button>
@@ -386,7 +386,7 @@ export function ViewContact() {
                 <button
                   onClick={handleDelete}
                   disabled={deleteLoading}
-                  className="flex-1 bg-red-500 hover:bg-red-600 py-3 rounded-xl font-semibold transition-all disabled:opacity-70"
+                  className="flex-1 bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl font-semibold transition-all disabled:opacity-70"
                 >
                   {deleteLoading ? "Deleting..." : "Delete"}
                 </button>
