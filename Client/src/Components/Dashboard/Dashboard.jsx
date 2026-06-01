@@ -29,8 +29,10 @@ import { ViewBeliever } from "../ViewBeliever/ViewBeliever";
 
 import { AddSermons } from "../AddSermons/AddSermons";
 import { ViewContact } from "../ViewContact/ViewContact";
+
 import ManageBooks from "./ManageBooks";
 import ManageArticles from "./ManageArticles";
+import { AddEvent } from "../AddEvent/AddEvent";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -257,6 +259,9 @@ export default function Dashboard() {
       case "Contacts":
         return <ViewContact />;
 
+      case "Events":
+        return <AddEvent />;
+
       default:
         return (
           <>
@@ -375,7 +380,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-96px)] bg-[#081120] pt-24">
+    <div className="flex min-h-screen bg-[#081120] pt-16 md:pt-20">
       {/* Sidebar */}
       <div
         className={`fixed md:relative z-30 w-72 bg-[#0d1b2a] border-r border-[#c9a84c]/20 transform transition-transform duration-300 ${
@@ -438,7 +443,7 @@ export default function Dashboard() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Mobile Header */}
-        <header className="md:hidden bg-[#0d1b2a] border-b border-[#c9a84c]/20 p-4 flex items-center justify-between">
+        <header className="md:hidden bg-[#0d1b2a] border-b border-[#c9a84c]/20 px-4 py-3 flex items-center justify-between">
           <button
             onClick={() => setSidebarOpen(true)}
             className="text-[#c9a84c]"

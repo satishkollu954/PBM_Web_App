@@ -1,7 +1,7 @@
-import { Facebook, Instagram, Youtube, Twitter } from "lucide-react";
+import { Instagram, Youtube } from "lucide-react";
 import { useEffect, useState } from "react";
 export default function Footer() {
-   const [dailyVerse, setDailyVerse] = useState({
+  const [dailyVerse, setDailyVerse] = useState({
     text: "Loading verse...",
     reference: "",
   });
@@ -25,9 +25,7 @@ export default function Footer() {
       "2 Timothy 1:7",
     ];
 
-    const dayNumber = Math.floor(
-      Date.now() / (1000 * 60 * 60 * 24)
-    );
+    const dayNumber = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
 
     const reference = verses[dayNumber % verses.length];
 
@@ -74,12 +72,6 @@ export default function Footer() {
                 href="#"
                 className="w-10 h-10 rounded-full bg-[#3A3020] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
-                <Facebook size={18} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#3A3020] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
-              >
                 <Instagram size={18} />
               </a>
               <a
@@ -87,12 +79,6 @@ export default function Footer() {
                 className="w-10 h-10 rounded-full bg-[#3A3020] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
               >
                 <Youtube size={18} />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-[#3A3020] border border-[#c9a84c]/20 flex items-center justify-center text-gray-300 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-all"
-              >
-                <Twitter size={18} />
               </a>
             </div>
           </div>
@@ -134,23 +120,23 @@ export default function Footer() {
                 <p className="text-gray-300 text-sm">pbmchurch@gmail.com</p>
               </li>
 
-             <li className="flex items-center gap-4">
+              <li className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">
                   🕒
                 </div>
-                  
+
                 <p className="text-gray-300 text-sm">
                   Friday Services:
                   <br />
                   10:00 AM & 1:30 PM
                 </p>
               </li>
-             
+
               <li className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">
                   🕒
                 </div>
-                  
+
                 <p className="text-gray-300 text-sm">
                   Sunday Services:
                   <br />
@@ -200,17 +186,17 @@ export default function Footer() {
                   🕒
                 </div>
                 <p className="text-gray-300 text-sm">
-                    Saturday Services:
-                    <br />
-                    10:00 AM & 1:00 PM
-                  </p>
+                  Saturday Services:
+                  <br />
+                  10:00 AM & 1:00 PM
+                </p>
               </li>
-  
+
               <li className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">
                   🕒
                 </div>
-              
+
                 <p className="text-gray-300 text-sm">
                   Sunday Services:
                   <br />
@@ -255,4 +241,3 @@ export default function Footer() {
     </footer>
   );
 }
-

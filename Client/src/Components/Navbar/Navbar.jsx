@@ -111,9 +111,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav
-      className="fixed top-0 w-full z-50 bg-[#FFFDF5] border-b-2 border-[#c9a84c] shadow-sm shadow-[#c9a84c]/10 py-3"
-    >
+    <nav className="fixed top-0 w-full z-50 bg-[#FFFDF5] border-b-2 border-[#c9a84c] shadow-sm shadow-[#c9a84c]/10 py-3">
       <div className="container mx-auto px-6 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 text-[#c9a84c] group">
@@ -143,9 +141,11 @@ export default function Navbar() {
                     }`}
                   >
                     {link.name}
-                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#c9a84c] transition-all duration-300 ${
-                      isActive ? "w-full" : "w-0 group-hover:w-full"
-                    }`}></span>
+                    <span
+                      className={`absolute -bottom-1 left-0 h-0.5 bg-[#c9a84c] transition-all duration-300 ${
+                        isActive ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    ></span>
                   </Link>
                 </li>
               );
@@ -196,14 +196,14 @@ export default function Navbar() {
           </ul>
 
           {/* Logout Button */}
-          {isLoggedIn && (
+          {/* {isLoggedIn && (
             <button
               onClick={handleLogout}
               className="bg-[#c9a84c] hover:bg-[#d8b45a] text-[#0d1b2a] px-4 py-2 rounded-lg text-sm font-semibold transition-all"
             >
               Logout
             </button>
-          )}
+          )} */}
         </div>
 
         {/* Mobile Toggle */}

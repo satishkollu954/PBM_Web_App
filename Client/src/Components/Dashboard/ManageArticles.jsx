@@ -2,7 +2,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Plus, Pencil, Trash2, X, FileText, ImagePlus, XCircle } from "lucide-react";
+import {
+  Plus,
+  Pencil,
+  Trash2,
+  X,
+  FileText,
+  ImagePlus,
+  XCircle,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const EMPTY_FORM = {
@@ -105,7 +113,7 @@ export default function ManageArticles() {
       if (editTarget) {
         await axios.put(
           `http://localhost:3005/api/articles/update/${editTarget._id}`,
-          data
+          data,
         );
         toast.success("Article updated successfully");
       } else {
@@ -127,7 +135,7 @@ export default function ManageArticles() {
     if (!deleteId) return;
     try {
       await axios.delete(
-        `http://localhost:3005/api/articles/delete/${deleteId}`
+        `http://localhost:3005/api/articles/delete/${deleteId}`,
       );
       toast.success("Article deleted");
       setDeleteId(null);
@@ -141,7 +149,7 @@ export default function ManageArticles() {
   return (
     <div>
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
         <div>
           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
             <FileText size={24} className="text-[#c9a84c]" />
@@ -153,7 +161,7 @@ export default function ManageArticles() {
         </div>
         <button
           onClick={openAdd}
-          className="flex items-center gap-2 bg-[#c9a84c] hover:bg-[#d8b45a] text-[#0d1b2a] px-4 py-2 rounded-lg font-semibold text-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
+          className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#c9a84c] hover:bg-[#d8b45a] text-[#0d1b2a] px-4 py-2 rounded-lg font-semibold text-sm transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-[#c9a84c]"
         >
           <Plus size={16} />
           Add Article
@@ -164,88 +172,142 @@ export default function ManageArticles() {
       {loading ? (
         <p className="text-gray-400 text-center py-16">Loading articles...</p>
       ) : articles.length === 0 ? (
-        <p className="text-gray-500 text-center py-16">
-          No articles yet. Click "Add Article" to get started.
-        </p>
+        <p className="text-gray-500 text-center py-16">No articles found</p>
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-[#c9a84c]/20">
-          <table
-            className="w-full text-sm text-left"
-            aria-label="Articles table"
-          >
-            <thead className="bg-[#0a0f1e] text-[#c9a84c] uppercase text-xs tracking-wider">
-              <tr>
-                <th className="px-4 py-3">Cover</th>
-                <th className="px-4 py-3">Title</th>
-                <th className="px-4 py-3">Author</th>
-                <th className="px-4 py-3">Category</th>
-                <th className="px-4 py-3">Date</th>
-                <th className="px-4 py-3 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[#c9a84c]/10">
-              {articles.map((article) => (
-                <tr
-                  key={article._id}
-                  className="bg-[#0d1b2a] hover:bg-[#0a0f1e] transition-colors"
-                >
-                  <td className="px-4 py-3">
-                    {article.cover ? (
+        <>
+          {/* Desktop Table */}
+          <div className="hidden md:block overflow-x-auto rounded-xl border border-[#c9a84c]/20">
+            <table className="w-full text-sm text-left">
+              <thead className="bg-[#0a0f1e] text-[#c9a84c] uppercase text-xs">
+                <tr>
+                  <th className="px-4 py-3">Cover</th>
+                  <th className="px-4 py-3">Title</th>
+                  <th className="px-4 py-3">Author</th>
+                  <th className="px-4 py-3">Category</th>
+                  <th className="px-4 py-3">Date</th>
+                  <th className="px-4 py-3 text-right">Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {articles.map((article) => (
+                  <tr
+                    key={article._id}
+                    className="bg-[#0d1b2a] border-b border-[#c9a84c]/10"
+                  >
+                    <td className="px-4 py-3">
                       <img
                         src={article.cover}
-                        alt={`Cover of ${article.title}`}
-                        className="w-10 h-10 object-cover rounded"
+                        alt=""
+                        className="w-12 h-12 rounded object-cover"
                       />
-                    ) : (
-                      <div className="w-10 h-10 bg-[#c9a84c]/10 rounded flex items-center justify-center">
-                        <FileText size={14} className="text-[#c9a84c]/40" />
+                    </td>
+
+                    <td className="px-4 py-3">
+                      <p className="text-white font-semibold">
+                        {article.title}
+                      </p>
+
+                      <p className="text-gray-400 text-xs">
+                        {article.body?.slice(0, 60)}...
+                      </p>
+                    </td>
+
+                    <td className="px-4 py-3 text-gray-300">
+                      {article.author}
+                    </td>
+
+                    <td className="px-4 py-3">
+                      <span className="bg-[#c9a84c]/10 text-[#c9a84c] px-2 py-1 rounded-full text-xs">
+                        {article.category}
+                      </span>
+                    </td>
+
+                    <td className="px-4 py-3 text-gray-300">
+                      {new Date(article.date).toLocaleDateString()}
+                    </td>
+
+                    <td className="px-4 py-3">
+                      <div className="flex justify-end gap-2">
+                        <button
+                          onClick={() => openEdit(article)}
+                          className="text-blue-400"
+                        >
+                          <Pencil size={16} />
+                        </button>
+
+                        <button
+                          onClick={() => setDeleteId(article._id)}
+                          className="text-red-400"
+                        >
+                          <Trash2 size={16} />
+                        </button>
                       </div>
-                    )}
-                  </td>
-                  <td className="px-4 py-3">
-                    <p className="font-semibold text-white line-clamp-1">
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile Cards */}
+          <div className="grid gap-4 md:hidden">
+            {articles.map((article) => (
+              <div
+                key={article._id}
+                className="bg-[#0d1b2a] border border-[#c9a84c]/20 rounded-xl p-4"
+              >
+                <div className="flex gap-3">
+                  <img
+                    src={article.cover}
+                    alt=""
+                    className="w-20 h-20 rounded-lg object-cover"
+                  />
+
+                  <div className="flex-1">
+                    <h3 className="text-white font-semibold text-sm">
                       {article.title}
+                    </h3>
+
+                    <p className="text-[#c9a84c] text-xs mt-1">
+                      {article.author}
                     </p>
-                    <p className="text-gray-500 text-xs mt-0.5 line-clamp-1">
-                      {article.body}
-                    </p>
-                  </td>
-                  <td className="px-4 py-3 text-gray-300">{article.author}</td>
-                  <td className="px-4 py-3">
-                    <span className="text-xs uppercase tracking-wider text-[#c9a84c] bg-[#c9a84c]/10 px-2 py-0.5 rounded-full">
+
+                    <span className="inline-block mt-2 bg-[#c9a84c]/10 text-[#c9a84c] px-2 py-1 rounded-full text-xs">
                       {article.category}
                     </span>
-                  </td>
-                  <td className="px-4 py-3 text-gray-300 whitespace-nowrap">
-                    {new Date(article.date).toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}
-                  </td>
-                  <td className="px-4 py-3 text-right">
-                    <div className="flex justify-end gap-2">
-                      <button
-                        onClick={() => openEdit(article)}
-                        aria-label={`Edit ${article.title}`}
-                        className="p-2 text-blue-400 hover:bg-blue-500/10 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
-                      >
-                        <Pencil size={15} />
-                      </button>
-                      <button
-                        onClick={() => setDeleteId(article._id)}
-                        aria-label={`Delete ${article.title}`}
-                        className="p-2 text-red-400 hover:bg-red-500/10 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400"
-                      >
-                        <Trash2 size={15} />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                  </div>
+                </div>
+
+                <p className="text-gray-400 text-xs mt-3 line-clamp-3">
+                  {article.body}
+                </p>
+
+                <div className="flex justify-between items-center mt-4">
+                  <span className="text-gray-500 text-xs">
+                    {new Date(article.date).toLocaleDateString()}
+                  </span>
+
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => openEdit(article)}
+                      className="p-2 bg-blue-500/10 rounded-lg text-blue-400"
+                    >
+                      <Pencil size={16} />
+                    </button>
+
+                    <button
+                      onClick={() => setDeleteId(article._id)}
+                      className="p-2 bg-red-500/10 rounded-lg text-red-400"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
       )}
 
       {/* Add / Edit Form Modal */}
@@ -399,9 +461,7 @@ export default function ManageArticles() {
 
                 {/* Cover Image */}
                 <div>
-                  <label
-                    className="block text-sm text-gray-400 mb-1"
-                  >
+                  <label className="block text-sm text-gray-400 mb-1">
                     Cover Image{" "}
                     {editTarget && (
                       <span className="text-xs text-gray-500">
@@ -427,8 +487,8 @@ export default function ManageArticles() {
                         {form.cover
                           ? form.cover.name
                           : coverPreview
-                          ? "Click to change image"
-                          : "Click to upload cover"}
+                            ? "Click to change image"
+                            : "Click to upload cover"}
                       </span>
                       <input
                         id="article-cover"
@@ -472,8 +532,8 @@ export default function ManageArticles() {
                     {submitting
                       ? "Saving..."
                       : editTarget
-                      ? "Update Article"
-                      : "Add Article"}
+                        ? "Update Article"
+                        : "Add Article"}
                   </button>
                 </div>
               </form>

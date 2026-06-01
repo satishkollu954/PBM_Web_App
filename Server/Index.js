@@ -8,6 +8,7 @@ const believerRoutes = require("./Routes/believerRoutes");
 const bookRoutes = require("./Routes/bookRoutes");
 const contactRoutes = require("./Routes/contactRoutes");
 const articleRoutes = require("./Routes/articleRoutes");
+const eventRoutes = require("./Routes/eventRoutes");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use("/api/books", bookRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/articles", articleRoutes);
+app.use("/api/events", eventRoutes);
 
 // MongoDB Connection
 mongoose

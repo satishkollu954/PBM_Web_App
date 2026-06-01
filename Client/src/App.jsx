@@ -113,6 +113,14 @@ function App() {
           }
         />
         <Route
+          path="/addevent"
+          element={
+            <ProtectedRoute>
+              <AddEvent />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/viewcontacts"
           element={
             <ProtectedRoute>
