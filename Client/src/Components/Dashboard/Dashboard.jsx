@@ -32,6 +32,7 @@ import { ViewContact } from "../ViewContact/ViewContact";
 
 import ManageBooks from "./ManageBooks";
 import ManageArticles from "./ManageArticles";
+import ManageSongs from "./ManageSongs";
 import { AddEvent } from "../AddEvent/AddEvent";
 
 export default function Dashboard() {
@@ -261,6 +262,9 @@ export default function Dashboard() {
 
       case "Events":
         return <AddEvent />;
+
+      case "Songs":
+        return <ManageSongs />;
 
       default:
         return (
