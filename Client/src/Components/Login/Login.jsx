@@ -64,7 +64,7 @@ export default function Login() {
   };
 
   return (
-    <section className="min-h-screen bg-[#0d1b2a] flex items-center justify-center px-6 py-20">
+    <section className="min-h-screen bg-[#0d1b2a] flex items-center justify-center mt-8 px-6 py-20">
       <motion.div
         initial={{
           opacity: 0,

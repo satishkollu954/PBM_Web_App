@@ -114,7 +114,7 @@ function EventCarousel({ events, onSelectEvent }) {
             <div key={event._id} className="flex-[0_0_100%] min-w-0">
               <div
                 onClick={() => onSelectEvent(event)}
-                className="cursor-pointer relative h-[250px] md:h-[350px]"
+                className="cursor-pointer relative h-[450px] md:h-[600px] lg:h-[450px]"
               >
                 <img
                   src={
@@ -125,9 +125,9 @@ function EventCarousel({ events, onSelectEvent }) {
                   className="w-full h-full object-cover"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/10" />
 
-                <div className="absolute bottom-12 left-12 right-12">
+                <div className="absolute bottom-16 left-8 md:left-16 right-8">
                   <h2 className="text-2xl md:text-4xl font-bold text-white mb-3">
                     {event.title}
                   </h2>
@@ -140,14 +140,14 @@ function EventCarousel({ events, onSelectEvent }) {
 
       <button
         onClick={() => emblaApi?.scrollPrev()}
-        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg"
+        className="absolute left-5 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md p-4 rounded-full shadow-xl hover:scale-110 transition"
       >
         <ChevronLeft />
       </button>
 
       <button
         onClick={() => emblaApi?.scrollNext()}
-        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-lg"
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-md p-4 rounded-full shadow-xl hover:scale-110 transition"
       >
         <ChevronRight />
       </button>
@@ -187,32 +187,40 @@ export default function Events() {
   }
 
   return (
-    <section className="py-20 px-4 bg-[#f8f5ef]">
+    <section className="py-20 px-4 bg-gradient-to-b from-[#faf8f2] via-[#f8f5ef] to-[#f3eee3]">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-5xl font-bold text-center mb-12 text-[#1E1535]">
+        <h1 className="text-5xl font-bold text-center mb-8 text-[#1E1535]">
           Events
         </h1>
 
         {events.length > 0 ? (
           <EventCarousel events={events} onSelectEvent={setSelectedEvent} />
         ) : (
-          <div className="bg-white rounded-3xl shadow-lg p-12 text-center">
-            <h2 className="text-3xl font-bold text-[#1E1535] mb-3">
+          <div className="bg-white rounded-[32px] shadow-xl p-16 text-center border border-gray-100">
+            <div className="text-7xl mb-6">📅</div>
+
+            <h2 className="text-4xl font-bold text-[#1E1535] mb-4">
               No Upcoming Events
             </h2>
 
-            <p className="text-gray-500">
-              Please check back later for future events.
+            <p className="text-lg text-gray-500 max-w-xl mx-auto">
+              There are currently no scheduled events. Please check back later
+              for upcoming fellowship gatherings, worship services, and special
+              meetings.
             </p>
           </div>
         )}
         <div className="mt-20">
-          <h2 className="text-4xl font-bold text-center text-[#1E1535] mb-10">
+          <h2 className="text-5xl font-bold text-center text-[#1E1535] mb-4">
             Regular Fellowship Services
           </h2>
 
+          <p className="text-center text-gray-500 mb-12">
+            Join us weekly for worship, fellowship, and spiritual growth.
+          </p>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-3xl shadow-lg p-6 border-t-4 border-[#c9a84c]">
+            <div className="group bg-white rounded-[28px] shadow-lg hover:shadow-2xl p-8 border border-gray-100 hover:-translate-y-2 transition-all duration-300">
               <h3 className="text-xl font-bold text-[#1E1535] mb-2">
                 Friday Service
               </h3>
@@ -224,7 +232,7 @@ export default function Events() {
               <p className="text-gray-600">1:30 PM</p>
             </div>
 
-            <div className="bg-white rounded-3xl shadow-lg p-6 border-t-4 border-[#c9a84c]">
+            <div className="group bg-white rounded-[28px] shadow-lg hover:shadow-2xl p-8 border border-gray-100 hover:-translate-y-2 transition-all duration-300">
               <h3 className="text-xl font-bold text-[#1E1535] mb-2">
                 Saturday Service
               </h3>
@@ -236,7 +244,7 @@ export default function Events() {
               <p className="text-gray-600">1:00 PM</p>
             </div>
 
-            <div className="bg-white rounded-3xl shadow-lg p-6 border-t-4 border-[#c9a84c]">
+            <div className="group bg-white rounded-[28px] shadow-lg hover:shadow-2xl p-8 border border-gray-100 hover:-translate-y-2 transition-all duration-300">
               <h3 className="text-xl font-bold text-[#1E1535] mb-2">
                 Sunday Service
               </h3>
@@ -248,7 +256,7 @@ export default function Events() {
               <p className="text-gray-600">1:30 PM</p>
             </div>
 
-            <div className="bg-white rounded-3xl shadow-lg p-6 border-t-4 border-[#c9a84c]">
+            <div className="group bg-white rounded-[28px] shadow-lg hover:shadow-2xl p-8 border border-gray-100 hover:-translate-y-2 transition-all duration-300">
               <h3 className="text-xl font-bold text-[#1E1535] mb-2">
                 Sunday Service
               </h3>

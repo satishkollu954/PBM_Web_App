@@ -115,9 +115,7 @@ export default function Navbar() {
             alt="PBM Prayer Fellowship Logo"
             className="h-12 w-12 object-cover rounded-lg border border-[#c9a84c]/30 shadow-md group-hover:shadow-[0_0_15px_rgba(201,168,76,0.3)] transition-all duration-300"
           />
-          <span className="font-cinzel font-bold text-lg hidden sm:block">
-            PBM Fellowship
-          </span>
+          <span className="font-cinzel font-bold text-lg">PBM Fellowship</span>
         </Link>
 
         {/* Desktop Menu */}
@@ -202,7 +200,9 @@ export default function Navbar() {
                 Contact
                 <span
                   className={`absolute -bottom-1 left-0 h-0.5 bg-[#c9a84c] transition-all duration-300 ${
-                    location.pathname === "/contact" ? "w-full" : "w-0 group-hover:w-full"
+                    location.pathname === "/contact"
+                      ? "w-full"
+                      : "w-0 group-hover:w-full"
                   }`}
                 ></span>
               </Link>

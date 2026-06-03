@@ -1,254 +1,271 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Youtube, Headphones } from "lucide-react";
+import { Search, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+
+const API_URL = "http://localhost:3005/api/sermons/all";
+
+const ITEMS_PER_PAGE = 8;
 
 export default function Sermons() {
-  const [selectedMedia, setSelectedMedia] = useState("audio");
+  const [sermons, setSermons] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 },
-    },
-  };
+  /* -----------------------------------
+     FETCH SERMONS
+  ----------------------------------- */
+  useEffect(() => {
+    const loadSermons = async () => {
+      try {
+        const response = await fetch(API_URL);
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
-  };
+        const data = await response.json();
 
-  const headingVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
-    },
-  };
+        if (data.success) {
+          setSermons(data.data);
+        } else {
+          setSermons([]);
+        }
+      } catch (error) {
+        console.log(error);
+        setSermons([]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  // Sample sermon data - you can replace with API data later
-  const sermons = [
-    {
-      id: 1,
-      title: "The Power of Faith",
-      speaker: "Bro. Pratap Kumar",
-      date: "May 19, 2024",
-      description: "A powerful message about trusting in God's promises and walking by faith, not by sight.",
-      type: "audio", // 'audio' or 'youtube' or 'both'
-      audioUrl: "/sermons/faith.mp3",
-      youtubeLink: null,
-    },
-    {
-      id: 2,
-      title: "Grace Unmerited",
-      speaker: "Bro. Pratap Kumar",
-      date: "May 12, 2024",
-      description: "Understanding God's grace and how it transforms our lives through His unending love.",
-      type: "youtube",
-      audioUrl: null,
-      youtubeLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    },
-    {
-      id: 3,
-      title: "Living in Community",
-      speaker: "Bro. Pratap Kumar",
-      date: "May 5, 2024",
-      description: "How authentic fellowship strengthens our faith and builds up the body of Christ.",
-      type: "audio",
-      audioUrl: "/sermons/community.mp3",
-      youtubeLink: null,
-    },
-    {
-      id: 4,
-      title: "Surrendering Control",
-      speaker: "Bro. Pratap Kumar",
-      date: "April 28, 2024",
-      description: "Learning to let go and trust God with every aspect of our lives.",
-      type: "both",
-      audioUrl: "/sermons/surrender.mp3",
-      youtubeLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    },
-    {
-      id: 5,
-      title: "Bearing Good Fruit",
-      speaker: "Bro. Pratap Kumar",
-      date: "April 21, 2024",
-      description: "Growing in character and displaying the fruit of the Spirit in our daily lives.",
-      type: "youtube",
-      audioUrl: null,
-      youtubeLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    },
-    {
-      id: 6,
-      title: "Called to Serve",
-      speaker: "Bro. Pratap Kumar",
-      date: "April 14, 2024",
-      description: "Understanding our calling and purpose in serving others with humility and love.",
-      type: "both",
-      audioUrl: "/sermons/serve.mp3",
-      youtubeLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    },
-  ];
+    loadSermons();
+  }, []);
 
-  const filteredSermons = sermons.filter((sermon) =>
-    selectedMedia === "audio" ? sermon.audioUrl : sermon.youtubeLink
-  );
+  /* -----------------------------------
+     SEARCH FILTER
+  ----------------------------------- */
+  const filteredSermons = useMemo(() => {
+    return sermons.filter((sermon) =>
+      sermon.title.toLowerCase().includes(searchTerm.toLowerCase()),
+    );
+  }, [sermons, searchTerm]);
 
-  return (
-    <section id="sermons" className="py-24 bg-[#FFFDF5] relative">
-      <div className="container mx-auto px-6">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={containerVariants}
-          className="max-w-6xl mx-auto"
-        >
-          {/* Header */}
-          <div className="text-center mb-10">
-            <motion.span
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={headingVariants}
-              className="text-[#7A5C00] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3"
-            >
-              Hear the Word
-            </motion.span>
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={headingVariants}
-              className="text-4xl md:text-5xl font-cinzel font-bold text-[#1E1535] mb-6"
-            >
-              Sermons & Messages
-            </motion.h2>
-            <motion.p
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={headingVariants}
-              transition={{ delay: 0.15 }}
-              className="text-[#33275A] text-lg max-w-3xl mx-auto leading-relaxed"
-            >
-              Listen to inspiring messages and teachings that will deepen your faith and understanding of God's Word.
-            </motion.p>
-          </div>
+  /* -----------------------------------
+     PAGINATION
+  ----------------------------------- */
+  const totalPages = Math.ceil(filteredSermons.length / ITEMS_PER_PAGE);
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-12">
-            <button
-              type="button"
-              onClick={() => setSelectedMedia("audio")}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 ${
-                selectedMedia === "audio"
-                  ? "bg-[#c9a84c] text-[#1E1535]"
-                  : "bg-white border border-[#c9a84c]/40 text-[#33275A] hover:border-[#c9a84c] hover:text-[#1E1535]"
-              }`}
-            >
-              Audio
-            </button>
-            <button
-              type="button"
-              onClick={() => setSelectedMedia("youtube")}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-200 ${
-                selectedMedia === "youtube"
-                  ? "bg-red-600 text-white"
-                  : "bg-white border border-[#c9a84c]/40 text-[#33275A] hover:border-[#c9a84c] hover:text-[#1E1535]"
-              }`}
-            >
-              YouTube
-            </button>
-          </div>
+  const paginatedSermons = useMemo(() => {
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
 
-          {/* Sermons Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredSermons.map((sermon) => (
-              <motion.div
-                key={sermon.id}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                variants={itemVariants}
-                className="bg-gradient-to-br from-[#FFFDF5] to-[#1a2a3a] border border-[#c9a84c]/40 rounded-2xl overflow-hidden hover:border-[#c9a84c]/40 transition-all duration-300 group"
+    return filteredSermons.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  }, [filteredSermons, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
+
+  if (loading) {
+    return (
+      <section className="min-h-screen bg-gradient-to-b from-[#faf8f2] via-[#f8f5ef] to-[#f2ece0] py-20 px-4">
+        <div className="max-w-7xl mx-auto animate-pulse">
+          <div className="h-12 bg-gray-300 rounded-xl w-72 mx-auto mb-6" />
+
+          <div className="h-6 bg-gray-300 rounded w-[500px] max-w-full mx-auto mb-12" />
+
+          <div className="h-14 bg-gray-300 rounded-2xl max-w-2xl mx-auto mb-14" />
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(10)].map((_, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-[24px] overflow-hidden shadow-lg"
               >
-                {/* Sermon Card Header */}
-                  <div className="bg-gradient-to-r from-[#c9a84c]/20 to-[#FFF8E7] p-6 relative overflow-hidden">
-                  <div className="absolute -top-8 -right-8 w-24 h-24 bg-[#c9a84c]/10 rounded-full blur-xl group-hover:bg-[#c9a84c]/20 transition-all duration-300"></div>
-                  <div className="relative z-10">
-                    <h3 className="text-xl md:text-2xl font-cinzel font-bold text-[#1E1535] mb-2 line-clamp-2">
-                      {sermon.title}
-                    </h3>
-                    <p className="text-[#c9a84c] text-sm font-semibold">{sermon.speaker}</p>
-                    <p className="text-[#33275A] text-xs mt-1">{sermon.date}</p>
-                  </div>
+                <div className="h-[200px] bg-gray-300" />
+
+                <div className="p-5">
+                  <div className="h-6 bg-gray-300 rounded mb-4" />
+
+                  <div className="h-11 bg-gray-300 rounded-xl" />
                 </div>
-
-                {/* Sermon Content */}
-                <div className="p-6 space-y-6">
-                  <p className="text-[#33275A] leading-relaxed text-sm">
-                    {sermon.description}
-                  </p>
-
-                  {/* Media Badge */}
-                  <div className="flex gap-2">
-                    {(sermon.type === "audio" || sermon.type === "both") && (
-                      <span className="inline-flex items-center gap-1 bg-[#c9a84c]/20 text-[#c9a84c] px-3 py-1 rounded-full text-xs font-semibold">
-                        <Headphones size={14} />
-                        Audio
-                      </span>
-                    )}
-                    {(sermon.type === "youtube" || sermon.type === "both") && (
-                      <span className="inline-flex items-center gap-1 bg-red-900/20 text-red-400 px-3 py-1 rounded-full text-xs font-semibold">
-                        <Youtube size={14} />
-                        Video
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Audio Player - Only show for audio type */}
-                  {(sermon.type === "audio" || sermon.type === "both") && (
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2 text-[#c9a84c]">
-                        <Headphones size={18} />
-                        <span className="text-sm font-semibold">Listen to Message</span>
-                      </div>
-                      <audio
-                        controls
-                        className="w-full h-8 rounded-lg bg-[#FFFDF5] accent-[#c9a84c]"
-                      >
-                        <source src={sermon.audioUrl} type="audio/mpeg" />
-                        Your browser does not support the audio element.
-                      </audio>
-                    </div>
-                  )}
-
-                  {/* YouTube Button - Only show for youtube type */}
-                  {(sermon.type === "youtube" || sermon.type === "both") && (
-                    <a
-                      href={sermon.youtubeLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-[#1E1535] font-cinzel font-bold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105"
-                    >
-                      <Youtube size={20} />
-                      <span>Watch on YouTube</span>
-                    </a>
-                  )}
-                </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
+      </section>
+    );
+  }
+
+  return (
+    <section className="min-h-screen py-20 px-4 bg-gradient-to-b from-[#faf8f2] via-[#f8f5ef] to-[#f2ece0]">
+      <div className="max-w-7xl mx-auto">
+        {/* HEADER */}
+        <div className="text-center mb-14">
+          <p className="uppercase tracking-[4px] text-[#c9a84c] font-semibold mb-4">
+            Word Of God
+          </p>
+
+          <h1 className="text-4xl md:text-6xl font-bold text-[#1E1535]">
+            Sermons Library
+          </h1>
+
+          <p className="max-w-3xl mx-auto mt-6 text-lg text-gray-600 leading-relaxed">
+            Discover inspiring sermons and powerful spiritual messages that
+            strengthen faith and bring you closer to God.
+          </p>
+        </div>
+
+        {/* SEARCH */}
+        <div className="max-w-2xl mx-auto mb-14">
+          <div className="relative">
+            <Search
+              className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400"
+              size={22}
+            />
+
+            <input
+              type="text"
+              placeholder="Search sermons by title..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full bg-white/90 backdrop-blur-md border border-gray-200 rounded-2xl py-4 pl-14 pr-5 text-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-[#c9a84c]"
+            />
+          </div>
+        </div>
+
+        {/* EMPTY STATE */}
+        {filteredSermons.length === 0 ? (
+          <div className="bg-white rounded-[30px] p-16 text-center shadow-xl border border-gray-100">
+            <div className="text-7xl mb-5">📖</div>
+
+            <h2 className="text-4xl font-bold text-[#1E1535] mb-4">
+              No Sermons Found
+            </h2>
+
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+              No sermons matched your search. Try using another keyword.
+            </p>
+          </div>
+        ) : (
+          <>
+            {/* TOP BAR */}
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-10">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#1E1535]">
+                Latest Sermons
+              </h2>
+
+              <div className="bg-white px-5 py-3 rounded-xl shadow-md border border-gray-100 text-gray-600 font-medium">
+                Showing{" "}
+                <span className="font-bold text-[#1E1535]">
+                  {paginatedSermons.length}
+                </span>{" "}
+                of{" "}
+                <span className="font-bold text-[#1E1535]">
+                  {filteredSermons.length}
+                </span>{" "}
+                Sermons
+              </div>
+            </div>
+
+            {/* GRID */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+              {paginatedSermons.map((sermon, index) => (
+                <motion.div
+                  key={sermon._id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: index * 0.05,
+                  }}
+                  whileHover={{
+                    y: -6,
+                  }}
+                  className="group bg-white rounded-[24px] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 w-full max-w-[520px] mx-auto"
+                >
+                  {/* IMAGE */}
+                  <div className="overflow-hidden">
+                    <img
+                      src={sermon.thumbnailImage}
+                      alt={sermon.title}
+                      className="w-full h-[220px] object-cover group-hover:scale-105 transition duration-700"
+                    />
+                  </div>
+
+                  {/* CONTENT */}
+                  <div className="p-5">
+                    <h3 className="text-lg font-bold text-[#1E1535] leading-snug line-clamp-2 min-h-[55px]">
+                      {sermon.title}
+                    </h3>
+
+                    {/* BUTTON */}
+                    <button
+                      onClick={() => window.open(sermon.youtubeLink, "_blank")}
+                      className="mt-5 w-full bg-[#c9a84c] hover:bg-[#b8953e] text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all shadow-md hover:shadow-xl"
+                    >
+                      Watch
+                      <ExternalLink size={18} />
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* PAGINATION */}
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-3 mt-16 flex-wrap">
+                {/* PREVIOUS */}
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.max(prev - 1, 1))
+                  }
+                  disabled={currentPage === 1}
+                  className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium transition ${
+                    currentPage === 1
+                      ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      : "bg-white shadow-md hover:shadow-xl text-[#1E1535]"
+                  }`}
+                >
+                  <ChevronLeft size={18} />
+                  Prev
+                </button>
+
+                {/* PAGE NUMBERS */}
+                {[...Array(totalPages)].map((_, index) => {
+                  const page = index + 1;
+
+                  return (
+                    <button
+                      key={page}
+                      onClick={() => setCurrentPage(page)}
+                      className={`w-12 h-12 rounded-xl font-semibold transition ${
+                        currentPage === page
+                          ? "bg-[#c9a84c] text-white shadow-lg"
+                          : "bg-white text-[#1E1535] shadow-md hover:shadow-xl"
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  );
+                })}
+
+                {/* NEXT */}
+                <button
+                  onClick={() =>
+                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+                  }
+                  disabled={currentPage === totalPages}
+                  className={`flex items-center gap-2 px-5 py-3 rounded-xl font-medium transition ${
+                    currentPage === totalPages
+                      ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                      : "bg-white shadow-md hover:shadow-xl text-[#1E1535]"
+                  }`}
+                >
+                  Next
+                  <ChevronRight size={18} />
+                </button>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </section>
   );
 }
-
-
-
-
-
-
-

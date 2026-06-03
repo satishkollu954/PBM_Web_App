@@ -37,17 +37,11 @@ export default function Hero() {
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <a
-              href="#join"
+              href="/contact"
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#c9a84c] to-[#f0c040] text-[#0a0f1e] font-bold uppercase tracking-widest text-sm hover:shadow-[0_0_20px_rgba(201,168,76,0.6)] transition-all duration-300 transform hover:-translate-y-1"
             >
               Join Worship
             </a>
-            {/* <a
-              href="#sermons"
-              className="w-full sm:w-auto px-8 py-4 rounded-full border border-[#c9a84c] text-[#c9a84c] font-bold uppercase tracking-widest text-sm hover:bg-[#c9a84c]/10 transition-all duration-300 transform hover:-translate-y-1"
-            >
-              Watch Sermons
-            </a> */}
           </div>
         </motion.div>
       </div>
@@ -71,8 +65,3 @@ export default function Hero() {
     </section>
   );
 }
-
-
-
-
-
