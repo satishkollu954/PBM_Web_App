@@ -188,7 +188,7 @@ export default function Events() {
 
   return (
     <section className="py-20 px-4 bg-gradient-to-b from-[#faf8f2] via-[#f8f5ef] to-[#f3eee3]">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto mt-4">
         <h1 className="text-5xl font-bold text-center mb-8 text-[#1E1535]">
           Events
         </h1>

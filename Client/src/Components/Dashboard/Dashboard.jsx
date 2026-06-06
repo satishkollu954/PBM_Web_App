@@ -215,7 +215,10 @@ export default function Dashboard() {
       name: "Books",
       icon: BookOpen,
     },
-
+    {
+      name: "Articles",
+      icon: FileText,
+    },
     {
       name: "Events",
       icon: Calendar,
@@ -232,10 +235,6 @@ export default function Dashboard() {
     {
       name: "Contacts",
       icon: MessageSquare,
-    },
-    {
-      name: "Articles",
-      icon: FileText,
     },
   ];
 
@@ -273,7 +272,9 @@ export default function Dashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
               {/* Total Believers */}
               <div className="bg-white border border-[#c9a84c]/30 rounded-3xl p-6 hover:border-[#c9a84c]/60 transition-all shadow-sm">
-                <h3 className="text-[#1E1535]/60 text-sm mb-3">Total Believers</h3>
+                <h3 className="text-[#1E1535]/60 text-sm mb-3">
+                  Total Believers
+                </h3>
 
                 <p className="text-5xl font-bold text-[#c9a84c]">
                   {dashboardData.totalBelievers}
@@ -358,7 +359,9 @@ export default function Dashboard() {
 
               {/* Songs */}
               <div className="bg-white border border-[#c9a84c]/30 rounded-3xl p-6 shadow-sm">
-                <h3 className="text-[#1E1535]/60 text-sm mb-3">Worship Songs</h3>
+                <h3 className="text-[#1E1535]/60 text-sm mb-3">
+                  Worship Songs
+                </h3>
 
                 <p className="text-5xl font-bold text-[#c9a84c]">
                   {dashboardData.songsCount}
@@ -462,7 +465,9 @@ export default function Dashboard() {
         <main className="flex-1 p-6 md:p-8 overflow-y-auto">
           {activeMenu === "Dashboard" && (
             <div className="mb-8">
-              <h2 className="text-3xl font-bold text-[#1E1535] mb-2">Dashboard</h2>
+              <h2 className="text-3xl font-bold text-[#1E1535] mb-2">
+                Dashboard
+              </h2>
 
               <p className="text-[#1E1535]/60">
                 Welcome to PBM Church Admin Dashboard

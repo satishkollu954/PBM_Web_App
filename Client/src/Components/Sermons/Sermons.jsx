@@ -95,12 +95,12 @@ export default function Sermons() {
 
   return (
     <section className="min-h-screen py-20 px-4 bg-gradient-to-b from-[#faf8f2] via-[#f8f5ef] to-[#f2ece0]">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto mt-4">
         {/* HEADER */}
-        <div className="text-center mb-14">
-          <p className="uppercase tracking-[4px] text-[#c9a84c] font-semibold mb-4">
-            Word Of God
-          </p>
+        <div className="text-center mb-12">
+          <span className="text-[#7A5C00] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
+            Word of GOD
+          </span>
 
           <h1 className="text-4xl md:text-6xl font-bold text-[#1E1535]">
             Sermons Library

@@ -8,7 +8,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import { useCookies } from "react-cookie";
 
-import pbmLogo from "../../assets/pbmlogo-2.jpeg";
+import pbmLogo from "../../assets/Logo.png";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -113,7 +113,7 @@ export default function Navbar() {
           <img
             src={pbmLogo}
             alt="PBM Prayer Fellowship Logo"
-            className="h-12 w-12 object-cover rounded-lg border border-[#c9a84c]/30 shadow-md group-hover:shadow-[0_0_15px_rgba(201,168,76,0.3)] transition-all duration-300"
+            className="h-12 w-12 transition-all duration-300"
           />
           <span className="font-cinzel font-bold text-lg">PBM Fellowship</span>
         </Link>
@@ -208,16 +208,6 @@ export default function Navbar() {
               </Link>
             </li>
           </ul>
-
-          {/* Logout Button */}
-          {/* {isLoggedIn && (
-            <button
-              onClick={handleLogout}
-              className="bg-[#c9a84c] hover:bg-[#d8b45a] text-[#0d1b2a] px-4 py-2 rounded-lg text-sm font-semibold transition-all"
-            >
-              Logout
-            </button>
-          )} */}
         </div>
 
         {/* Mobile Toggle */}
