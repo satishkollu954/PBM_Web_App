@@ -64,7 +64,7 @@ export default function Login() {
   };
 
   return (
-    <section className="min-h-screen bg-[#0d1b2a] flex items-center justify-center mt-8 px-6 py-20">
+    <section className="min-h-screen bg-[#FFFDF5] flex items-center justify-center mt-8 px-6 py-20">
       <motion.div
         initial={{
           opacity: 0,
@@ -77,7 +77,7 @@ export default function Login() {
         transition={{
           duration: 0.6,
         }}
-        className="w-full max-w-md bg-[#111827] border border-[#c9a84c]/20 rounded-2xl shadow-2xl p-8"
+        className="w-full max-w-md bg-white border border-[#c9a84c]/30 rounded-2xl shadow-lg p-8"
       >
         {/* Header */}
         <div className="text-center mb-8">
@@ -85,12 +85,12 @@ export default function Login() {
             Admin Login
           </h1>
 
-          <p className="text-gray-400">Welcome back to PBM Church</p>
+          <p className="text-[#1E1535]/60">Welcome back to PBM Church</p>
         </div>
 
         {/* Error */}
         {error && (
-          <div className="bg-red-500/10 border border-red-500/30 text-red-400 px-4 py-3 rounded-lg mb-6 text-sm">
+          <div className="bg-red-500/10 border border-red-500/30 text-red-500 px-4 py-3 rounded-lg mb-6 text-sm">
             {error}
           </div>
         )}
@@ -99,7 +99,7 @@ export default function Login() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Username */}
           <div>
-            <label className="block text-sm text-gray-300 mb-2 uppercase tracking-wider">
+            <label className="block text-sm text-[#1E1535]/70 mb-2 uppercase tracking-wider font-semibold">
               Username
             </label>
 
@@ -110,13 +110,13 @@ export default function Login() {
               onChange={handleChange}
               required
               placeholder="Enter username"
-              className="w-full px-4 py-3 bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#c9a84c] transition-colors"
+              className="w-full px-4 py-3 bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl text-[#1E1535] placeholder-[#1E1535]/40 focus:outline-none focus:border-[#c9a84c] transition-colors"
             />
           </div>
 
           {/* Password */}
           <div>
-            <label className="block text-sm text-gray-300 mb-2 uppercase tracking-wider">
+            <label className="block text-sm text-[#1E1535]/70 mb-2 uppercase tracking-wider font-semibold">
               Password
             </label>
 
@@ -128,13 +128,13 @@ export default function Login() {
                 onChange={handleChange}
                 required
                 placeholder="Enter password"
-                className="w-full px-4 py-3 bg-[#0a0f1e] border border-[#c9a84c]/20 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#c9a84c] transition-colors pr-12"
+                className="w-full px-4 py-3 bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl text-[#1E1535] placeholder-[#1E1535]/40 focus:outline-none focus:border-[#c9a84c] transition-colors pr-12"
               />
 
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute top-1/2 right-4 -translate-y-1/2 text-gray-400 hover:text-[#c9a84c]"
+                className="absolute top-1/2 right-4 -translate-y-1/2 text-[#1E1535]/40 hover:text-[#c9a84c]"
               >
                 {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
