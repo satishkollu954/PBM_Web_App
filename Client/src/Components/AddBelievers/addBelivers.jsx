@@ -9,6 +9,7 @@ export function AddBeliever() {
     firstName: "",
     lastName: "",
     phoneNumber: "",
+    age: "",
     gender: "",
     address: "",
     pinCode: "",
@@ -48,6 +49,12 @@ export function AddBeliever() {
 
     if (!formData.phoneNumber)
       newErrors.phoneNumber = "Phone Number is required";
+
+    if (formData.age === "") {
+      newErrors.age = "Age is required";
+    } else if (isNaN(Number(formData.age)) || Number(formData.age) < 0 || Number(formData.age) > 120) {
+      newErrors.age = "Enter a valid age (0–120)";
+    }
 
     if (!formData.gender) newErrors.gender = "Gender is required";
 
@@ -202,12 +209,30 @@ export function AddBeliever() {
               <option value="male">Male</option>
 
               <option value="female">Female</option>
-
-              <option value="other">Other</option>
             </select>
 
             {errors.gender && (
               <p className="text-red-500 text-sm mt-1">{errors.gender}</p>
+            )}
+          </div>
+
+          {/* Age */}
+          <div>
+            <label className="text-[#1E1535]/70 mb-2 block">Age *</label>
+
+            <input
+              type="number"
+              name="age"
+              min="0"
+              max="120"
+              value={formData.age}
+              onChange={handleChange}
+              placeholder="Enter age"
+              className={`w-full p-3 rounded-xl bg-[#FFFDF5] border ${errors.age ? "border-red-500" : "border-[#c9a84c]/30"} text-[#1E1535] focus:outline-none focus:border-[#c9a84c]`}
+            />
+
+            {errors.age && (
+              <p className="text-red-500 text-sm mt-1">{errors.age}</p>
             )}
           </div>
 

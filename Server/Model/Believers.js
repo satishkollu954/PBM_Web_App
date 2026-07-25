@@ -20,9 +20,16 @@ const believerSchema = new mongoose.Schema(
       trim: true,
     },
 
+    age: {
+      type: Number,
+      required: true,
+      min: 0,
+      max: 120,
+    },
+
     gender: {
       type: String,
-      enum: ["male", "female", "other"],
+      enum: ["male", "female"],
       required: true,
     },
 

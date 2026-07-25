@@ -15,7 +15,26 @@ import {
   AccordionTrigger,
 } from "../UI/Accordion";
 
-import { MapPin, Instagram, Youtube, Clock } from "lucide-react";
+import { MapPin, Instagram, Youtube, Clock, Phone } from "lucide-react";
+
+const CHURCH_LOCATIONS = [
+  {
+    name: "Nagullanka Church",
+    address: "Nagullanka, Andhra Pradesh, India",
+    embedUrl:
+      "https://maps.google.com/maps?q=16.522144929668684,81.8708120576718&z=15&output=embed",
+    directionsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=16.522144929668684,81.8708120576718",
+  },
+  {
+    name: "Marteru Church",
+    address: "Marteru, Andhra Pradesh, India",
+    embedUrl:
+      "https://maps.google.com/maps?q=16.619979972510027,81.73781285343578&z=15&output=embed",
+    directionsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=16.619979972510027,81.73781285343578",
+  },
+];
 
 export default function Contact() {
   // Form State
@@ -265,34 +284,47 @@ export default function Contact() {
           >
             {/* Info Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Location */}
+              {/* Phone */}
               <div className="bg-white border border-[#c9a84c]/40 p-6 rounded-xl text-center">
-                <MapPin className="text-[#c9a84c] mx-auto mb-3" size={28} />
+                <Phone className="text-[#c9a84c] mx-auto mb-3" size={28} />
 
                 <h4 className="font-cinzel text-[#1E1535] font-bold mb-1">
-                  Location
+                  Phone
                 </h4>
 
-                <p className="text-sm text-[#33275A]">
-                  123 Grace Avenue
-                  <br />
-                  Cityville, ST 12345
-                </p>
+                <p className="text-sm text-[#33275A]">+91 9948478889</p>
               </div>
 
-              {/* Service */}
+              {/* Services */}
               <div className="bg-white border border-[#c9a84c]/40 p-6 rounded-xl text-center">
                 <Clock className="text-[#c9a84c] mx-auto mb-3" size={28} />
 
-                <h4 className="font-cinzel text-[#1E1535] font-bold mb-1">
+                <h4 className="font-cinzel text-[#1E1535] font-bold mb-3">
                   Services
                 </h4>
 
-                <p className="text-sm text-[#33275A]">
-                  Sundays at 10:00 AM
-                  <br />
-                  Wednesdays at 7:00 PM
-                </p>
+                <div className="text-left space-y-3">
+                  <div>
+                    <p className="text-xs text-[#7A5C00] font-cinzel font-bold uppercase tracking-wide mb-1">
+                      Nagullanka
+                    </p>
+                    <p className="text-sm text-[#33275A]">
+                      Fri: 10:00 AM & 1:30 PM
+                      <br />
+                      Sun: 11:00 AM & 1:30 PM
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-[#7A5C00] font-cinzel font-bold uppercase tracking-wide mb-1">
+                      Marteru
+                    </p>
+                    <p className="text-sm text-[#33275A]">
+                      Sat: 10:00 AM & 1:00 PM
+                      <br />
+                      Sun: 7:30 AM & 10:00 AM
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -349,31 +381,62 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        {/* Map Section */}
+        {/* Church Locations */}
         <motion.div
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{
-            once: true,
-          }}
-          className="max-w-6xl mx-auto h-[400px] bg-[#1a2333] rounded-2xl border border-[#c9a84c]/40 flex items-center justify-center relative overflow-hidden"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-6xl mx-auto"
         >
-          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
-
-          <div className="text-center z-10">
-            <MapPin className="text-[#c9a84c] mx-auto mb-4" size={48} />
-
-            <h3 className="text-2xl font-cinzel font-bold text-[#1E1535] mb-2">
-              Google Maps Integration
+          <div className="text-center mb-8">
+            <span className="text-[#7A5C00] font-cinzel uppercase tracking-[0.2em] text-sm font-bold block mb-3">
+              Find Us
+            </span>
+            <h3 className="text-3xl font-cinzel font-bold text-[#1E1535]">
+              Our Locations
             </h3>
+          </div>
 
-            <p className="text-gray-500">Map coordinates placeholder</p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {CHURCH_LOCATIONS.map((church) => (
+              <div
+                key={church.name}
+                className="bg-white border border-[#c9a84c]/40 rounded-2xl overflow-hidden shadow-xl"
+              >
+                {/* Card header */}
+                <div className="p-5 flex items-center gap-3 border-b border-[#c9a84c]/20">
+                  <MapPin className="text-[#c9a84c] shrink-0" size={20} />
+                  <h4 className="font-cinzel font-bold text-[#1E1535] text-lg">
+                    {church.name}
+                  </h4>
+                </div>
+
+                {/* Embedded map */}
+                <iframe
+                  src={church.embedUrl}
+                  title={`Map for ${church.name}`}
+                  className="w-full h-[280px] border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+
+                {/* Address + directions */}
+                <div className="p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                  <p className="text-sm text-[#33275A] leading-relaxed">
+                    {church.address}
+                  </p>
+                  <a
+                    href={church.directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 px-5 py-2 rounded bg-gradient-to-r from-[#c9a84c] to-[#f0c040] text-[#0a0f1e] font-bold uppercase tracking-widest text-xs hover:shadow-[0_0_15px_rgba(201,168,76,0.4)] transition-all"
+                  >
+                    Get Directions
+                  </a>
+                </div>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>

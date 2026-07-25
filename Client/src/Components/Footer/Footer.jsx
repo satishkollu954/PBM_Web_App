@@ -86,7 +86,7 @@ export default function Footer() {
           {/* Address branches */}
           <div>
             <h4 className="text-white font-cinzel font-bold mb-6 text-lg">
-              Nagulanka Branch
+              Nagullanka Branch
             </h4>
 
             <ul className="space-y-4">
@@ -97,9 +97,9 @@ export default function Footer() {
 
                 <div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    123 Sacred Light Ave,
+                    Nagullanka,
                     <br />
-                    Graceville, GL 45678
+                    Andhra Pradesh, India
                   </p>
                 </div>
               </li>
@@ -117,7 +117,7 @@ export default function Footer() {
                   ✉
                 </div>
 
-                <p className="text-gray-300 text-sm">pbmchurch@gmail.com</p>
+                <p className="text-gray-300 text-sm">pbmchurch.app@gmail.com</p>
               </li>
 
               <li className="flex items-center gap-4">
@@ -159,9 +159,9 @@ export default function Footer() {
 
                 <div>
                   <p className="text-gray-300 text-sm leading-relaxed">
-                    123 Sacred Light Ave,
+                    Marteru,
                     <br />
-                    Graceville, GL 45678
+                    Andhra Pradesh, India
                   </p>
                 </div>
               </li>
@@ -179,7 +179,7 @@ export default function Footer() {
                   ✉
                 </div>
 
-                <p className="text-gray-300 text-sm">pbmchurch@gmail.com</p>
+                <p className="text-gray-300 text-sm">pbmchurch.app@gmail.com</p>
               </li>
               <li className="flex items-center gap-4">
                 <div className="w-10 h-10 rounded-full border border-[#c9a84c]/30 flex items-center justify-center text-[#c9a84c]">

@@ -14,6 +14,13 @@ import {
   Save,
 } from "lucide-react";
 
+const AGE_GROUPS = [
+  { value: "children", label: "Children (0–12 yrs)", min: 0, max: 12 },
+  { value: "youth", label: "Youth (13–35 yrs)", min: 13, max: 35 },
+  { value: "middleaged", label: "Middle Aged (36–59 yrs)", min: 36, max: 59 },
+  { value: "elders", label: "Elders / Seniors (60+ yrs)", min: 60, max: Infinity },
+];
+
 export function ViewBeliever() {
   const [believers, setBelievers] = useState([]);
 
@@ -45,6 +52,10 @@ export function ViewBeliever() {
   const [selectedChurch, setSelectedChurch] = useState("");
 
   const [selectedDay, setSelectedDay] = useState("");
+
+  const [selectedAgeGroup, setSelectedAgeGroup] = useState("");
+
+  const [selectedGender, setSelectedGender] = useState("");
 
   const believersPerPage = 10;
 
@@ -208,7 +219,19 @@ export function ViewBeliever() {
       ? believer.daysCategory === selectedDay
       : true;
 
-    return matchesSearch && matchesChurch && matchesDay;
+    const matchesAgeGroup = selectedAgeGroup
+      ? (() => {
+          const group = AGE_GROUPS.find((g) => g.value === selectedAgeGroup);
+          const age = Number(believer.age);
+          return !isNaN(age) && age >= group.min && age <= group.max;
+        })()
+      : true;
+
+    const matchesGender = selectedGender
+      ? believer.gender === selectedGender
+      : true;
+
+    return matchesSearch && matchesChurch && matchesDay && matchesAgeGroup && matchesGender;
   });
 
   // Counts
@@ -258,7 +281,7 @@ export function ViewBeliever() {
       </div>
 
       {/* Filters */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-4">
         {/* Church Filter */}
         <div>
           <label className="block text-[#c9a84c] mb-2 font-semibold">
@@ -269,28 +292,20 @@ export function ViewBeliever() {
             value={selectedChurch}
             onChange={(e) => {
               setSelectedChurch(e.target.value);
-
               setSelectedDay("");
-
               setCurrentPage(1);
             }}
             className="w-full bg-white border border-[#c9a84c]/30 rounded-2xl py-3 px-4 text-[#1E1535] focus:outline-none focus:border-[#c9a84c]"
           >
-            <option value="">Select Church</option>
-
+            <option value="">All Churches</option>
             <option value="Nagullanka">Nagullanka</option>
-
             <option value="Marteru">Marteru</option>
           </select>
 
-          {/* Church Count */}
           {selectedChurch && (
             <div className="mt-3 bg-white border border-[#c9a84c]/30 rounded-xl px-4 py-3">
               <span className="text-[#1E1535]/70">Total Believers:</span>
-
-              <span className="text-[#c9a84c] font-bold ml-2">
-                {churchCount}
-              </span>
+              <span className="text-[#c9a84c] font-bold ml-2">{churchCount}</span>
             </div>
           )}
         </div>
@@ -306,30 +321,73 @@ export function ViewBeliever() {
             disabled={!selectedChurch}
             onChange={(e) => {
               setSelectedDay(e.target.value);
-
               setCurrentPage(1);
             }}
             className="w-full bg-white border border-[#c9a84c]/30 rounded-2xl py-3 px-4 text-[#1E1535] focus:outline-none focus:border-[#c9a84c] disabled:opacity-50"
           >
-            <option value="">Select Day Category</option>
-
+            <option value="">All Days</option>
             {selectedChurch &&
               churchDayMapping[selectedChurch]?.map((day) => (
-                <option key={day} value={day}>
-                  {day}
-                </option>
+                <option key={day} value={day}>{day}</option>
               ))}
           </select>
 
-          {/* Day Count */}
           {selectedDay && (
             <div className="mt-3 bg-white border border-[#c9a84c]/30 rounded-xl px-4 py-3">
-              <span className="text-[#1E1535]/70">Filtered Count:</span>
-
+              <span className="text-[#1E1535]/70">Day Count:</span>
               <span className="text-[#c9a84c] font-bold ml-2">{dayCount}</span>
             </div>
           )}
         </div>
+
+        {/* Age Group Filter */}
+        <div>
+          <label className="block text-[#c9a84c] mb-2 font-semibold">
+            Age Group Filter
+          </label>
+
+          <select
+            value={selectedAgeGroup}
+            onChange={(e) => {
+              setSelectedAgeGroup(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="w-full bg-white border border-[#c9a84c]/30 rounded-2xl py-3 px-4 text-[#1E1535] focus:outline-none focus:border-[#c9a84c]"
+          >
+            <option value="">All Ages</option>
+            {AGE_GROUPS.map((group) => (
+              <option key={group.value} value={group.value}>
+                {group.label}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Gender Filter */}
+        <div>
+          <label className="block text-[#c9a84c] mb-2 font-semibold">
+            Gender Filter
+          </label>
+
+          <select
+            value={selectedGender}
+            onChange={(e) => {
+              setSelectedGender(e.target.value);
+              setCurrentPage(1);
+            }}
+            className="w-full bg-white border border-[#c9a84c]/30 rounded-2xl py-3 px-4 text-[#1E1535] focus:outline-none focus:border-[#c9a84c]"
+          >
+            <option value="">All Genders</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+      </div>
+
+      {/* Results summary */}
+      <div className="mb-8 bg-white border border-[#c9a84c]/30 rounded-xl px-4 py-3 flex items-center justify-between">
+        <span className="text-[#1E1535]/70 text-sm">Showing results</span>
+        <span className="text-[#c9a84c] font-bold">{filteredBelievers.length} believers</span>
       </div>
 
       {/* Fetch Error */}
@@ -492,6 +550,13 @@ export function ViewBeliever() {
 
                       <p>
                         <span className="text-[#1E1535] font-semibold">
+                          Age:
+                        </span>{" "}
+                        {selectedBeliever.age ?? "—"}
+                      </p>
+
+                      <p>
+                        <span className="text-[#1E1535] font-semibold">
                           Church:
                         </span>{" "}
                         {selectedBeliever.churchBelongsTo}
@@ -578,13 +643,20 @@ export function ViewBeliever() {
                         className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl px-4 py-3"
                       >
                         <option value="">Select Gender</option>
-
                         <option value="male">Male</option>
-
                         <option value="female">Female</option>
-
-                        <option value="other">Other</option>
                       </select>
+
+                      <input
+                        type="number"
+                        name="age"
+                        min="0"
+                        max="120"
+                        value={editData.age ?? ""}
+                        onChange={handleChange}
+                        placeholder="Age"
+                        className="w-full bg-[#FFFDF5] border border-[#c9a84c]/30 rounded-xl px-4 py-3"
+                      />
 
                       <textarea
                         name="address"
