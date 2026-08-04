@@ -11,10 +11,11 @@ import {
 } from "lucide-react";
 import { toast } from "react-toastify";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export function AddEvent() {
   const API_URL = `${API_BASE_URL}/api/events`;
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+  
 
   const initialForm = {
     title: "",

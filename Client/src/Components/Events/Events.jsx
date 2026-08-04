@@ -3,10 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, FileText, X } from "lucide-react";
 
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
+
 const API_URL = `${API_BASE_URL}/api/events/active`;
-
-
 
 function EventModal({ event, onClose }) {
   const [showPdf, setShowPdf] = useState(false);
