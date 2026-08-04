@@ -36,11 +36,13 @@ export default function ManageArticles() {
   const [submitting, setSubmitting] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // ── Fetch ──────────────────────────────────────────────────────────
   const fetchArticles = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:3005/api/articles/all");
+      const res = await axios.get(`${API_BASE_URL}/api/articles/all`);
       setArticles(res.data.data || []);
     } catch {
       toast.error("Failed to load articles");
@@ -112,12 +114,12 @@ export default function ManageArticles() {
 
       if (editTarget) {
         await axios.put(
-          `http://localhost:3005/api/articles/update/${editTarget._id}`,
+          `${API_BASE_URL}/api/articles/update/${editTarget._id}`,
           data,
         );
         toast.success("Article updated successfully");
       } else {
-        await axios.post("http://localhost:3005/api/articles/create", data);
+        await axios.post(`${API_BASE_URL}/api/articles/create`, data);
         toast.success("Article added successfully");
       }
 
@@ -135,7 +137,7 @@ export default function ManageArticles() {
     if (!deleteId) return;
     try {
       await axios.delete(
-        `http://localhost:3005/api/articles/delete/${deleteId}`,
+        `${API_BASE_URL}/api/articles/delete/${deleteId}`,
       );
       toast.success("Article deleted");
       setDeleteId(null);

@@ -52,6 +52,8 @@ export default function Contact() {
 
   const [errors, setErrors] = useState({});
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // Handle Change
   const handleChange = (e) => {
     setFormData({
@@ -104,7 +106,7 @@ export default function Contact() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:3005/api/contact/create",
+        `${API_BASE_URL}/api/contact/create`,
         formData,
       );
 

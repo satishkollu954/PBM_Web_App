@@ -29,6 +29,8 @@ export default function Books() {
   const [selectedAuthor, setSelectedAuthor] = useState(null);
   const [selectedYear, setSelectedYear] = useState(null);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // Fetch Books
   useEffect(() => {
     fetchBooks();
@@ -38,7 +40,7 @@ export default function Books() {
     try {
       setLoading(true);
 
-      const response = await axios.get("http://localhost:3005/api/books/all");
+      const response = await axios.get(`${API_BASE_URL}/api/books/all`);
 
       setBooksData(response.data.data);
     } catch (err) {

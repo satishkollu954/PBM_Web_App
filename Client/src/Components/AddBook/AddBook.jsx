@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 
 import { motion } from "framer-motion";
 
+
+
 import {
   Upload,
   BookOpen,
@@ -36,6 +38,8 @@ export function AddBook() {
   const [errors, setErrors] = useState({});
 
   const [loading, setLoading] = useState(false);
+
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   // Handle Change
   const handleChange = (e) => {
@@ -127,7 +131,7 @@ export function AddBook() {
       submitData.append("cover", cover);
 
       const response = await axios.post(
-        "http://localhost:3005/api/books/create",
+        `${API_BASE_URL}/api/books/create`,
         submitData,
         {
           headers: {

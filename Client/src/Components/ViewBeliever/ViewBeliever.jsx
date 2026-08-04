@@ -59,6 +59,8 @@ export function ViewBeliever() {
 
   const believersPerPage = 10;
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // Church Day Mapping
   const churchDayMapping = {
     Nagullanka: ["Friday", "Sunday"],
@@ -72,7 +74,7 @@ export function ViewBeliever() {
       setFetchError("");
 
       const response = await axios.get(
-        "http://localhost:3005/api/believers/all",
+        `${API_BASE_URL}/api/believers/all`,
       );
 
       setBelievers(response.data.data || []);
@@ -106,7 +108,7 @@ export function ViewBeliever() {
     try {
       setDeleteLoading(true);
 
-      await axios.delete(`http://localhost:3005/api/believers/delete/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/believers/delete/${id}`);
 
       toast.success("Believer deleted successfully");
 
@@ -178,7 +180,7 @@ export function ViewBeliever() {
       });
 
       const response = await axios.put(
-        `http://localhost:3005/api/believers/update/${selectedBeliever._id}`,
+        `${API_BASE_URL}/api/believers/update/${selectedBeliever._id}`,
         formData,
       );
 

@@ -44,6 +44,8 @@ export default function Dashboard() {
 
   const [activeMenu, setActiveMenu] = useState("Dashboard");
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // Dynamic Counts
   const [dashboardData, setDashboardData] = useState({
     totalBelievers: 0,
@@ -76,7 +78,7 @@ export default function Dashboard() {
     try {
       // Believers
       const believersResponse = await axios.get(
-        "http://localhost:3005/api/believers/all",
+        `${API_BASE_URL}/api/believers/all`,
       );
 
       const believers = believersResponse.data.data || [];
@@ -86,7 +88,7 @@ export default function Dashboard() {
 
       try {
         const booksResponse = await axios.get(
-          "http://localhost:3005/api/books/all",
+          `${API_BASE_URL}/api/books/all`,
         );
 
         books = booksResponse.data.data || [];
@@ -99,7 +101,7 @@ export default function Dashboard() {
 
       try {
         const eventsResponse = await axios.get(
-          "http://localhost:3005/api/events/all",
+          `${API_BASE_URL}/api/events/all`,
         );
 
         events = eventsResponse.data.data || [];
@@ -112,7 +114,7 @@ export default function Dashboard() {
 
       try {
         const songsResponse = await axios.get(
-          "http://localhost:3005/api/songs/all",
+          `${API_BASE_URL}/api/songs/all`,
         );
 
         songs = songsResponse.data.data || [];
@@ -125,7 +127,7 @@ export default function Dashboard() {
 
       try {
         const sermonsResponse = await axios.get(
-          "http://localhost:3005/api/sermons/all",
+          `${API_BASE_URL}/api/sermons/all`,
         );
 
         sermons = sermonsResponse.data.data || [];

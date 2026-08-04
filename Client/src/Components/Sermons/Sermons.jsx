@@ -2,7 +2,10 @@ import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { Search, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
-const API_URL = "http://localhost:3005/api/sermons/all";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_URL = `${API_BASE_URL}/api/sermons/all`;
+
+
 
 const ITEMS_PER_PAGE = 8;
 

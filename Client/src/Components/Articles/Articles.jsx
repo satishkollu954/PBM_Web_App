@@ -16,11 +16,12 @@ export default function Articles() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedArticle, setSelectedArticle] = useState(null);
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const res = await axios.get("http://localhost:3005/api/articles/all");
+        const res = await axios.get(`${API_BASE_URL}/api/articles/all`);
         setArticles(res.data.data || []);
       } catch {
         setError("Failed to load articles. Please try again later.");

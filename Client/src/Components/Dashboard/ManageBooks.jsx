@@ -36,11 +36,13 @@ export default function ManageBooks() {
   const [submitting, setSubmitting] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // ── Fetch ──────────────────────────────────────────────────────────
   const fetchBooks = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:3005/api/books/all");
+      const res = await axios.get(`${API_BASE_URL}/api/books/all`);
       setBooks(res.data.data || []);
     } catch {
       toast.error("Failed to load books");
@@ -108,12 +110,12 @@ export default function ManageBooks() {
 
       if (editTarget) {
         await axios.put(
-          `http://localhost:3005/api/books/update/${editTarget._id}`,
+          `${API_BASE_URL}/api/books/update/${editTarget._id}`,
           data,
         );
         toast.success("Book updated successfully");
       } else {
-        await axios.post("http://localhost:3005/api/books/create", data);
+        await axios.post(`${API_BASE_URL}/api/books/create`, data);
         toast.success("Book added successfully");
       }
 
@@ -130,7 +132,7 @@ export default function ManageBooks() {
   const handleDelete = async () => {
     if (!deleteId) return;
     try {
-      await axios.delete(`http://localhost:3005/api/books/delete/${deleteId}`);
+      await axios.delete(`${API_BASE_URL}/api/books/delete/${deleteId}`);
       toast.success("Book deleted");
       setDeleteId(null);
       fetchBooks();

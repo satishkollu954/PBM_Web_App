@@ -12,7 +12,9 @@ import {
 import { toast } from "react-toastify";
 
 export function AddEvent() {
-  const API_URL = "http://localhost:3005/api/events";
+  const API_URL = `${API_BASE_URL}/api/events`;
+
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const initialForm = {
     title: "",

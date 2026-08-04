@@ -39,11 +39,13 @@ export default function ManageSongs() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterType, setFilterType] = useState("all");
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // ── Fetch ──────────────────────────────────────────────────────────
   const fetchSongs = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:3005/api/songs/all");
+      const res = await axios.get(`${API_BASE_URL}/api/songs/all`);
       setSongs(res.data.data || []);
     } catch {
       toast.error("Failed to load songs");
@@ -121,12 +123,12 @@ export default function ManageSongs() {
 
       if (editTarget) {
         await axios.put(
-          `http://localhost:3005/api/songs/update/${editTarget._id}`,
+          `${API_BASE_URL}/api/songs/update/${editTarget._id}`,
           data
         );
         toast.success("Song updated successfully");
       } else {
-        await axios.post("http://localhost:3005/api/songs/create", data);
+        await axios.post(`${API_BASE_URL}/api/songs/create`, data);
         toast.success("Song added successfully");
       }
 
@@ -143,7 +145,7 @@ export default function ManageSongs() {
   const handleDelete = async () => {
     if (!deleteId) return;
     try {
-      await axios.delete(`http://localhost:3005/api/songs/delete/${deleteId}`);
+      await axios.delete(`${API_BASE_URL}/api/songs/delete/${deleteId}`);
       toast.success("Song deleted");
       setDeleteId(null);
       fetchSongs();

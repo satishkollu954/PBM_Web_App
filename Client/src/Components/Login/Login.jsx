@@ -26,6 +26,8 @@ export default function Login() {
 
   const [error, setError] = useState("");
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // Handle Input Change
   const handleChange = (e) => {
     setFormData({
@@ -44,7 +46,7 @@ export default function Login() {
       setError("");
 
       const response = await axios.post(
-        "http://localhost:3005/api/auth/login",
+        `${API_BASE_URL}/api/auth/login`,
         formData,
       );
 

@@ -35,6 +35,8 @@ export function ViewContact() {
 
   const [deleteLoading, setDeleteLoading] = useState(false);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -45,7 +47,7 @@ export function ViewContact() {
     try {
       setLoading(true);
 
-      const response = await axios.get("http://localhost:3005/api/contact/all");
+      const response = await axios.get(`${API_BASE_URL}/api/contact/all`);
 
       setContacts(response.data.data);
 
@@ -83,7 +85,7 @@ export function ViewContact() {
       setDeleteLoading(true);
 
       const response = await axios.delete(
-        `http://localhost:3005/api/contact/delete/${deleteId}`,
+        `${API_BASE_URL}/api/contact/delete/${deleteId}`,
       );
 
       toast.success(response.data.message);
